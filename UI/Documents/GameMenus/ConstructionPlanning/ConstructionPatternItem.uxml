@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="constructionItem" style="flex-direction: row; justify-content: space-around; border-bottom-color: rgb(0, 0, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); align-items: flex-start;">
+        <ui:VisualElement name="constructionItemName" picking-mode="Ignore" style="border-left-width: 2px; border-right-width: 2px; border-top-width: 0; border-bottom-width: 0; border-left-color: rgb(111, 111, 111); width: 30%;">
+            <ui:Label text="ItemName" display-tooltip-when-elided="true" name="constructionItemNameLabel" />
+        </ui:VisualElement>
+        <ui:VisualElement name="constructionItemType" picking-mode="Ignore" style="border-left-color: rgb(226, 0, 0); width: 30%;">
+            <ui:Label text="ItemType" display-tooltip-when-elided="true" name="inventoryItemTypeLabel" />
+        </ui:VisualElement>
+        <ui:VisualElement name="constructionItemWeight" picking-mode="Ignore" style="border-left-width: 2px; border-right-width: 2px; border-top-width: 0; border-bottom-width: 0; border-left-color: rgb(120, 120, 120); margin-top: 2px; width: 20%;">
+            <ui:Label text="0" display-tooltip-when-elided="true" name="inventoryItemWeightLabel" />
+        </ui:VisualElement>
+        <ui:VisualElement name="constructionItemVolume" picking-mode="Ignore" style="border-left-color: rgb(111, 111, 111); border-left-width: 2px; border-right-width: 2px; border-top-width: 0; border-bottom-width: 0; margin-top: 2px; width: 20%;">
+            <ui:Label text="0" display-tooltip-when-elided="true" name="inventoryItemVolumeLabel" />
+        </ui:VisualElement>
+        <ui:VisualElement name="click" style="flex-direction: row; justify-content: space-around; align-items: stretch; position: absolute; left: 0; top: 0; right: 0; bottom: 0; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);" />
+    </ui:VisualElement>
+</ui:UXML>

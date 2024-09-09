@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Template name="PortraitPanel" src="project://database/Assets/UI/Documents/GameMenus/Character/PortraitPanel.uxml?fileID=9197481963319205126&amp;guid=141d06fa36957b345bad246f92fbe048&amp;type=3#PortraitPanel" />
+    <ui:Template name="MapPanel" src="project://database/Assets/UI/Documents/GameMenus/Character/MapPanel.uxml?fileID=9197481963319205126&amp;guid=25cba0dc832690b408bac378bd603a1d&amp;type=3#MapPanel" />
+    <ui:Template name="InventoryPanel" src="project://database/Assets/UI/Documents/GameMenus/Character/Inventory/InventoryPanel.uxml?fileID=9197481963319205126&amp;guid=43cc0dcd945883e41a430653155ab87b&amp;type=3#InventoryPanel" />
+    <ui:Template name="StatusPanel" src="project://database/Assets/UI/Documents/GameMenus/Character/StatusPanel.uxml?fileID=9197481963319205126&amp;guid=7e124dfb7e1cd854d8e5781e52594801&amp;type=3#StatusPanel" />
+    <ui:Template name="ItemDisplayPanel" src="project://database/Assets/UI/Documents/GameMenus/Character/ItemDisplayPanel.uxml?fileID=9197481963319205126&amp;guid=c8ae35d335227504db1cf45db94cca94&amp;type=3#ItemDisplayPanel" />
+    <ui:Instance template="PortraitPanel" name="DisplayPanel 1" />
+    <ui:Instance template="MapPanel" name="MapPanel" style="position: absolute; top: 620px; left: 762px; height: 392px; width: 480px;" />
+    <ui:Instance template="InventoryPanel" name="InventoryPanel" style="position: absolute; top: 112px; left: 198px;" />
+    <ui:Instance template="StatusPanel" name="StatusPanel" style="height: 690px; width: 458px; position: absolute; top: 158px; left: 1406px;" />
+    <ui:Instance template="ItemDisplayPanel" name="ItemDisplayPanel" style="position: absolute; top: 97px; left: 799px;" />
+</ui:UXML>

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="logItem" style="flex-direction: row; justify-content: flex-start; border-bottom-color: rgb(0, 0, 0); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); align-items: flex-start;">
+        <ui:VisualElement style="align-items: stretch; justify-content: flex-start; flex-wrap: nowrap;">
+            <ui:Label display-tooltip-when-elided="true" name="msg" style="width: 100%; justify-content: center; align-items: stretch; flex-wrap: nowrap; overflow: visible; white-space: normal;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

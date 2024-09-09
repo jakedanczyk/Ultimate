@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="HUD" src="project://database/Assets/UI/HUD/HUD.uxml?fileID=9197481963319205126&amp;guid=364bc838a6939b741921331351baf534&amp;type=3#HUD" />
+    <ui:Template name="ConstructionInterface" src="project://database/Assets/UI/Documents/GameMenus/ConstructionPlanning/ConstructionPlanningInterface.uxml?fileID=9197481963319205126&amp;guid=1196b1ebb4b370741a9c48ed665f29f3&amp;type=3#ConstructionPlanningInterface" />
+    <ui:Template name="CharacterInterface" src="project://database/Assets/UI/Documents/GameMenus/Character/CharacterInterface.uxml?fileID=9197481963319205126&amp;guid=7d96ab08f3efeb741a922d75cbb6eb75&amp;type=3#CharacterInterface" />
+    <ui:Template name="GameMasterPanel" src="project://database/Assets/UI/Documents/GameMenus/Extras/GameMasterPanel.uxml?fileID=9197481963319205126&amp;guid=2c8bad39c15248a4589ab090ba796d53&amp;type=3#GameMasterPanel" />
+    <ui:Template name="EscapeMenu" src="project://database/Assets/UI/Documents/SystemMenus/EscapeMenu.uxml?fileID=9197481963319205126&amp;guid=f3879bf790bf29e4d98673c83b48fc2b&amp;type=3#EscapeMenu" />
+    <ui:Template name="MessageLog" src="project://database/Assets/UI/Documents/MessageLog/MessageLog.uxml?fileID=9197481963319205126&amp;guid=25f89581a051da546b4dcc6531d6004d&amp;type=3#MessageLog" />
+    <ui:Template name="NewConstructionInterface" src="project://database/Assets/UI/Documents/GameMenus/Construction/NewConstructionInterface.uxml?fileID=9197481963319205126&amp;guid=aedf9e04320fdc34eb4391b9bdcc04b7&amp;type=3#NewConstructionInterface" />
+    <ui:Instance template="HUD" name="HUD" style="width: 100%; height: 100%; display: flex; position: absolute;" />
+    <ui:Instance template="ConstructionInterface" name="ConstructionPlanningInterface" style="display: none; position: absolute;" />
+    <ui:Instance template="CharacterInterface" name="CharacterInterface" style="display: none; visibility: visible; position: absolute;" />
+    <ui:Instance template="GameMasterPanel" name="GameMasterPanel" style="display: none;" />
+    <ui:Instance template="EscapeMenu" name="EscapeMenu" style="display: none; position: absolute;" />
+    <ui:Instance template="MessageLog" name="MessageLog" style="display: none; position: absolute;" />
+    <ui:Instance template="NewConstructionInterface" name="ConstructionInterface" style="display: none;" />
+</ui:UXML>

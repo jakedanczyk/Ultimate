@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="MainMenu.uss" />
+    <ui:IMGUIContainer name="MainSplash" />
+    <ui:VisualElement style="height: 435.2px; justify-content: center; align-items: center;">
+        <ui:VisualElement style="height: auto; width: auto;">
+            <ui:VisualElement style="align-items: center; justify-content: center; height: 80px;">
+                <ui:Label text="URTH" display-tooltip-when-elided="true" name="Title" style="height: 51.2px; -unity-text-align: middle-center; width: 173px; font-size: 25px;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="align-items: center; height: auto; flex-shrink: 1; flex-grow: 0; justify-content: space-between;">
+                <ui:Button text="New World" display-tooltip-when-elided="true" name="new" class="main-menu-btn" style="width: 100px; background-color: rgba(228, 228, 228, 0.36);" />
+                <ui:Button text="Load World" display-tooltip-when-elided="true" name="load" class="main-menu-btn" style="background-color: rgba(228, 228, 228, 0.36); width: 100px;" />
+                <ui:Button text="Settings" display-tooltip-when-elided="true" name="settings" class="main-menu-btn" style="opacity: 1; display: flex; background-color: rgba(228, 228, 228, 0.36); width: 100px;" />
+                <ui:Button text="Player Manual" display-tooltip-when-elided="true" name="manual" class="main-menu-btn" style="background-color: rgba(228, 228, 228, 0.36); width: 100px;" />
+                <ui:Button text="Exit" display-tooltip-when-elided="true" name="exit" class="main-menu-btn" style="background-color: rgba(228, 228, 228, 0.36); width: 55px;" />
+                <ui:Button text="Test World" display-tooltip-when-elided="true" name="testWorld" class="main-menu-btn" style="width: 100px; background-color: rgba(228, 228, 228, 0.36);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="align-items: center; justify-content: center;">
+        <ui:VisualElement name="upBtn" style="background-image: url(&apos;project://database/Assets/_Imports/AlpaSun%20Fade/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=8300712400058098730&amp;guid=36c3df1cad2c6ad44b58d942d48784aa&amp;type=3#arrow-up&apos;); width: 40px; height: 13px; -unity-background-scale-mode: stretch-to-fill;" />
+        <ui:Button text="Name" display-tooltip-when-elided="true" name="btn" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+        <ui:VisualElement name="downBtn" style="background-image: url(&apos;project://database/Assets/_Imports/AlpaSun%20Fade/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=4154780841294389669&amp;guid=36c3df1cad2c6ad44b58d942d48784aa&amp;type=3#arrow-down&apos;); width: 40px; height: 13px;" />
+    </ui:VisualElement>
+</ui:UXML>

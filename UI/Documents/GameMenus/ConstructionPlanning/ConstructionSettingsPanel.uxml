@@ -1,0 +1,40 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Panel">
+        <ui:VisualElement style="height: 666px; width: 480px;">
+            <ui:VisualElement name="ulBorder" style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="uBorder" style="position: absolute; left: 20px; top: 0; width: auto; height: 20px; right: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="urBorder" style="position: absolute; left: auto; top: 0; width: 20px; height: 20px; right: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="rBorder" style="position: absolute; left: auto; top: 20px; width: 20px; height: auto; right: 0; bottom: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="brBorder" style="position: absolute; left: auto; top: auto; width: 20px; height: 20px; right: 0; bottom: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="bBorder" style="position: absolute; left: 20px; top: auto; width: auto; height: 20px; right: 20px; bottom: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="blBorder" style="position: absolute; left: 0; top: auto; width: 20px; height: 20px; right: auto; bottom: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="lBorder" style="position: absolute; left: 0; top: 20px; width: 20px; height: auto; right: auto; bottom: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="titleBar" style="top: 20px; position: absolute; min-width: auto; height: 40px; width: auto; left: 20px; right: 20px; align-items: center; justify-content: flex-start;">
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="title" style="font-size: 18px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="content" style="left: 20px; top: 60px; position: absolute; right: 20px; bottom: 20px;">
+                <ui:VisualElement name="previewPanel" style="height: 45%; background-image: url(&apos;project://database/Assets/z_Imports/Stone%20textures%20pack/Stone%2006/preview.jpg?fileID=2800000&amp;guid=296110b52047b6f40b5595de664ae945&amp;type=3#preview&apos;);">
+                    <ui:IMGUIContainer />
+                </ui:VisualElement>
+                <ui:VisualElement name="detailsPanel" style="height: 55%; overflow: hidden;">
+                    <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto" name="scrollView">
+                        <ui:VisualElement>
+                            <ui:Label text="Cobbles x5&#10;Pebbles 50 kg" display-tooltip-when-elided="true" name="suppliesList" />
+                        </ui:VisualElement>
+                        <ui:VisualElement>
+                            <ui:Label text="2.5 labour hours&#10;1.0 difficulty" display-tooltip-when-elided="true" />
+                        </ui:VisualElement>
+                        <ui:SliderInt picking-mode="Ignore" label="Width" value="2" high-value="4" show-input-field="true" name="widthSlider" />
+                        <ui:SliderInt picking-mode="Ignore" label="Length" value="2" high-value="4" show-input-field="true" name="lengthSlider" />
+                        <ui:SliderInt picking-mode="Ignore" label="Height" value="2" high-value="4" show-input-field="true" name="heightSlider" />
+                        <ui:SliderInt picking-mode="Ignore" label="Rotation" value="2" high-value="4" show-input-field="true" name="rotationSlider" />
+                        <ui:VisualElement style="flex-direction: row;">
+                            <ui:Toggle label="Snap to ..." />
+                            <ui:DropdownField index="0" choices="Grid,Neighbor" />
+                        </ui:VisualElement>
+                    </ui:ScrollView>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

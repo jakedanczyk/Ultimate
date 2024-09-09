@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Panel">
+        <ui:VisualElement style="height: 200px; width: 300px;">
+            <ui:VisualElement name="ulBorder" style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="uBorder" style="position: absolute; left: 20px; top: 0; width: auto; height: 20px; right: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="urBorder" style="position: absolute; left: auto; top: 0; width: 20px; height: 20px; right: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="rBorder" style="position: absolute; left: auto; top: 20px; width: 20px; height: auto; right: 0; bottom: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="brBorder" style="position: absolute; left: auto; top: auto; width: 20px; height: 20px; right: 0; bottom: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="bBorder" style="position: absolute; left: 20px; top: auto; width: auto; height: 20px; right: 20px; bottom: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="blBorder" style="position: absolute; left: 0; top: auto; width: 20px; height: 20px; right: auto; bottom: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="lBorder" style="position: absolute; left: 0; top: 20px; width: 20px; height: auto; right: auto; bottom: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="content" style="left: 20px; top: 20px; position: absolute; right: 20px; bottom: 20px;" />
+            <ui:VisualElement name="titleBar" style="top: 0; position: absolute; min-width: auto; height: 20px; width: auto; left: 20px; right: 20px; align-items: center; justify-content: flex-start; background-image: none;">
+                <ui:Label text="Messages" display-tooltip-when-elided="true" name="title" style="font-size: 18px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; background-image: none;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

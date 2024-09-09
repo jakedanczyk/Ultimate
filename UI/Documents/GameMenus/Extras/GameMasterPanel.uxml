@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="MainMenu.uss" />
+    <ui:IMGUIContainer name="MainSplash" />
+    <ui:VisualElement name="outer" style="height: 435.2px; justify-content: center; align-items: center;">
+        <ui:VisualElement name="container" style="height: auto; width: auto;">
+            <ui:VisualElement name="menu" style="align-items: center; height: auto; flex-shrink: 1; flex-grow: 0; justify-content: space-between;">
+                <ui:Button text="Fly&#10;" display-tooltip-when-elided="true" name="Fly" class="main-menu-btn" style="width: 100px; background-color: rgba(228, 228, 228, 0.36);" />
+                <ui:Button text="Disable&#10;" display-tooltip-when-elided="true" name="Disable" class="main-menu-btn" style="background-color: rgba(228, 228, 228, 0.36); width: 100px;" />
+                <ui:Button text="Invulnerable&#10;" display-tooltip-when-elided="true" name="Invulnerable" class="main-menu-btn" style="width: 100px; background-color: rgba(228, 228, 228, 0.36);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="menu" style="align-items: center; height: auto; flex-shrink: 1; flex-grow: 0; justify-content: space-between;">
+                <ui:TextField picking-mode="Ignore" label="Type" value="GRAY_WOLF" text="GRAY_WOLF" name="type" />
+                <ui:TextField picking-mode="Ignore" label="Gender" value="MALE" text="MALE&#10;" name="gender" />
+                <ui:TextField picking-mode="Ignore" label="Weight" value="100" text="100&#10;" name="weight" />
+                <ui:TextField picking-mode="Ignore" label="Height" value="1" text="1" name="height" />
+                <ui:TextField picking-mode="Ignore" label="Width" value=".5" text=".5" name="width" />
+                <ui:TextField picking-mode="Ignore" label="Length" value="2" text="2&#10;" name="length" />
+                <ui:TextField picking-mode="Ignore" label="Age" value="10" text="10" name="age" />
+                <ui:Button text="Spawn&#10;" display-tooltip-when-elided="true" name="spawn" class="main-menu-btn" style="background-color: rgba(228, 228, 228, 0.36);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

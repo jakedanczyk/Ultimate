@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="LogItem" src="project://database/Assets/UI/Documents/MessageLog/LogItem.uxml?fileID=9197481963319205126&amp;guid=22d30030f6c004f4db0a1d1ebe75da31&amp;type=3#LogItem" />
+    <ui:VisualElement name="messageLogContent" style="width: 100%; height: 100%;">
+        <ui:VisualElement name="sortBar" style="width: 100%; height: 80px; flex-direction: row; align-items: center; justify-content: space-around;">
+            <ui:Button text="Name" display-tooltip-when-elided="true" />
+            <ui:Button text="Type" display-tooltip-when-elided="true" />
+            <ui:Button text="Weight" display-tooltip-when-elided="true" />
+            <ui:Button text="Volume" display-tooltip-when-elided="true" />
+            <ui:TextField picking-mode="Ignore" value="filler text" text="filler text" style="font-size: 10px; align-items: flex-start;" />
+        </ui:VisualElement>
+        <ui:Instance template="LogItem" name="LogItem" />
+        <ui:ListView focusable="true" name="ListView" style="width: 100%; height: 100%;" />
+    </ui:VisualElement>
+</ui:UXML>
