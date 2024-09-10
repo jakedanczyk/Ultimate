@@ -4,6 +4,7 @@
 !*.uxml
 !*.shader
 !*.gitignore
+!*.inputactions
 /Temp
 /Library
 /Obj
