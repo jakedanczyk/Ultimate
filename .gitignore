@@ -6,6 +6,12 @@
 !*.gitignore
 !*.inputactions
 !*.asmref
+!*.mat
+!*.png
+!*.fbx
+!*.prefab
+/z_imports
+/zports
 /Temp
 /Library
 /Obj
