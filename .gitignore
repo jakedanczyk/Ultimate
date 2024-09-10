@@ -5,6 +5,7 @@
 !*.shader
 !*.gitignore
 !*.inputactions
+!*.asmref
 /Temp
 /Library
 /Obj
