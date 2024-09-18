@@ -15,7 +15,6 @@ namespace Urth
     {
         public VisualElement inventoryPanel;
         public VisualElement itemsListPanel;
-
         public ListView itemsList;
         public VisualElement itemTemplate;
         [SerializeField]

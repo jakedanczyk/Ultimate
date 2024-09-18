@@ -14,6 +14,9 @@ namespace Urth
         public float constructionProgress;
         public float supplyProgress;
         public float size;
+        public float length;
+        public float width;
+        public float height;
 
         public CONSTRUCTION_METHOD constructionMethod;
         public float primaryVolume;

@@ -43,7 +43,7 @@ namespace Urth
                 Debug.Log("construction UI already built");
                 constructionInterface.style.display = DisplayStyle.Flex;
             }
-            constructionPanelControl.SetItem(staticPrefab);
+            constructionPanelControl.SetConstruction(staticPrefab);
         }
         public void Disable()
         {

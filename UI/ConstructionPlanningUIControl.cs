@@ -25,6 +25,8 @@ namespace Urth
         public VisualElement constructionPlanningInterface;
         bool uiBuilt = false;
 
+        public ListView listView;
+
         public void Enable()
         {
             if (!uiBuilt)
@@ -36,10 +38,12 @@ namespace Urth
                 constructionPlanningInterface.style.display = DisplayStyle.Flex;
             }
         }
+
         public void Disable()
         {
             constructionPlanningInterface.style.display = DisplayStyle.None;
         }
+
         public void Initialize()
         {
             constructionPlanningInterface = doc.rootVisualElement.Query(UrthConstants.CONSTRUCTION_PLANNING_INTERFACE).First();
@@ -55,6 +59,7 @@ namespace Urth
 
             uiBuilt = true;
         }
+
     }
 
 }

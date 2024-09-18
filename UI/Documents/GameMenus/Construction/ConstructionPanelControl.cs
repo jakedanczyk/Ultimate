@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,7 +8,7 @@ namespace Urth
 {
     public class ConstructionPanelControl : UIPanelControl
     {
-        public VisualElement optionsPanel;
+        public VisualElement constructionPanel;
         public VisualElement previewPanel;
         public VisualElement inputPanel;
 
@@ -23,10 +24,16 @@ namespace Urth
         public GameObject viewObject;
         public Transform viewTarget;
 
-        public Label labelType;
+        public Label labelConstructionType;
         public Label labelMaterial;
         public Label labelDesignQuality;
         public Label labelBuildQuality;
+
+        public VisualElement suppliesListPanel;
+        public ListView suppliesListView;
+        public VisualElement suppliesTemplate;
+        [SerializeField]
+        VisualTreeAsset supplyItemTemplate;
 
         public float scale;
         public STATIC_SIZE size;
@@ -55,19 +62,23 @@ namespace Urth
         {
             rootElement = root;
             RegisterBorderCallbacks();
-            optionsPanel = rootElement;
-            labelType = (Label)((List<VisualElement>)optionsPanel.Query("titleBar").First().Children())[0];
-            List<VisualElement> contentElements = (List<VisualElement>)optionsPanel.Query("content").First().Children();
+            constructionPanel = rootElement;
+            labelConstructionType = (Label)((List<VisualElement>)constructionPanel.Query("titleBar").First().Children())[0];
+            //suppliesListPanel = constructionPanel.Query("content").First().Query(";
+            suppliesListView = (ListView)constructionPanel.Query("supliesList").First();
+
+
+            List<VisualElement> contentElements = (List<VisualElement>)constructionPanel.Query("content").First().Children();
             //previewPanel = contentElements[0];
             //inputPanel = contentElements[1];
             //lSlider = (Slider)inputPanel.Query("lSlider").First();
         }
 
-        public void SetItem(USTATIC staticType)
+        public void SetConstruction(USTATIC staticType)
         {
-            SetItem(StaticsLibrary.Instance.prefabsDict[staticType]);
+            SetConstruction(StaticsLibrary.Instance.prefabsDict[staticType]);
         }
-        public void SetItem(StaticPrefab newSelectedPrefab)
+        public void SetConstruction(StaticPrefab newSelectedPrefab)
         {
             selectedPrefab = newSelectedPrefab;
             SetDisplay();
@@ -86,14 +97,51 @@ namespace Urth
         {
             //SetCamView();
             SetText();
+            SetSuppliesListView();
         }
 
         void SetText()
         {
-            labelType.text = selectedPrefab.staticTypeName;
+            labelConstructionType.text = selectedPrefab.staticTypeName;
             //labelMaterial.text = selectedPrefab.materialFractions != null ? selectedPrefab.PrimaryMaterial().ToString() : "No Material";
             labelDesignQuality.text = selectedPrefab.designQuality.ToString();
             labelBuildQuality.text = selectedPrefab.buildQuality.ToString();
+        }
+
+        void SetSuppliesListView()
+        {
+            //sortedIds = new List<int>(playerInventory.inventory.items.Count);
+            //switch (sortProp)
+            //{
+            //    case ITEM_PROPERTY.NONE:
+            //        sortedIds = playerInventory.inventory.GetIds();
+            //        break;
+            //    case ITEM_PROPERTY.NAME:
+            //        SortByString(sortProp);
+            //        break;
+            //    default:
+            //        SortByFloat(sortProp);
+            //        break;
+            //}
+            //uiItemDataList = new List<UItemData>(playerInventory.inventory.items.Count);
+            //foreach (int id in sortedIds)
+            //{
+            //    NewDataEntry(id);
+            //}
+            //itemsList.itemsSource = uiItemDataList;
+            //itemsList.makeItem = () => inventoryItemTemplate.Instantiate();
+            //itemsList.bindItem = (VisualElement element, int index) =>
+            //{
+            //    VisualElement itemElement = element.Query("inventoryItem").First();
+            //    VisualElement click = itemElement.Query("click").First();
+            //    click.RegisterCallback<ClickEvent, int>(OnItemClick, index);
+            //    //click.RegisterCallback<ClickEvent>(OnItemClick);
+            //    Label itemNameLabel = itemElement.Query("inventoryItemName").First().Query("inventoryItemNameLabel").First() as Label;
+            //    //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
+            //    //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
+
+            //    itemNameLabel.text = uiItemDataList[index].GetName();
+            //};
         }
     }
 }

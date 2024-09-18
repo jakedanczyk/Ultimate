@@ -402,7 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4380041782267554}
   - component: {fileID: 2331569032362784279}
-  - component: {fileID: 2798837419282939288}
+  - component: {fileID: 8862818831433441190}
   m_Layer: 21
   m_Name: FOUNDATION_LOG_PIER_LOG
   m_TagString: Construction
@@ -455,7 +455,7 @@ MonoBehaviour:
   constructionWorksiteId: 
   designProgress: 0
   buildProgress: 0
---- !u!114 &2798837419282939288
+--- !u!114 &8862818831433441190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -464,38 +464,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1682198193014332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c05950891817f343a0a9a2a8edc8578, type: 3}
+  m_Script: {fileID: 11500000, guid: b3b003b423fc64c83a1cc8ee7e30246e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
   needsComponentUpdates: 0
   supported: 0
-  staticPrefab: {fileID: 2331569032362784279}
+  staticPrefab: {fileID: 0}
   constructionProgress: 0
   supplyProgress: 0
-  size: 1
+  size: 0
+  length: 0
+  width: 0
+  height: 0
   constructionMethod: 0
   primaryVolume: 0
   supplies: []
   radius: 0.1
   pillarMaxScale: 1.2
   pillarMaxHeight: 1
-  previewPillars:
-  - {fileID: 8681787569811477984}
-  - {fileID: 8978628830193708741}
-  - {fileID: 1441289912836946290}
-  - {fileID: 6730718190661060589}
-  finalPillars:
-  - {fileID: 4714416406589008}
-  - {fileID: 4924427224566054}
-  - {fileID: 4202602962623782}
-  - {fileID: 4018652591646404}
-  arePillarsSupported: 00000000
-  pillarSupportHeights:
-  - 0
-  - 0
-  - 0
-  - 0
+  previewPillars: []
+  finalPillars: []
+  arePillarsSupported: 
+  pillarSupportHeights: []
   pierHeights:
   - 0
   - 0
