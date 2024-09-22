@@ -37,7 +37,11 @@ namespace Urth
 
         }
 
-
+        public void UrthUpdate()
+        {
+            UpdateComponents();
+            UpdateSuppliesNeeded();
+        }
 
         public float PrimaryVolume()
         {

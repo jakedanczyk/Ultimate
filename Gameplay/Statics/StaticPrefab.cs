@@ -25,10 +25,11 @@ namespace Urth
         public UInventory inventory;
         public List<int> supportedStatics;
         public List<int> supportingStatics;
-        
+
         //public ConstructionPillarSet pillarSet;
         //public ConstructionVolumeSet volumeSet;
 
+        public ConstructionWorksite constructionWorksite;
         public bool isConstruction;
         public string constructionWorksiteId;
         public float designProgress;

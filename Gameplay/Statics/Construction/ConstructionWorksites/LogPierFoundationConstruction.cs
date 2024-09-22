@@ -46,7 +46,7 @@ namespace Urth
             {
                 supplies.Add(new SupplyCount(numLogsNeeded, 0, ITEM.LOG));
             }
-            else
+            else if(supplies[0].countNeeded != numLogsNeeded)
             {
                 supplies[0] = new SupplyCount(numLogsNeeded, 0, ITEM.LOG);
             }

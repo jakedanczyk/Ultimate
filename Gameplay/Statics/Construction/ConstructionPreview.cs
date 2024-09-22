@@ -82,9 +82,7 @@ namespace Urth
 
             if(constructionWorksite != null && constructionWorksite.needsComponentUpdates)
             {
-                Debug.Log("construction stuff");
-                constructionWorksite.UpdateComponents();
-                constructionWorksite.UpdateSuppliesNeeded();
+                constructionWorksite.UrthUpdate();
                 if (!constructionWorksite.supported)
                 {
                     supported = false;

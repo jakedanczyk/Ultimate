@@ -77,6 +77,9 @@ namespace Urth
                     
                     //LogPierFoundationConstruction constructionWorksite = StaticsManager.Instance.prefabPopulation[staticId].gameObject.AddComponent(typeof(ConstructionWorksite)) as ConstructionWorksite;
                     logPierFoundationConstruction.staticPrefab = staticPrefab;
+                    logPierFoundationConstruction.pierHeights = ((LogPierFoundationConstruction)(constructionLibrary.constructionPlayer.currentPreview.constructionWorksite)).pierHeights;
+                    logPierFoundationConstruction.UpdateSuppliesNeeded();
+                    logPierFoundationConstruction.UpdateComponentsFinal();
                     break;
             }
         }

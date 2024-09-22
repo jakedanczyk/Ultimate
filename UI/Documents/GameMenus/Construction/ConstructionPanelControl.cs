@@ -94,12 +94,22 @@ namespace Urth
             labelMass = (Label)(constructionPanel.Query("mass").First().Children().Last());
             labelSecondaryLabel = (Label)(constructionPanel.Query("secondary").First().Children().First());
             labelSecondaryData = (Label)(constructionPanel.Query("secondary").First().Children().Last());
+
+            VisualElement content = constructionPanel.Query("content");
+            VisualElement listElement = content.Query("listElement");
+            VisualElement listElementTwo = listElement.Query("listElementTwo");
+            inventoryListView = (ListView)(listElementTwo.Children().ToList().Last());
+            suppliesListView = (ListView)(listElementTwo.Children().ToList()[1]);
             
-            suppliesListView = (ListView)constructionPanel.Query("suppliesNeededList").First();
-            inventoryListView = (ListView)constructionPanel.Query("inventoryList").First();
+            //List<VisualElement> contentElements = (List<VisualElement>)constructionPanel.Query("content").First().Children();
+            List<VisualElement> q1 = listElementTwo.Query("suppliesNeededList").ToList();
+            List<VisualElement> q2 = listElementTwo.Query("inventoryList").ToList();
+            ListView ql1 = listElementTwo.Q<ListView>();
+            //suppliesListView = listElementTwo.Q<ListView>("suppliesNeededList");
+            //suppliesListView = (ListView)(listElementTwo.Children().ToList().First());//(ListView)(content.Query("suppliesNeededList").First());
+            //inventoryListView = listElementTwo.Q<ListView>("inventoryList");
+            //inventoryListView = (ListView)(listElementTwo.Children().ToList().First());//(content.Query("inventoryList").First());
 
-
-            List<VisualElement> contentElements = (List<VisualElement>)constructionPanel.Query("content").First().Children();
             //previewPanel = contentElements[0];
             //inputPanel = contentElements[1];
             //lSlider = (Slider)inputPanel.Query("lSlider").First();
@@ -112,6 +122,7 @@ namespace Urth
         public void SetConstruction(StaticPrefab newSelectedPrefab)
         {
             selectedPrefab = newSelectedPrefab;
+            selectedWorksite = newSelectedPrefab.constructionWorksite;
             SetDisplay();
         }
 
@@ -172,8 +183,12 @@ namespace Urth
                 Label itemNameLabel = itemElement.Query("itemNameLabel").First() as Label;//.Query("inventoryItemNameLabel").First() as Label;
                 //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
                 //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
-
                 itemNameLabel.text = selectedWorksite.supplies[index].type.ToString();
+
+                Label itemCountActualLabel = itemElement.Query("itemCountActualLabel").First() as Label;//.Query("inventoryItemNameLabel").First() as Label;
+                itemCountActualLabel.text = selectedWorksite.supplies[index].countActual.ToString();
+                Label itemCountNeededLabel = itemElement.Query("itemCountNeededLabel").First() as Label;//.Query("inventoryItemNameLabel").First() as Label;
+                itemCountNeededLabel.text = selectedWorksite.supplies[index].countNeeded.ToString();
             };
         }
 
