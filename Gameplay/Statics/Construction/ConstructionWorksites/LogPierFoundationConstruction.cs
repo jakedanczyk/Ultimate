@@ -7,7 +7,7 @@ namespace Urth
 
     public class LogPierFoundationConstruction : ConstructionWorksite
     {
-        public float radius = 0.1f;
+        public float logDiameter = 0.1f;
         public RaycastHit aimHit;
         public float pillarMaxScale = 1.2f;
         public float pillarMaxHeight = 1f;
@@ -29,11 +29,11 @@ namespace Urth
             {
                 supplies = new List<SupplyCount>(1);
             }
-            float logDiameter = 0.25f * size;
+            //float logDiameter = 0.25f * size;
             float logRadius = logDiameter * 0.5f;
             float logCsa = logRadius * logRadius * Mathf.PI;
-            float beamLengths = 2f * size;
-            float beamVolume = 4f * beamLengths * logCsa;
+            float beamLength = 2f * length * width;
+            float beamVolume = beamLength * logCsa;
             float pierVolume = 0f;
             for (int i = 0; i < 4; i++)
             {

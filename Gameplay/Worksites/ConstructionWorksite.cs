@@ -45,7 +45,25 @@ namespace Urth
         }
 
 
-        public void CheckSupplyProgress()
+        public void UpdateSupplyProgress()
+        {
+            UpdateSuppliesNeeded();
+            foreach (int id in staticPrefab.inventory.GetIds())
+            {
+                UItemData itemData = staticPrefab.inventory.GetItem(id);
+                for(int suppliesIdx=0; suppliesIdx<supplies.Count; suppliesIdx++)
+                {
+                    if (itemData.type == supplies[suppliesIdx].type)
+                    {
+                        SupplyCount sc = supplies[suppliesIdx];
+                        sc.countActual += 1;
+                        supplies[suppliesIdx] = sc;
+                    }
+                }
+            }
+        }
+
+        public void CheckSupplyProgressOld()
         {
             ConstructionTemplateStruct ct = StaticsLibrary.Instance.ctStructDict[staticPrefab.staticType];
             ConstructionTemplateClass ctClass = StaticsLibrary.Instance.constructClassDict[staticPrefab.staticType];
@@ -103,5 +121,7 @@ namespace Urth
 
         public abstract void UpdateComponents();
         public abstract void UpdateComponentsFinal();
+
+        //public abstract List<(string, )>
     }
 }

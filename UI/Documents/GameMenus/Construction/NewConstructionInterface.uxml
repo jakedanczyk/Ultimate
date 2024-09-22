@@ -21,6 +21,10 @@
                 </ui:VisualElement>
                 <ui:VisualElement name="content" style="left: 20px; top: 60px; position: absolute; right: 20px; bottom: 20px; flex-direction: row; flex-grow: 1; flex-shrink: 0;">
                     <ui:VisualElement>
+                        <ui:VisualElement name="progressElement" style="flex-direction: row; flex-grow: 0; flex-shrink: 1; align-items: stretch; justify-content: flex-start;">
+                            <ui:Label text="Progress:" display-tooltip-when-elided="true" />
+                            <ui:Label text="--%" display-tooltip-when-elided="true" name="progressLabel" />
+                        </ui:VisualElement>
                         <ui:VisualElement name="quality" style="flex-direction: row; flex-grow: 0; flex-shrink: 1; align-items: stretch; justify-content: flex-start;">
                             <ui:Label text="Quality:" display-tooltip-when-elided="true" />
                             <ui:Label text="Poor" display-tooltip-when-elided="true" />
@@ -37,17 +41,13 @@
                             <ui:Label text="Height" display-tooltip-when-elided="true" />
                             <ui:Label text="2m" display-tooltip-when-elided="true" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="weight" style="flex-direction: row; flex-grow: 0; flex-shrink: 1; align-items: stretch; justify-content: flex-start;">
+                        <ui:VisualElement name="mass" style="flex-direction: row; flex-grow: 0; flex-shrink: 1; align-items: stretch; justify-content: flex-start;">
                             <ui:Label text="Mass" display-tooltip-when-elided="true" />
                             <ui:Label text="50 kg" display-tooltip-when-elided="true" />
                         </ui:VisualElement>
                         <ui:VisualElement name="secondary" style="flex-direction: row; flex-grow: 0; flex-shrink: 1; align-items: stretch; justify-content: flex-start; display: flex;">
                             <ui:Label text="Log Diameter" display-tooltip-when-elided="true" name="secondaryLabel" />
                             <ui:Label text="0.25m" display-tooltip-when-elided="true" name="secondaryData" />
-                        </ui:VisualElement>
-                        <ui:VisualElement name="progressElement" style="flex-direction: row; flex-grow: 0; flex-shrink: 1; align-items: stretch; justify-content: flex-start;">
-                            <ui:Label text="Progress:" display-tooltip-when-elided="true" />
-                            <ui:Label text="--%" display-tooltip-when-elided="true" name="progressLabel" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement style="width: auto; flex-grow: 1; flex-shrink: 1;">
