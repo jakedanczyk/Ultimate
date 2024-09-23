@@ -52,8 +52,8 @@
                     </ui:VisualElement>
                     <ui:VisualElement style="width: auto; flex-grow: 1; flex-shrink: 1;">
                         <ui:VisualElement>
-                            <ui:Label text="Supplies Needed" display-tooltip-when-elided="true" name="suppliesNeeded" />
-                            <ui:ListView focusable="true" show-add-remove-footer="false" show-foldout-header="false" name="suppliesNeededLIst" />
+                            <ui:Label text="Supplies" display-tooltip-when-elided="true" name="suppliesNeeded" />
+                            <ui:ListView focusable="true" show-add-remove-footer="false" show-foldout-header="false" name="suppliesNeededList" />
                             <ui:Label text="Inventory" display-tooltip-when-elided="true" />
                             <ui:ListView focusable="true" show-add-remove-footer="false" show-foldout-header="false" name="inventoryLIst" style="border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" />
                         </ui:VisualElement>
