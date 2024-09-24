@@ -50,8 +50,8 @@
                             <ui:Label text="0.25m" display-tooltip-when-elided="true" name="secondaryData" />
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement style="width: auto; flex-grow: 1; flex-shrink: 1;">
-                        <ui:VisualElement>
+                    <ui:VisualElement name="listElement" style="width: auto; flex-grow: 1; flex-shrink: 1;">
+                        <ui:VisualElement name="listElementTwo">
                             <ui:Label text="Supplies" display-tooltip-when-elided="true" name="suppliesNeeded" />
                             <ui:ListView focusable="true" show-add-remove-footer="false" show-foldout-header="false" name="suppliesNeededList" />
                             <ui:Label text="Inventory" display-tooltip-when-elided="true" />

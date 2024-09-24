@@ -15,8 +15,13 @@ namespace Urth
         public float supplyProgress;
         public float size;
         public float length;
+        public float minLength, maxLength, minWidth, maxWidth, minHeight, maxHeight, minRotation, maxRotation, minSecondary, maxSecondary;
         public float width;
         public float height;
+        public float rotation;
+
+
+        public bool hasSecondary;
 
         public CONSTRUCTION_METHOD constructionMethod;
         public float primaryVolume;
@@ -125,6 +130,9 @@ namespace Urth
 
         public abstract void UpdateComponents();
         public abstract void UpdateComponentsFinal();
+
+        public virtual float SetSecondaryValue(float f) { return 0f; }
+        public virtual float GetSecondaryValue() { return 0f; }
 
         //public abstract List<(string, )>
     }

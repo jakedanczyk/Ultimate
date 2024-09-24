@@ -92,14 +92,23 @@ namespace Urth
             currentPos *= gridSize;
             currentPos += Vector3.one * offset + Vector3.up * adjust;
             previewTransform.position = currentPos;
-            previewTransform.localEulerAngles = currentRot;
+            previewTransform.localEulerAngles = new Vector3(0, currentPreview.constructionWorksite.rotation, 0); //currentRot;
             previewObject.transform.position = currentPos;
-            previewObject.transform.eulerAngles = currentRot;
+            previewObject.transform.eulerAngles = new Vector3(0, currentPreview.constructionWorksite.rotation, 0); //currentRot;
         }
 
         public void InputRotate90()
         {
-            currentRot += new Vector3(0, 45, 0);
+            Debug.Log("yup");
+            float rot = (ConstructionSettingsPanelControl.Instance.rotation + 45) % 360;
+            ConstructionSettingsPanelControl.Instance.rotation = rot;
+            ConstructionSettingsPanelControl.Instance.rSlider.value = rot;
+
+            currentPreview.constructionWorksite.rotation = rot;
+            //currentRot = previewTransform.localEulerAngles;
+            //currentRot += new Vector3(0, 45, 0);
+            //previewTransform.localEulerAngles = currentRot;
+            //previewObject.transform.eulerAngles = currentRot;
         }
         public void InputPlace()
         {

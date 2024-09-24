@@ -24,11 +24,12 @@
                         <ui:VisualElement>
                             <ui:Label text="2.5 labour hours&#10;1.0 difficulty" display-tooltip-when-elided="true" />
                         </ui:VisualElement>
-                        <ui:SliderInt picking-mode="Ignore" label="Width" value="2" high-value="4" show-input-field="true" name="widthSlider" />
-                        <ui:SliderInt picking-mode="Ignore" label="Length" value="2" high-value="4" show-input-field="true" name="lengthSlider" />
-                        <ui:SliderInt picking-mode="Ignore" label="Height" value="2" high-value="4" show-input-field="true" name="heightSlider" />
-                        <ui:SliderInt picking-mode="Ignore" label="Rotation" value="2" high-value="4" show-input-field="true" name="rotationSlider" />
-                        <ui:VisualElement style="flex-direction: row;">
+                        <ui:Slider picking-mode="Ignore" label="Length" value="42" high-value="100" name="lengthSlider" low-value="1" />
+                        <ui:Slider picking-mode="Ignore" label="Width" value="42" high-value="100" name="widthSlider" low-value="1" />
+                        <ui:Slider picking-mode="Ignore" label="Height" value="42" high-value="100" name="heightSlider" />
+                        <ui:Slider picking-mode="Ignore" label="Secondary" value="42" high-value="100" name="secondarySlider" />
+                        <ui:Slider picking-mode="Ignore" label="Rotation" value="42" high-value="100" name="rotationSlider" />
+                        <ui:VisualElement name="snapTo" style="flex-direction: row;">
                             <ui:Toggle label="Snap to ..." />
                             <ui:DropdownField index="0" choices="Grid,Neighbor" />
                         </ui:VisualElement>

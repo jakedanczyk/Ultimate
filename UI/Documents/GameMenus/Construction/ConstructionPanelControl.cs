@@ -102,9 +102,9 @@ namespace Urth
             suppliesListView = (ListView)(listElementTwo.Children().ToList()[1]);
             
             //List<VisualElement> contentElements = (List<VisualElement>)constructionPanel.Query("content").First().Children();
-            List<VisualElement> q1 = listElementTwo.Query("suppliesNeededList").ToList();
-            List<VisualElement> q2 = listElementTwo.Query("inventoryList").ToList();
-            ListView ql1 = listElementTwo.Q<ListView>();
+            //List<VisualElement> q1 = listElementTwo.Query("suppliesNeededList").ToList();
+            //List<VisualElement> q2 = listElementTwo.Query("inventoryList").ToList();
+            //ListView ql1 = listElementTwo.Q<ListView>();
             //suppliesListView = listElementTwo.Q<ListView>("suppliesNeededList");
             //suppliesListView = (ListView)(listElementTwo.Children().ToList().First());//(ListView)(content.Query("suppliesNeededList").First());
             //inventoryListView = listElementTwo.Q<ListView>("inventoryList");
@@ -118,6 +118,11 @@ namespace Urth
         void ReorderInventory()
         {
             sortedIds = new List<int>(selectedPrefab.inventory.items.Count);
+            if(sortedIds.Count == 0)
+            {
+                inventoryListView.itemsSource = null;
+                return;
+            }
             switch (sortProp)
             {
                 case ITEM_PROPERTY.NONE:
@@ -247,7 +252,6 @@ namespace Urth
         
         void SetSuppliesListView()
         {
-            ReorderInventory();
             //sortedIds = new List<int>(playerInventory.inventory.items.Count);
             //switch (sortProp)
             //{
@@ -267,24 +271,24 @@ namespace Urth
             //    NewDataEntry(id);
             //}
 
-            //suppliesListView.itemsSource = selectedWorksite.supplies;
-            //suppliesListView.makeItem = () => supplyItemTemplate.Instantiate();
-            //suppliesListView.bindItem = (VisualElement element, int index) =>
-            //{
-            //    VisualElement itemElement = element.Query("constructionSupplyItem").First();
-            //    VisualElement click = itemElement.Query("click").First();
-            //    click.RegisterCallback<ClickEvent, int>(OnItemClick, index);
-            //    //click.RegisterCallback<ClickEvent>(OnItemClick);
-            //    Label itemNameLabel = itemElement.Query("itemNameLabel").First() as Label;//.Query("inventoryItemNameLabel").First() as Label;
-            //    //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
-            //    //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
-            //    itemNameLabel.text = selectedWorksite.supplies[index].type.ToString();
+            suppliesListView.itemsSource = selectedWorksite.supplies;
+            suppliesListView.makeItem = () => supplyItemTemplate.Instantiate();
+            suppliesListView.bindItem = (VisualElement element, int index) =>
+            {
+                VisualElement itemElement = element.Query("constructionSupplyItem").First();
+                VisualElement click = itemElement.Query("click").First();
+                click.RegisterCallback<ClickEvent, int>(OnItemClick, index);
+                //click.RegisterCallback<ClickEvent>(OnItemClick);
+                Label itemNameLabel = itemElement.Query("itemNameLabel").First() as Label;//.Query("inventoryItemNameLabel").First() as Label;
+                //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
+                //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
+                itemNameLabel.text = selectedWorksite.supplies[index].type.ToString();
 
-            //    Label itemCountLabel = itemElement.Query("itemCountLabel").First() as Label;//.Query("inventoryItemNameLabel").First() as Label;
-            //    itemCountLabel.text = selectedWorksite.supplies[index].countActual.ToString() + "/" + selectedWorksite.supplies[index].countNeeded.ToString();
-            //    //Label itemCountNeededLabel = itemElement.Query("itemCountNeededLabel").First() as Label;//.Query("inventoryItemNameLabel").First() as Label;
-            //    //itemCountNeededLabel.text = selectedWorksite.supplies[index].countNeeded.ToString();
-            //};
+                Label itemCountLabel = itemElement.Query("itemCountLabel").First() as Label;//.Query("inventoryItemNameLabel").First() as Label;
+                itemCountLabel.text = selectedWorksite.supplies[index].countActual.ToString() + "/" + selectedWorksite.supplies[index].countNeeded.ToString();
+                //Label itemCountNeededLabel = itemElement.Query("itemCountNeededLabel").First() as Label;//.Query("inventoryItemNameLabel").First() as Label;
+                //itemCountNeededLabel.text = selectedWorksite.supplies[index].countNeeded.ToString();
+            };
         }
 
         public void NewInventoryListItem(int id)
@@ -300,6 +304,8 @@ namespace Urth
 
         void SetInventoryListView()
         {
+            ReorderInventory();
+
             //sortedIds = new List<int>(playerInventory.inventory.items.Count);
             //switch (sortProp)
             //{
@@ -318,25 +324,26 @@ namespace Urth
             //{
             //    NewDataEntry(id);
             //}
-            uiItemDataList = new List<UItemData>(selectedPrefab.inventory.items.Count);
-            foreach (int id in sortedIds)
-            {
-                NewInventoryListItem(id);
-            }
-            inventoryListView.itemsSource = selectedWorksite.supplies;
-            inventoryListView.makeItem = () => inventoryItemTemplate.Instantiate();
-            inventoryListView.bindItem = (VisualElement element, int index) =>
-            {
-                VisualElement itemElement = element.Query("constructionSupplyItem").First();
-                VisualElement click = itemElement.Query("click").First();
-                click.RegisterCallback<ClickEvent, int>(OnItemClick, index);
-                //click.RegisterCallback<ClickEvent>(OnItemClick);
-                Label itemNameLabel = itemElement.Query("itemNameLabel").First() as Label;//.Query("inventoryItemNameLabel").First() as Label;
-                //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
-                //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
 
-                itemNameLabel.text = selectedWorksite.supplies[index].type.ToString();
-            };
+            //uiItemDataList = new List<UItemData>(selectedPrefab.inventory.items.Count);
+            //foreach (int id in sortedIds)
+            //{
+            //    NewInventoryListItem(id);
+            //}
+            //inventoryListView.itemsSource = selectedWorksite.supplies;
+            //inventoryListView.makeItem = () => inventoryItemTemplate.Instantiate();
+            //inventoryListView.bindItem = (VisualElement element, int index) =>
+            //{
+            //    VisualElement itemElement = element.Query("constructionInventoryItem").First();
+            //    VisualElement click = itemElement.Query("click").First();
+            //    click.RegisterCallback<ClickEvent, int>(OnItemClick, index);
+            //    //click.RegisterCallback<ClickEvent>(OnItemClick);
+            //    Label itemNameLabel = itemElement.Query("itemNameLabel").First() as Label;//.Query("inventoryItemNameLabel").First() as Label;
+            //    //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
+            //    //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
+
+            //    itemNameLabel.text = selectedWorksite.supplies[index].type.ToString();
+            //};
         }
     }
 }

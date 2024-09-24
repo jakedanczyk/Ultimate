@@ -168,10 +168,25 @@ MonoBehaviour:
   constructionProgress: 0
   supplyProgress: 0
   size: 1
+  length: 2
+  minLength: 1
+  maxLength: 20
+  minWidth: 1
+  maxWidth: 20
+  minHeight: 0
+  maxHeight: 3
+  minRotation: 0
+  maxRotation: 360
+  minSecondary: 0.1
+  maxSecondary: 2
+  width: 2
+  height: 1
+  rotation: 0
+  hasSecondary: 1
   constructionMethod: 1
   primaryVolume: 0
   supplies: []
-  radius: 0.1
+  logDiameter: 0.25
   pillarMaxScale: 1.2
   pillarMaxHeight: 1
   previewPillars:
@@ -186,6 +201,88 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  lengthBeamsPreview:
+  - {fileID: 4900566742005310}
+  - {fileID: 4075665829132518}
+  lengthBeamsPreviewCollider:
+  - {fileID: 39081647577482535}
+  - {fileID: 2607269814003901011}
+  lengthBeams:
+  - {fileID: 0}
+  - {fileID: 0}
+  widthBeams:
+  - {fileID: 0}
+  - {fileID: 0}
+  widthBeamsPreview:
+  - {fileID: 4886591044964148}
+  - {fileID: 4601119246979276}
+  widthBeamsPreviewCollider:
+  - {fileID: 6236063740464942205}
+  - {fileID: 7170179199502868401}
+  frontBeam:
+  - {fileID: 7170179199502868401}
+  - {fileID: 4601119246979276}
+  leftBeam:
+  - {fileID: 2607269814003901011}
+  - {fileID: 4075665829132518}
+  backBeam:
+  - {fileID: 6236063740464942205}
+  - {fileID: 4886591044964148}
+  rightBeam:
+  - {fileID: 39081647577482535}
+  - {fileID: 4900566742005310}
+  flPier:
+  - {fileID: 251691700859102408}
+  blPier:
+  - {fileID: 1645509914399144871}
+  brPier:
+  - {fileID: 4055200118186282078}
+  frPier:
+  - {fileID: 685589970897590680}
+  frontLeft:
+  - {fileID: 2607269814003901011}
+  - {fileID: 7170179199502868401}
+  - {fileID: 4075665829132518}
+  - {fileID: 4601119246979276}
+  - {fileID: 251691700859102408}
+  frontRight:
+  - {fileID: 39081647577482535}
+  - {fileID: 4900566742005310}
+  - {fileID: 685589970897590680}
+  backLeft:
+  - {fileID: 1645509914399144871}
+  backRight:
+  - {fileID: 6236063740464942205}
+  - {fileID: 4886591044964148}
+  - {fileID: 4055200118186282078}
+  leftSide:
+  - {fileID: 2607269814003901011}
+  - {fileID: 7170179199502868401}
+  - {fileID: 4075665829132518}
+  - {fileID: 4601119246979276}
+  - {fileID: 251691700859102408}
+  - {fileID: 1645509914399144871}
+  rightSide:
+  - {fileID: 39081647577482535}
+  - {fileID: 6236063740464942205}
+  - {fileID: 4900566742005310}
+  - {fileID: 4886591044964148}
+  - {fileID: 685589970897590680}
+  - {fileID: 4055200118186282078}
+  backSide:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  frontSide:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pierHeights:
   - 0
   - 0
@@ -985,7 +1082,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928751449007222827}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.75, y: 0.148, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

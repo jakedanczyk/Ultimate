@@ -55,7 +55,6 @@ namespace Urth
 
             VisualElement settingsPanel = constructionPlanningInterface.Query(UrthConstants.CONSTRUCTION_SETTINGS_PANEL).First();
             constructionSettingsPanelControl.Link(settingsPanel);
-            //constructionOptionsControl.Populate();
 
             uiBuilt = true;
         }
