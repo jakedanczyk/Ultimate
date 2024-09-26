@@ -86,11 +86,14 @@ namespace Urth
         public void ShowPreview(RaycastHit hit2)
         {
             currentPos = hit2.point;
-            currentPos -= Vector3.one * offset;
-            currentPos /= gridSize;
-            currentPos = new Vector3(Mathf.Round(currentPos.x), currentPos.y, Mathf.Round(currentPos.z));
-            currentPos *= gridSize;
-            currentPos += Vector3.one * offset + Vector3.up * adjust;
+            if (snapToGrid)
+            {
+                currentPos -= Vector3.one * offset;
+                currentPos /= gridSize;
+                currentPos = new Vector3(Mathf.Round(currentPos.x), currentPos.y, Mathf.Round(currentPos.z));
+                currentPos *= gridSize;
+                currentPos += Vector3.one * offset + Vector3.up * adjust;
+            }
             previewTransform.position = currentPos;
             previewTransform.localEulerAngles = new Vector3(0, currentPreview.constructionWorksite.rotation, 0); //currentRot;
             previewObject.transform.position = currentPos;

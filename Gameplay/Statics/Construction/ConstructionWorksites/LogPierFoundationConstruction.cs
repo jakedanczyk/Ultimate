@@ -124,7 +124,6 @@ namespace Urth
                     arePillarsSupported[i] = false;
                     pierHeights[i] = pillarMaxHeight;
                 }
-                Debug.Log(pierHeights[i]);
                 float pillarHeightFraction = pierHeights[i] / pillarMaxHeight * pillarMaxScale;
 
                 pillarT.localScale = new Vector3(logDiameterScale, pillarHeightFraction, logDiameterScale);

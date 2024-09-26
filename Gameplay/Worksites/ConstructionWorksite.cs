@@ -15,13 +15,14 @@ namespace Urth
         public float supplyProgress;
         public float size;
         public float length;
-        public float minLength, maxLength, minWidth, maxWidth, minHeight, maxHeight, minRotation, maxRotation, minSecondary, maxSecondary;
         public float width;
         public float height;
         public float rotation;
+        public float minLength, maxLength, minWidth, maxWidth, minHeight, maxHeight, minRotation, maxRotation, minSecondary, maxSecondary;
 
 
         public bool hasSecondary;
+        public bool hasTertiary;
 
         public CONSTRUCTION_METHOD constructionMethod;
         public float primaryVolume;
@@ -128,11 +129,17 @@ namespace Urth
 
         public abstract void UpdateSuppliesNeeded();
 
+        /*UpdateComponents updates the sizes and positions of meshes and colliders 
+         *which are determined by factors such as surrounding terrain and settings such as length/width/height
+         */
         public abstract void UpdateComponents();
         public abstract void UpdateComponentsFinal();
 
         public virtual float SetSecondaryValue(float f) { return 0f; }
         public virtual float GetSecondaryValue() { return 0f; }
+
+        public virtual int SetTertiaryValue(int n) { return 0; }
+        public virtual int GetTertiaryValue() { return 0; }
 
         //public abstract List<(string, )>
     }

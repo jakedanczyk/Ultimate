@@ -16,7 +16,7 @@ namespace Urth
         public GameObject finalPrefab;
         //public UrthStatic ustatic;
         public int id;
-        public string name;
+        public string customName;
         public List<(UMATERIAL, float)> materialFractions = new List<(UMATERIAL, float)>();//((mat, %)
         public QUALITY designQuality = QUALITY.RUINED;
         public QUALITY buildQuality = QUALITY.RUINED;

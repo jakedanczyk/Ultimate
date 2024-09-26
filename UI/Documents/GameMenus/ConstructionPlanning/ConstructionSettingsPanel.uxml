@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/MainMenu.uss?fileID=7433441132597879392&amp;guid=319440c137570d341a2f64cc7d143ca7&amp;type=3#MainMenu" />
     <ui:VisualElement name="Panel">
-        <ui:VisualElement style="height: 666px; width: 480px;">
+        <ui:VisualElement style="height: 898px; width: 636px;">
             <ui:VisualElement name="ulBorder" style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; background-color: rgb(115, 170, 115);" />
             <ui:VisualElement name="uBorder" style="position: absolute; left: 20px; top: 0; width: auto; height: 20px; right: 20px; background-color: rgb(115, 170, 115);" />
             <ui:VisualElement name="urBorder" style="position: absolute; left: auto; top: 0; width: 20px; height: 20px; right: 0; background-color: rgb(115, 170, 115);" />
@@ -13,25 +14,74 @@
                 <ui:Label text="Label" display-tooltip-when-elided="true" name="title" style="font-size: 18px;" />
             </ui:VisualElement>
             <ui:VisualElement name="content" style="left: 20px; top: 60px; position: absolute; right: 20px; bottom: 20px;">
-                <ui:VisualElement name="previewPanel" style="height: 45%; background-image: url(&apos;project://database/Assets/z_Imports/Stone%20textures%20pack/Stone%2006/preview.jpg?fileID=2800000&amp;guid=296110b52047b6f40b5595de664ae945&amp;type=3#preview&apos;);">
+                <ui:VisualElement name="previewPanel" style="height: 14%; background-image: url(&apos;project://database/Assets/z_Imports/Stone%20textures%20pack/Stone%2006/preview.jpg?fileID=2800000&amp;guid=296110b52047b6f40b5595de664ae945&amp;type=3#preview&apos;);">
                     <ui:IMGUIContainer />
                 </ui:VisualElement>
-                <ui:VisualElement name="detailsPanel" style="height: 55%; overflow: hidden;">
+                <ui:VisualElement name="detailsPanel" style="height: auto; overflow: hidden;">
                     <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto" name="scrollView">
-                        <ui:VisualElement>
-                            <ui:Label text="Cobbles x5&#10;Pebbles 50 kg" display-tooltip-when-elided="true" name="suppliesList" />
+                        <ui:VisualElement style="flex-direction: row; justify-content: space-between;">
+                            <ui:Label text="Cobbles x5&#10;Pebbles 50 kg" display-tooltip-when-elided="true" name="suppliesLabel" />
+                            <ui:Label text="2.5 labour hours&#10;1.0 difficulty" display-tooltip-when-elided="true" name="detailsLabel" />
                         </ui:VisualElement>
-                        <ui:VisualElement>
-                            <ui:Label text="2.5 labour hours&#10;1.0 difficulty" display-tooltip-when-elided="true" />
-                        </ui:VisualElement>
-                        <ui:Slider picking-mode="Ignore" label="Length" value="42" high-value="100" name="lengthSlider" low-value="1" />
-                        <ui:Slider picking-mode="Ignore" label="Width" value="42" high-value="100" name="widthSlider" low-value="1" />
-                        <ui:Slider picking-mode="Ignore" label="Height" value="42" high-value="100" name="heightSlider" />
-                        <ui:Slider picking-mode="Ignore" label="Secondary" value="42" high-value="100" name="secondarySlider" />
-                        <ui:Slider picking-mode="Ignore" label="Rotation" value="42" high-value="100" name="rotationSlider" />
+                        <ui:VisualElement />
                         <ui:VisualElement name="snapTo" style="flex-direction: row;">
-                            <ui:Toggle label="Snap to ..." />
-                            <ui:DropdownField index="0" choices="Grid,Neighbor" />
+                            <ui:Toggle label="Snap to ..." name="snapToToggle" style="font-size: 18px;" />
+                            <ui:DropdownField index="0" choices="Grid,Neighbor" name="snapToDropdown" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="height" style="flex-direction: column;">
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="Height" display-tooltip-when-elided="true" style="-unity-text-align: middle-left; justify-content: flex-start; font-size: 20px;" />
+                                <ui:TextField picking-mode="Ignore" value="0" text="0" name="heightInput" style="font-size: 20px; flex-direction: row; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: normal; display: flex;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="0" display-tooltip-when-elided="true" name="heightMin" class="slider-label" />
+                                <ui:Slider picking-mode="Ignore" value="2" high-value="20" name="heightSlider" low-value="1" show-input-field="false" direction="Horizontal" inverted="false" style="flex-direction: row; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 1;" />
+                                <ui:Label text="2.5" display-tooltip-when-elided="true" name="heightMax" class="slider-label" style="font-size: 16px; -unity-text-align: middle-left;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="width" style="flex-direction: column;">
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="Width" display-tooltip-when-elided="true" style="-unity-text-align: middle-left; justify-content: flex-start; font-size: 20px;" />
+                                <ui:TextField picking-mode="Ignore" value="2" text="2" name="widthInput" style="font-size: 20px; flex-direction: row; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: normal; display: flex;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="1" display-tooltip-when-elided="true" name="widthMin" class="slider-label" />
+                                <ui:Slider picking-mode="Ignore" value="2" high-value="20" name="widthSlider" low-value="1" show-input-field="false" direction="Horizontal" inverted="false" style="flex-direction: row; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 1;" />
+                                <ui:Label text="20" display-tooltip-when-elided="true" name="widthMax" class="slider-label" style="font-size: 16px; -unity-text-align: middle-left;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="length" style="flex-direction: column;">
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="Length" display-tooltip-when-elided="true" enable-rich-text="false" style="-unity-text-align: middle-left; justify-content: flex-start; font-size: 20px;" />
+                                <ui:TextField picking-mode="Ignore" value="2" text="2" name="lengthInput" style="font-size: 20px; flex-direction: row; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: normal; display: flex;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="1" display-tooltip-when-elided="true" name="lengthMin" class="slider-label" />
+                                <ui:Slider picking-mode="Ignore" value="2" high-value="20" name="lengthSlider" low-value="1" show-input-field="false" direction="Horizontal" inverted="false" style="flex-direction: row; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 1;" />
+                                <ui:Label text="20" display-tooltip-when-elided="true" name="lengthMax" class="slider-label" style="font-size: 16px; -unity-text-align: middle-left;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="rotation" style="flex-direction: column;">
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="Rotation" display-tooltip-when-elided="true" enable-rich-text="false" style="-unity-text-align: middle-left; justify-content: flex-start; font-size: 20px;" />
+                                <ui:TextField picking-mode="Ignore" value="0" text="0" name="rotationInput" style="font-size: 20px; flex-direction: row; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: normal; display: flex;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="0" display-tooltip-when-elided="true" name="rotationMin" class="slider-label" />
+                                <ui:Slider picking-mode="Ignore" value="2" high-value="20" name="rotationSlider" low-value="1" show-input-field="false" direction="Horizontal" inverted="false" style="flex-direction: row; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 1;" />
+                                <ui:Label text="360" display-tooltip-when-elided="true" name="rotationMax" class="slider-label" style="font-size: 16px; -unity-text-align: middle-left;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="secondary" style="flex-direction: column;">
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="Log Diameter (cm)" display-tooltip-when-elided="true" enable-rich-text="false" style="-unity-text-align: middle-left; justify-content: flex-start; font-size: 20px;" />
+                                <ui:TextField picking-mode="Ignore" value="25" text="25" name="secondaryInput" style="font-size: 20px; flex-direction: row; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: normal; display: flex;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="0.1" display-tooltip-when-elided="true" name="secondaryMin" class="slider-label" />
+                                <ui:Slider picking-mode="Ignore" value="25" high-value="200" name="secondarySlider" low-value="10" show-input-field="false" direction="Horizontal" inverted="false" style="flex-direction: row; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 1;" />
+                                <ui:Label text="2.0" display-tooltip-when-elided="true" name="secondaryMax" class="slider-label" style="font-size: 16px; -unity-text-align: middle-left;" />
+                            </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:ScrollView>
                 </ui:VisualElement>
