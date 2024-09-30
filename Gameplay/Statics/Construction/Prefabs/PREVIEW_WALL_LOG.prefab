@@ -552,10 +552,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4269126161065366}
-  - component: {fileID: 7186006728339889375}
+  - component: {fileID: 2878152357776153936}
   - component: {fileID: 4559272045385651429}
   m_Layer: 21
-  m_Name: WALL_LOG
+  m_Name: PREVIEW_WALL_LOG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -577,7 +577,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7186006728339889375
+--- !u!114 &2878152357776153936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -586,26 +586,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1831134208543194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daca2e10d6212104d87a29526e0c5e3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 64e9d9a2bca731c41998cf2dabae65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   staticTypeName: WALL_LOG
-  staticType: 10
-  wipPrefab: {fileID: 0}
-  finalPrefab: {fileID: 0}
-  id: 0
-  customName: 
-  designQuality: 0
-  buildQuality: 0
-  size: 0
-  inventoryId: 0
-  supportedStatics: 
-  supportingStatics: 
+  staticType: 0
+  constructionMethod: 0
+  supportLayer: 1
+  isBuildable: 0
+  isActive: 0
+  collisionsList: []
+  clearanceColliders: []
+  supportColliders: []
+  pillarSupports: []
   constructionWorksite: {fileID: 4559272045385651429}
-  isConstruction: 1
-  constructionWorksiteId: 
-  designProgress: 0
-  buildProgress: 0
+  pillarSet: {fileID: 0}
+  floorSupport: {fileID: 0}
+  supportCollider: {fileID: 0}
+  graphics: {fileID: 0}
 --- !u!114 &4559272045385651429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,7 +619,7 @@ MonoBehaviour:
   id: 0
   needsComponentUpdates: 1
   supported: 0
-  staticPrefab: {fileID: 7186006728339889375}
+  staticPrefab: {fileID: 0}
   constructionProgress: 0
   supplyProgress: 0
   size: 1

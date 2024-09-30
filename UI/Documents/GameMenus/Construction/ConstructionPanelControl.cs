@@ -87,14 +87,6 @@ namespace Urth
 
             labelProgress = (Label)(constructionPanel.Query("progressLabel").First());
 
-            labelBuildQuality = (Label)(constructionPanel.Query("quality").First().Children().Last());
-            labelLength = (Label)(constructionPanel.Query("length").First().Children().Last());
-            labelWidth = (Label)(constructionPanel.Query("width").First().Children().Last());
-            labelHeight = (Label)(constructionPanel.Query("height").First().Children().Last());
-            labelMass = (Label)(constructionPanel.Query("mass").First().Children().Last());
-            labelSecondaryLabel = (Label)(constructionPanel.Query("secondary").First().Children().First());
-            labelSecondaryData = (Label)(constructionPanel.Query("secondary").First().Children().Last());
-
             VisualElement content = constructionPanel.Query("content");
             VisualElement listElement = content.Query("listElement");
             VisualElement listElementTwo = listElement.Query("listElementTwo");

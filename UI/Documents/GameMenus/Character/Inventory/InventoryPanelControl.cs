@@ -21,7 +21,7 @@ namespace Urth
         VisualTreeAsset inventoryItemTemplate;
 
         public ItemDisplayPanelControl itemDisplayControl;
-        public CreatureInventory playerInventory;
+        public CreatureInventory playerCreatureInventory;
 
         public UItemData selectedItem;
 
@@ -60,7 +60,7 @@ namespace Urth
 
         public void Populate()
         {
-            playerInventory = GameManager.Instance.playerCharacterBody.creatureInventory;
+            playerCreatureInventory = GameManager.Instance.playerCharacterBody.creatureInventory;
             Reorder();
         }
 
@@ -68,11 +68,11 @@ namespace Urth
 
         void Reorder()
         {
-            sortedIds = new List<int>(playerInventory.inventory.items.Count);
+            sortedIds = new List<int>(playerCreatureInventory.inventory.items.Count);
             switch (sortProp)
             {
                 case ITEM_PROPERTY.NONE:
-                    sortedIds = playerInventory.inventory.GetIds();
+                    sortedIds = playerCreatureInventory.inventory.GetIds();
                     break;
                 case ITEM_PROPERTY.NAME:
                     SortByString(sortProp);
@@ -81,7 +81,7 @@ namespace Urth
                     SortByFloat(sortProp);
                     break;
             }
-            uiItemDataList = new List<UItemData>(playerInventory.inventory.items.Count);
+            uiItemDataList = new List<UItemData>(playerCreatureInventory.inventory.items.Count);
             foreach (int id in sortedIds)
             {
                 NewDataEntry(id);
@@ -109,7 +109,7 @@ namespace Urth
             //VisualElement newItem = 
             //var newItem = inventoryItemTemplate.Instantiate();
             //itemsList.Add(newItem);
-            UItemData item = playerInventory.inventory.items[id];
+            UItemData item = playerCreatureInventory.inventory.items[id];
             uiItemDataList.Add(item);
             //InventoryPanelItem newItemElement = new InventoryPanelItem();
             //newItemElement.SetItem(item);
@@ -138,8 +138,8 @@ namespace Urth
         }
         void SortByFloat(ITEM_PROPERTY sortProp)
         {
-            List<(int, float)> unsorteds = new List<(int, float)>(playerInventory.inventory.items.Count);
-            foreach ((int id, UItemData item) in playerInventory.inventory.items)
+            List<(int, float)> unsorteds = new List<(int, float)>(playerCreatureInventory.inventory.items.Count);
+            foreach ((int id, UItemData item) in playerCreatureInventory.inventory.items)
             {
                 switch (sortProp)
                 {
@@ -163,8 +163,8 @@ namespace Urth
 
         void SortByString(ITEM_PROPERTY sortProp)
         {
-            List<(int, string)> unsorteds = new List<(int, string)>(playerInventory.inventory.items.Count);
-            foreach ((int id, UItemData item) in playerInventory.inventory.items)
+            List<(int, string)> unsorteds = new List<(int, string)>(playerCreatureInventory.inventory.items.Count);
+            foreach ((int id, UItemData item) in playerCreatureInventory.inventory.items)
             {
                 switch (sortProp)
                 {

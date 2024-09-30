@@ -22,10 +22,13 @@ namespace Urth
         //Vector3 rightBeamPos = new Vector3(0.75f, 0.25f, -0.84f);
 
         public float logDiameter = 0.25f;
-        public int logCount = 8;
+        public float maxDiameter = 1.0f;
+        public float minDiameter = 0.1f;
+        public int activeLogCount = 8;
         public RaycastHit aimHit;
 
-        public Transform wall;
+        public Transform colliderTransorm;
+        public Transform logsTransform;
         public List<Transform> logs;
         public List<Transform> lengthBeamsPreview;
         public List<Transform> lengthBeamsPreviewCollider;
@@ -72,7 +75,7 @@ namespace Urth
             //float logDiameter = 0.25f * size;
             float logRadius = logDiameter * 0.5f;
             float logCsa = logRadius * logRadius * Mathf.PI;
-            logVolume = length * logCsa * logCount;
+            logVolume = length * logCsa * activeLogCount;
             int numSupplyLogsNeeded = (int)(Mathf.Ceil(logVolume / UrthConstants.LOG_VOLUME));
 
             if((supplies.Count == 0))
@@ -88,7 +91,9 @@ namespace Urth
 
         public override void UpdateComponents()
         {
-            wall.localScale = new Vector3(height, width, length);
+            logsTransform.localScale = new Vector3(logDiameter * logDiameterScaleFactor, length * lwScale, logDiameter * logDiameterScaleFactor);
+            ScaleColliderHeight();
+            //colliderTransorm.localScale = new Vector3(height, width, length);
 
             //for (int i = 0; i < lengthBeamsPreview.Count; i++)
             //{
@@ -108,39 +113,90 @@ namespace Urth
 
         public override void UpdateComponentsFinal()
         {
-            wall.localScale = new Vector3(height, width, length);
+            logsTransform.localScale = new Vector3(logDiameter * logDiameterScaleFactor, length * lwScale, logDiameter * logDiameterScaleFactor);
+            ScaleColliderHeight();
+
+            //colliderTransorm.localScale = new Vector3(height, width, length);
+            //logsTransform.localScale = new Vector3(height, width, length);
+        }
+
+        public override float SetHeight(float h)
+        {
+            return height;
+            //height = h;
+            //float logD = height / logCount;
+            //while(logD > maxDiameter)
+            //{
+            //    logCount += 1;
+            //    logD = height / logCount;
+            //}
+            //while(logD < minDiameter)
+            //{
+            //    logCount -= 1;
+            //    logD = height / logCount;
+            //}
+
+
+            //logDiameter = height / logCount;
+
+            //logDiameter = f;
+            //width = logDiameter;
+            //height = logDiameter * logCount;
+            //return logDiameter;
+        }
+        public override float GetHeight()
+        {
+            return logDiameter;
         }
 
 
+        public override (float,float) GetSecondaryMinMax()
+        {
+            return (minDiameter, maxDiameter);
+        }
         public override float SetSecondaryValue(float f) 
         {
             logDiameter = f;
             width = logDiameter;
-            height = logDiameter * logCount;
+            height = logDiameter * activeLogCount;
             return logDiameter;
         }
         public override float GetSecondaryValue()
         {
             return logDiameter;
         }
+        public override (int, int) GetTertiaryMinMax()
+        {
+            return (1, logs.Count);
+        }
         public override int SetTertiaryValue(int n)
         {
-            logCount = n;
-            for(int i = 0; i < logCount; i++)
-            {
-                logs[i].gameObject.SetActive(true);
-            }
-            for (int i = logCount; i < logs.Count; i++)
-            {
-                logs[i].gameObject.SetActive(true);
-            }
-            logDiameter = height / logCount;
-            width = logDiameter;
-            return logCount;
+            activeLogCount = n;
+            height = activeLogCount * logDiameter;
+            SetActiveLogs();
+            return activeLogCount;
         }
         public override int GetTertiaryValue()
         {
-            return logCount;
+            return activeLogCount;
+        }
+
+        void SetActiveLogs()
+        {
+            for (int i = 0; i < activeLogCount; i++)
+            {
+                logs[i].gameObject.SetActive(true);
+            }
+            for (int i = activeLogCount; i < logs.Count; i++)
+            {
+                logs[i].gameObject.SetActive(true);
+            }
+        }
+
+        void ScaleColliderHeight()
+        {
+            float f = activeLogCount / logs.Count;
+            colliderTransorm.localScale = new Vector3(f, 1, 1);
         }
     }
 }

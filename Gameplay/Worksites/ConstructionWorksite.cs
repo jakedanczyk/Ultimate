@@ -19,6 +19,7 @@ namespace Urth
         public float height;
         public float rotation;
         public float minLength, maxLength, minWidth, maxWidth, minHeight, maxHeight, minRotation, maxRotation, minSecondary, maxSecondary;
+        public int minTertiary, maxTertiary;
 
 
         public bool hasSecondary;
@@ -135,11 +136,17 @@ namespace Urth
         public abstract void UpdateComponents();
         public abstract void UpdateComponentsFinal();
 
+
+        public virtual float SetHeight(float h) { return height = h; }
+        public virtual float GetHeight() { return height; }
+
         public virtual float SetSecondaryValue(float f) { return 0f; }
         public virtual float GetSecondaryValue() { return 0f; }
+        public virtual (float,float) GetSecondaryMinMax() { return (0f, 10f); }
 
         public virtual int SetTertiaryValue(int n) { return 0; }
         public virtual int GetTertiaryValue() { return 0; }
+        public virtual (int,int) GetTertiaryMinMax() { return (0,10); }
 
         //public abstract List<(string, )>
     }

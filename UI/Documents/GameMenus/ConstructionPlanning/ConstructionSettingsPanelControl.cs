@@ -72,7 +72,7 @@ namespace Urth
 
                 selectedWorksite.width = width;
                 selectedWorksite.length = length;
-                selectedWorksite.height = height;
+                selectedWorksite.SetHeight(height);
                 selectedWorksite.rotation = rotation;
                 selectedWorksite.SetSecondaryValue(secondaryValue);
                 SetText();
