@@ -440,11 +440,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staticTypeName: FOUNDATION_LOG_PIER_LOG
-  staticType: 0
+  staticType: 16
   wipPrefab: {fileID: 5604847926298988637}
   finalPrefab: {fileID: 2731861951848265420}
   id: 0
-  name: 
+  customName: 
   designQuality: 0
   buildQuality: 0
   size: 0
@@ -478,6 +478,21 @@ MonoBehaviour:
   length: 2
   width: 2
   height: 1
+  rotation: 0
+  minLength: 0
+  maxLength: 0
+  minWidth: 0
+  maxWidth: 0
+  minHeight: 0
+  maxHeight: 0
+  minRotation: 0
+  maxRotation: 0
+  minSecondary: 0
+  maxSecondary: 0
+  minTertiary: 0
+  maxTertiary: 0
+  hasSecondary: 0
+  hasTertiary: 0
   constructionMethod: 0
   primaryVolume: 0
   supplies: []
@@ -492,6 +507,28 @@ MonoBehaviour:
   - {fileID: 6730718190661060589}
   arePillarsSupported: 
   pillarSupportHeights: []
+  lengthBeamsPreview: []
+  lengthBeamsPreviewCollider: []
+  lengthBeams: []
+  widthBeams: []
+  widthBeamsPreview: []
+  widthBeamsPreviewCollider: []
+  frontBeam: []
+  leftBeam: []
+  backBeam: []
+  rightBeam: []
+  flPier: []
+  blPier: []
+  brPier: []
+  frPier: []
+  frontLeft: []
+  frontRight: []
+  backLeft: []
+  backRight: []
+  leftSide: []
+  rightSide: []
+  backSide: []
+  frontSide: []
   pierHeights:
   - 0
   - 0

@@ -30,33 +30,6 @@ namespace Urth
         public Transform colliderTransorm;
         public Transform logsTransform;
         public List<Transform> logs;
-        public List<Transform> lengthBeamsPreview;
-        public List<Transform> lengthBeamsPreviewCollider;
-        public List<Transform> lengthBeams;
-        public List<Transform> widthBeams;
-        public List<Transform> widthBeamsPreview;
-        public List<Transform> widthBeamsPreviewCollider;
-        
-        
-        public List<Transform> frontBeam;
-        public List<Transform> leftBeam;
-        public List<Transform> backBeam;
-        public List<Transform> rightBeam;
-
-        public List<Transform> flPier;
-        public List<Transform> blPier;
-        public List<Transform> brPier;
-        public List<Transform> frPier;
-
-        public List<Transform> frontLeft = new List<Transform>(3);
-        public List<Transform> frontRight = new List<Transform>(3);
-        public List<Transform> backLeft = new List<Transform>(3);
-        public List<Transform> backRight = new List<Transform>(3);
-
-        public List<Transform> leftSide = new List<Transform>(3);
-        public List<Transform> rightSide = new List<Transform>(3);
-        public List<Transform> backSide = new List<Transform>(3);
-        public List<Transform> frontSide = new List<Transform>(3);
 
 
         public float[] pierHeights = new float[4];
