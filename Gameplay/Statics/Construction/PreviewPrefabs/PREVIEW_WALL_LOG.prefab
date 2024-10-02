@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4261823679880938}
   - component: {fileID: 33560867220742608}
   - component: {fileID: 23380270109586144}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4880369753991846}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 4914126458752352}
   - component: {fileID: 33618425499370174}
   - component: {fileID: 23507680978274792}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 4891880686820512}
   - component: {fileID: 33251149454138586}
   - component: {fileID: 23862359210115392}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 4833990626527464}
   - component: {fileID: 33231505380193124}
   - component: {fileID: 23664931214021930}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 4278773894110994}
   - component: {fileID: 33535227324918086}
   - component: {fileID: 23700254468441894}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 4386207326408146}
   - component: {fileID: 33733118976882264}
   - component: {fileID: 23629506762685982}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 4269126161065366}
   - component: {fileID: 2878152357776153936}
   - component: {fileID: 5433290468285871695}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: PREVIEW_WALL_LOG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 4220456418143872}
   - component: {fileID: 33574701582181282}
   - component: {fileID: 23664540726305592}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,7 +750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2463028117358032690}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 8798148462044201410}
   - component: {fileID: 774471882656999861}
   - component: {fileID: 6777357860342860866}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,7 +879,7 @@ GameObject:
   - component: {fileID: 1344944757617672640}
   - component: {fileID: 5045390355362340835}
   - component: {fileID: 3442427350197402646}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 5106954123361584347}
   - component: {fileID: 3327540911715926890}
   - component: {fileID: 3419169860368295733}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -980,7 +980,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4834616094615316822}
   m_Father: {fileID: 4880369753991846}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1022,7 +1023,7 @@ GameObject:
   - component: {fileID: 5728672609102651833}
   - component: {fileID: 8106762664505156886}
   - component: {fileID: 7916430078639662109}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1105,7 +1106,7 @@ GameObject:
   - component: {fileID: 9139225697315867331}
   - component: {fileID: 1186672176671791842}
   - component: {fileID: 7293005745632140322}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1188,7 +1189,7 @@ GameObject:
   - component: {fileID: 7378612547358202467}
   - component: {fileID: 5148974808933575216}
   - component: {fileID: 4436925726072959011}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1260,6 +1261,82 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7668304198762227088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4834616094615316822}
+  - component: {fileID: 2928622286472336854}
+  - component: {fileID: 7006947615736578665}
+  - component: {fileID: 602818677385763858}
+  m_Layer: 22
+  m_Name: Clearance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4834616094615316822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668304198762227088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5106954123361584347}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2928622286472336854
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668304198762227088}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &7006947615736578665
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668304198762227088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.35, y: 1.5, z: 0.01}
+  m_Center: {x: 1.2, y: 1, z: 0}
+--- !u!114 &602818677385763858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668304198762227088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9dc656de256d542a9bad2d1f5ef97a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionsList: []
 --- !u!1 &9143883324752648957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,7 +1348,7 @@ GameObject:
   - component: {fileID: 8573058297924721239}
   - component: {fileID: 4969800296094090585}
   - component: {fileID: 9181304435514466341}
-  m_Layer: 21
+  m_Layer: 22
   m_Name: Wood-10tier log_n (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
