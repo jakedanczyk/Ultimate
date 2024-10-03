@@ -2,5 +2,5 @@
     <ui:Template name="ConstructionPanel" src="project://database/Assets/UI/Documents/GameMenus/ConstructionPlanning/ConstructionItemsPanel.uxml?fileID=9197481963319205126&amp;guid=d6bff016cb7a50b49ba260cc0ace142c&amp;type=3#ConstructionItemsPanel" />
     <ui:Template name="ConstructionOptionsPanel" src="project://database/Assets/UI/Documents/GameMenus/ConstructionPlanning/ConstructionSettingsPanel.uxml?fileID=9197481963319205126&amp;guid=022840edac884624488a80610907dc9b&amp;type=3#ConstructionSettingsPanel" />
     <ui:Instance template="ConstructionPanel" name="ConstructionItemsPanel" style="position: absolute; left: 5%; top: 5%;" />
-    <ui:Instance template="ConstructionOptionsPanel" name="ConstructionSettingsPanel" style="left: 1050px; position: absolute; top: 145px;" />
+    <ui:Instance template="ConstructionOptionsPanel" name="ConstructionSettingsPanel" style="left: 1050px; position: absolute; top: -10px;" />
 </ui:UXML>

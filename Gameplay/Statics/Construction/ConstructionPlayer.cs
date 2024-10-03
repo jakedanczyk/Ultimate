@@ -137,8 +137,8 @@ namespace Urth
         }
         public void AdjustHeight(float adj)
         {
-            adjust += adj;
-            string display = (adjust > 0 ? "+" : "-") + (Mathf.Abs(adjust).ToString()) + "m";
+            float curr = ConstructionSettingsPanelControl.Instance.AdjustHeight(adj);
+            string display = (curr > 0 ? "+" : "-") + (Mathf.Abs(curr).ToString()) + "m";
             HUDControl.Instance.SetConstructionOffset(display);
         }
         //public void Build()

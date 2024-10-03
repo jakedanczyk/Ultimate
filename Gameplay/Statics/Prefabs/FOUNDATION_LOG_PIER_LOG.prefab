@@ -939,6 +939,7 @@ GameObject:
   - component: {fileID: 3525392082992584298}
   - component: {fileID: 5624570971073324483}
   - component: {fileID: 3305079571807211403}
+  - component: {fileID: 4874133665338107993}
   m_Layer: 21
   m_Name: Wood-10tier log_n
   m_TagString: Construction
@@ -1026,6 +1027,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 317efe26569b26343b8504a3cd9d9f36, type: 3}
+--- !u!54 &4874133665338107993
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358796705610663498}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1164679195662695175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1055,7 @@ GameObject:
   - component: {fileID: 1608300402004315775}
   - component: {fileID: 3423747257642406195}
   - component: {fileID: 3175863819688950426}
+  - component: {fileID: 8917983882487199446}
   m_Layer: 21
   m_Name: Wood-10tier log_n (2)
   m_TagString: Construction
@@ -1125,6 +1143,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 317efe26569b26343b8504a3cd9d9f36, type: 3}
+--- !u!54 &8917983882487199446
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164679195662695175}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2731861951848265420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1210,7 @@ GameObject:
   - component: {fileID: 322015440820003450}
   - component: {fileID: 5832125605129924828}
   - component: {fileID: 5169100318399707237}
+  - component: {fileID: 8158856303426543449}
   m_Layer: 21
   m_Name: Wood-10tier log_n (1)
   m_TagString: Construction
@@ -1263,6 +1298,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 317efe26569b26343b8504a3cd9d9f36, type: 3}
+--- !u!54 &8158856303426543449
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224499108957595556}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4895059832820702457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,6 +1326,7 @@ GameObject:
   - component: {fileID: 3373343390151064711}
   - component: {fileID: 6640104977043108564}
   - component: {fileID: 1270260694960300136}
+  - component: {fileID: 1399992545476775932}
   m_Layer: 21
   m_Name: Wood-1tier log_n (2)
   m_TagString: Construction
@@ -1362,6 +1414,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 9f57b6149f64d7845aa382db04baa059, type: 3}
+--- !u!54 &1399992545476775932
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895059832820702457}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5247968274014082600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1442,7 @@ GameObject:
   - component: {fileID: 2162038742603587446}
   - component: {fileID: 3235313457589278939}
   - component: {fileID: 6226170813393258376}
+  - component: {fileID: 4951542883747049797}
   m_Layer: 21
   m_Name: Wood-1tier log_n
   m_TagString: Construction
@@ -1461,6 +1530,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 9f57b6149f64d7845aa382db04baa059, type: 3}
+--- !u!54 &4951542883747049797
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247968274014082600}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5604847926298988637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,6 +1597,7 @@ GameObject:
   - component: {fileID: 7764602372191609328}
   - component: {fileID: 1680155456573608660}
   - component: {fileID: 316714685625269833}
+  - component: {fileID: 8755209525920435981}
   m_Layer: 21
   m_Name: Wood-1tier log_n (3)
   m_TagString: Construction
@@ -1599,6 +1685,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 9f57b6149f64d7845aa382db04baa059, type: 3}
+--- !u!54 &8755209525920435981
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364957331358557364}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7416770150956750254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,6 +1713,7 @@ GameObject:
   - component: {fileID: 2515742239113954794}
   - component: {fileID: 7177202468998406638}
   - component: {fileID: 1334156421932977565}
+  - component: {fileID: 3145058923232716061}
   m_Layer: 21
   m_Name: Wood-1tier log_n (1)
   m_TagString: Construction
@@ -1698,6 +1801,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 9f57b6149f64d7845aa382db04baa059, type: 3}
+--- !u!54 &3145058923232716061
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7416770150956750254}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8690944982530212227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,6 +1829,7 @@ GameObject:
   - component: {fileID: 5543861977700016223}
   - component: {fileID: 8023391391220371629}
   - component: {fileID: 6182292504564343033}
+  - component: {fileID: 6156933612231120735}
   m_Layer: 21
   m_Name: Wood-10tier log_n (3)
   m_TagString: Construction
@@ -1797,3 +1917,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 317efe26569b26343b8504a3cd9d9f36, type: 3}
+--- !u!54 &6156933612231120735
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8690944982530212227}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

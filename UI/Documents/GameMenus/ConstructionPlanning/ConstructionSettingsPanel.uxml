@@ -31,11 +31,12 @@
                         <ui:VisualElement name="height" style="flex-direction: column;">
                             <ui:VisualElement style="flex-direction: row;">
                                 <ui:Label text="Height" display-tooltip-when-elided="true" style="-unity-text-align: middle-left; justify-content: flex-start; font-size: 20px;" />
-                                <ui:TextField picking-mode="Ignore" value="0" text="0" name="heightInput" style="font-size: 20px; flex-direction: row; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: normal; display: flex;" />
+                                <ui:TextField picking-mode="Ignore" value="0" text="0" name="heightInput" readonly="true" style="font-size: 20px; flex-direction: row; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: normal; display: flex;" />
+                                <ui:Label text="0" display-tooltip-when-elided="true" name="heightDisplay" style="-unity-text-align: middle-left; font-size: 20px; display: none;" />
                             </ui:VisualElement>
-                            <ui:VisualElement style="flex-direction: row;">
+                            <ui:VisualElement name="heightSliderContainer" style="flex-direction: row; display: flex;">
                                 <ui:Label text="0" display-tooltip-when-elided="true" name="heightMin" class="slider-label" />
-                                <ui:Slider picking-mode="Ignore" value="2" high-value="20" name="heightSlider" low-value="1" show-input-field="false" direction="Horizontal" inverted="false" style="flex-direction: row; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 1;" />
+                                <ui:Slider picking-mode="Ignore" value="2" high-value="20" name="heightSlider" low-value="1" show-input-field="false" direction="Horizontal" inverted="false" focusable="true" style="flex-direction: row; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 1; display: flex; visibility: visible;" />
                                 <ui:Label text="2.5" display-tooltip-when-elided="true" name="heightMax" class="slider-label" style="font-size: 16px; -unity-text-align: middle-left;" />
                             </ui:VisualElement>
                         </ui:VisualElement>
@@ -43,8 +44,9 @@
                             <ui:VisualElement style="flex-direction: row;">
                                 <ui:Label text="Width" display-tooltip-when-elided="true" style="-unity-text-align: middle-left; justify-content: flex-start; font-size: 20px;" />
                                 <ui:TextField picking-mode="Ignore" value="2" text="2" name="widthInput" style="font-size: 20px; flex-direction: row; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: normal; display: flex;" />
+                                <ui:Label text="0" display-tooltip-when-elided="true" name="widthDisplay" style="-unity-text-align: middle-left; font-size: 20px; display: none;" />
                             </ui:VisualElement>
-                            <ui:VisualElement style="flex-direction: row;">
+                            <ui:VisualElement name="widthSliderContainer" style="flex-direction: row;">
                                 <ui:Label text="1" display-tooltip-when-elided="true" name="widthMin" class="slider-label" />
                                 <ui:Slider picking-mode="Ignore" value="2" high-value="20" name="widthSlider" low-value="1" show-input-field="false" direction="Horizontal" inverted="false" style="flex-direction: row; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 1;" />
                                 <ui:Label text="20" display-tooltip-when-elided="true" name="widthMax" class="slider-label" style="font-size: 16px; -unity-text-align: middle-left;" />
@@ -54,8 +56,9 @@
                             <ui:VisualElement style="flex-direction: row;">
                                 <ui:Label text="Length" display-tooltip-when-elided="true" enable-rich-text="false" style="-unity-text-align: middle-left; justify-content: flex-start; font-size: 20px;" />
                                 <ui:TextField picking-mode="Ignore" value="2" text="2" name="lengthInput" style="font-size: 20px; flex-direction: row; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: normal; display: flex;" />
+                                <ui:Label text="Label" display-tooltip-when-elided="true" name="lengthDisplay" style="-unity-text-align: middle-left; font-size: 20px; display: none;" />
                             </ui:VisualElement>
-                            <ui:VisualElement style="flex-direction: row;">
+                            <ui:VisualElement name="lengthSliderContainer" style="flex-direction: row;">
                                 <ui:Label text="1" display-tooltip-when-elided="true" name="lengthMin" class="slider-label" />
                                 <ui:Slider picking-mode="Ignore" value="2" high-value="20" name="lengthSlider" low-value="1" show-input-field="false" direction="Horizontal" inverted="false" style="flex-direction: row; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 1;" />
                                 <ui:Label text="20" display-tooltip-when-elided="true" name="lengthMax" class="slider-label" style="font-size: 16px; -unity-text-align: middle-left;" />
@@ -81,6 +84,17 @@
                                 <ui:Label text="0.1" display-tooltip-when-elided="true" name="secondaryMin" class="slider-label" />
                                 <ui:Slider picking-mode="Ignore" value="25" high-value="200" name="secondarySlider" low-value="10" show-input-field="false" direction="Horizontal" inverted="false" style="flex-direction: row; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 1;" />
                                 <ui:Label text="2.0" display-tooltip-when-elided="true" name="secondaryMax" class="slider-label" style="font-size: 16px; -unity-text-align: middle-left;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="tertiary" style="flex-direction: column;">
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="Log Diameter (cm)" display-tooltip-when-elided="true" enable-rich-text="false" style="-unity-text-align: middle-left; justify-content: flex-start; font-size: 20px;" />
+                                <ui:TextField picking-mode="Ignore" value="8" text="8" name="tertiaryInput" style="font-size: 20px; flex-direction: row; -unity-text-outline-color: rgb(0, 0, 0); -unity-font-style: normal; display: flex;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="1" display-tooltip-when-elided="true" name="tertiaryMin" class="slider-label" />
+                                <ui:SliderInt picking-mode="Ignore" value="8" high-value="13" name="tertiarySlider" low-value="1" style="flex-grow: 1;" />
+                                <ui:Label text="13" display-tooltip-when-elided="true" name="tertiaryMax" class="slider-label" style="font-size: 16px; -unity-text-align: middle-left;" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:ScrollView>

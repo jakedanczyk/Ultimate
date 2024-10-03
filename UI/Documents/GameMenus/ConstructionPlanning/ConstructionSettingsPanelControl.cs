@@ -16,6 +16,14 @@ namespace Urth
         public Label suppliesLabel;
         public Label detailsLabel;
 
+        public VisualElement heightSliderContainer;
+        public Label heightDisplay;
+        public VisualElement widthSliderContainer;
+        public Label widthDisplay;
+        public VisualElement lengthSliderContainer;
+        public Label lengthDisplay;
+
+
         public VisualElement snapToElement,heightElement,widthElement,lengthElement,rotationElement,secondaryElement;
         public TextField lengthInput, heightInput, widthInput, rotationInput, secondaryInput;
         public Label lengthMinLabel, lengthMaxLabel, widthMinLabel, widthMaxLabel, heightMinLabel, heightMaxLabel,
@@ -101,6 +109,8 @@ namespace Urth
             });
             snaptoDropdown = (DropdownField)snapToElement.Query<DropdownField>("snapToDropdown");
             heightElement = scrollView.Query("height");
+            heightDisplay = (Label)heightElement.Query("heightDisplay");
+            heightSliderContainer = heightElement.Query("heightSliderContainer");
             heightInput = (TextField)heightElement.Query("heightInput");
             heightMinLabel = (Label)heightElement.Query("heightMin");
             heightMaxLabel = (Label)heightElement.Query("heightMax");
@@ -206,8 +216,8 @@ namespace Urth
                 float val = float.Parse(evt.newValue);
                 val = val > selectedWorksite.maxSecondary ? selectedWorksite.maxSecondary : val < selectedWorksite.minSecondary ? selectedWorksite.minSecondary : val;
                 secondaryInput.value = val.ToString();
-                rotation = val;
-                rSlider.value = val;
+                secondaryValue = val;
+                secondarySlider.value = val;
             });
         }
 
@@ -231,6 +241,42 @@ namespace Urth
                 secondaryValue = selectedWorksite.GetSecondaryValue();
 
                 SetDisplay();
+                if (selectedWorksite.disableHeight)
+                {
+                    heightInput.style.display = DisplayStyle.None;
+                    heightSliderContainer.style.display = DisplayStyle.None;
+                    heightDisplay.style.display = DisplayStyle.Flex;
+                }
+                else
+                {
+                    heightInput.style.display = DisplayStyle.Flex;
+                    heightSliderContainer.style.display = DisplayStyle.Flex;
+                    heightDisplay.style.display = DisplayStyle.None;
+                }
+                if (selectedWorksite.disableWidth)
+                {
+                    widthInput.style.display = DisplayStyle.None;
+                    widthSliderContainer.style.display = DisplayStyle.None;
+                    widthDisplay.style.display = DisplayStyle.Flex;
+                }
+                else
+                {
+                    widthInput.style.display = DisplayStyle.Flex;
+                    widthSliderContainer.style.display = DisplayStyle.Flex;
+                    widthDisplay.style.display = DisplayStyle.None;
+                }
+                if (selectedWorksite.disableLength)
+                {
+                    lengthInput.style.display = DisplayStyle.None;
+                    lengthSliderContainer.style.display = DisplayStyle.None;
+                    lengthDisplay.style.display = DisplayStyle.Flex;
+                }
+                else
+                {
+                    lengthInput.style.display = DisplayStyle.Flex;
+                    lengthSliderContainer.style.display = DisplayStyle.Flex;
+                    lengthDisplay.style.display = DisplayStyle.None;
+                }
             }
         }
         public void SetDisplay()
@@ -310,6 +356,15 @@ namespace Urth
             {
                 secondarySlider.style.display = DisplayStyle.None;
             }
+        }
+
+        public float AdjustHeight(float adj)
+        {
+            height += adj;
+            height = height > selectedWorksite.maxHeight ? selectedWorksite.maxHeight : height < selectedWorksite.minHeight ? selectedWorksite.minHeight : height;
+            heightInput.value = height.ToString();
+            hSlider.value = height;
+            return height;
         }
     }
 

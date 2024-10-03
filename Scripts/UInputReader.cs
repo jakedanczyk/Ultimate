@@ -228,11 +228,14 @@ namespace Urth
 
         public void OnScroll(InputAction.CallbackContext ctx)
         {
-            Vector2 wheelInput = ctx.ReadValue<Vector2>();
-
-            if (wheelInput != Vector2.zero)
+            if(GameUIControl.Instance.mode == UI_MODE.CONSTRUCTION_PLANNING)
             {
-                constructionPlayer.AdjustHeight(wheelInput.y/5000f);
+                Vector2 wheelInput = ctx.ReadValue<Vector2>();
+
+                if (wheelInput != Vector2.zero)
+                {
+                    constructionPlayer.AdjustHeight(wheelInput.y/5000f);
+                }
             }
 
         }

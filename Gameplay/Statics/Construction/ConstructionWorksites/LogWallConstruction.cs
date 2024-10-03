@@ -31,11 +31,15 @@ namespace Urth
         public Transform logsTransform;
         public List<Transform> logs;
 
+        public ConstructionPreviewCollider leftSupport;
+        public ConstructionPreviewCollider centerLeftSupport;
+        public ConstructionPreviewCollider centerSupport;
+        public ConstructionPreviewCollider centerRightSupport;
+        public ConstructionPreviewCollider rightSupport;
 
-        public float[] pierHeights = new float[4];
         public override USTATIC type
         {
-            get { return USTATIC.FOUNDATION_LOG_PIER_LOG; }
+            get { return USTATIC.WALL_LOG; }
         }
 
         public float logVolume = 0f;
@@ -66,6 +70,45 @@ namespace Urth
         {
             logsTransform.localScale = new Vector3(logDiameter * logDiameterScaleFactor, length * lwScale, logDiameter * logDiameterScaleFactor);
             ScaleColliderHeight();
+            supported = false;
+            if (leftSupport.collisionsList.Count > 0)
+            {
+                if (rightSupport.collisionsList.Count > 0)
+                {
+                    supported = true;
+                    //if (centerLeftSupport.collisionsList.Count > 0 || centerSupport.collisionsList.Count > 0 || centerRightSupport.collisionsList.Count > 0)
+                    //{
+                    //    //super-supported?
+                    //}
+                }
+                else if (centerRightSupport.collisionsList.Count > 0)
+                {
+                    supported = true;
+                    //if (centerLeftSupport.collisionsList.Count > 0 || centerSupport.collisionsList.Count > 0)
+                    //{
+                    //    //super-supported?
+                    //}
+                }
+            }
+            else if(centerLeftSupport.collisionsList.Count > 0)
+            {
+                if (rightSupport.collisionsList.Count > 0)
+                {
+                    supported = true;
+                    //if (centerSupport.collisionsList.Count > 0 || centerRightSupport.collisionsList.Count > 0)
+                    //{
+                    //    //super-supported?
+                    //}
+                }
+                else if (centerRightSupport.collisionsList.Count > 0)
+                {
+                    supported = true;
+                    //if (centerSupport.collisionsList.Count > 0)
+                    //{
+                    //    //super-supported?
+                    //}
+                }
+            }
             //colliderTransorm.localScale = new Vector3(height, width, length);
 
             //for (int i = 0; i < lengthBeamsPreview.Count; i++)
@@ -168,7 +211,7 @@ namespace Urth
 
         void ScaleColliderHeight()
         {
-            float f = activeLogCount / logs.Count;
+            float f = activeLogCount / ((float)logs.Count);
             colliderTransorm.localScale = new Vector3(f, 1, 1);
         }
     }

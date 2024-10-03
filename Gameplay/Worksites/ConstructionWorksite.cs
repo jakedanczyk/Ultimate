@@ -22,6 +22,9 @@ namespace Urth
         public int minTertiary, maxTertiary;
 
 
+        public bool disableHeight;
+        public bool disableWidth;
+        public bool disableLength;
         public bool hasSecondary;
         public bool hasTertiary;
 
