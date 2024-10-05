@@ -190,32 +190,106 @@ namespace Urth
 
         public override void UpdateComponentsFinal()
         {
-            /*foreach pillar
-             * raycast down from top to determine distance to ground
-             * adjust scale and turn off/on sections as needed to fit distance
-             */
-            for (int i = 0; i < finalPillars.Count; i++)
+
+            float logDiameterScale = logDiameter * logDiameterScaleFactor;
+
+            for (int i = 0; i < previewPillars.Count; i++)
             {
-                Transform rootT = finalPillars[i];
-                Transform pillarT = rootT.childCount > 0 ? rootT.GetChild(0) : rootT;
-                //if (Physics.SphereCast(rootT.position, radius, Vector3.down, out aimHit, pillarMaxHeight, ConstructionManager.Instance.constructionLayers))
-                //if (Physics.Raycast(rootT.position, Vector3.down, out aimHit, pillarMaxHeight, ConstructionLibrary.Instance.constructionLayers))
-                //{
-                //    Debug.DrawLine(rootT.position, aimHit.point, Color.green);
-                //    pierHeights[i] = aimHit.distance;
-                //    arePillarsSupported[i] = true;
-                //}
-                //else
-                //{
-                //    Debug.DrawLine(rootT.position, rootT.position + Vector3.down * pillarMaxHeight, Color.red);
-                //    //supported = false;
-                //    arePillarsSupported[i] = false;
-                //    pierHeights[i] = pillarMaxHeight;
-                //}
                 float pillarHeightFraction = pierHeights[i] / pillarMaxHeight * pillarMaxScale;
 
-                pillarT.localScale = new Vector3(pillarT.localScale.x, pillarHeightFraction, pillarT.localScale.z);
+                Transform previewRootT = previewPillars[i];
+                Transform previewPillarT = previewRootT.childCount > 0 ? previewRootT.GetChild(0) : previewRootT;
+                previewPillarT.localScale = new Vector3(logDiameterScale, pillarHeightFraction, logDiameterScale);
+                
+                Transform rootT = finalPillars[i];
+                Transform pillarT = rootT.childCount > 0 ? rootT.GetChild(0) : rootT;
+                pillarT.localScale = new Vector3(logDiameterScale, pillarHeightFraction, logDiameterScale);
+
             }
+
+            for (int i = 0; i < lengthBeamsPreview.Count; i++)
+            {
+                Transform previewBeam = lengthBeamsPreview[i];
+                previewBeam.localScale = new Vector3(logDiameterScale, lwScale * length, logDiameterScale);
+                Transform beam = lengthBeams[i];
+                beam.localScale = new Vector3(logDiameterScale, lwScale * length, logDiameterScale);
+            }
+            for (int i = 0; i < widthBeamsPreview.Count; i++)
+            {
+                Transform previewBeam = widthBeamsPreview[i];
+                previewBeam.localScale = new Vector3(logDiameterScale, lwScale * width, logDiameterScale);
+                Transform beam = widthBeams[i];
+                beam.localScale = new Vector3(logDiameterScale, lwScale * width, logDiameterScale);
+            }
+
+            for (int i = 0; i < frontBeam.Count; i++)
+            {
+                Transform t = frontBeam[i];
+                t.localPosition = new Vector3(0.5f * frontBeamPos.x * width, frontBeamPos.y, 0.5f * frontBeamPos.z * length);
+            }
+            for (int i = 0; i < leftBeam.Count; i++)
+            {
+                Transform t = leftBeam[i];
+                t.localPosition = new Vector3(0.5f * leftBeamPos.x * width, leftBeamPos.y, 0.5f * leftBeamPos.z * length);
+            }
+            for (int i = 0; i < backBeam.Count; i++)
+            {
+                Transform t = backBeam[i];
+                t.localPosition = new Vector3(0.5f * backBeamPos.x * width, backBeamPos.y, 0.5f * backBeamPos.z * length);
+            }
+            for (int i = 0; i < rightBeam.Count; i++)
+            {
+                Transform t = rightBeam[i];
+                t.localPosition = new Vector3(0.5f * rightBeamPos.x * width, rightBeamPos.y, 0.5f * rightBeamPos.z * length);
+            }
+
+            for (int i = 0; i < frPier.Count; i++)
+            {
+                Transform t = frPier[i];
+                t.localPosition = new Vector3(0.5f * frPierPos.x * width, frPierPos.y, 0.5f * frPierPos.z * length);
+            }
+            for (int i = 0; i < flPier.Count; i++)
+            {
+                Transform t = flPier[i];
+                t.localPosition = new Vector3(0.5f * flPierPos.x * width, flPierPos.y, 0.5f * flPierPos.z * length);
+            }
+            for (int i = 0; i < blPier.Count; i++)
+            {
+                Transform t = blPier[i];
+                t.localPosition = new Vector3(0.5f * blPierPos.x * width, blPierPos.y, 0.5f * blPierPos.z * length);
+            }
+            for (int i = 0; i < brPier.Count; i++)
+            {
+                Transform t = brPier[i];
+                t.localPosition = new Vector3(0.5f * brPierPos.x * width, brPierPos.y, 0.5f * brPierPos.z * length);
+            }
+
+            ///*foreach pillar
+            // * raycast down from top to determine distance to ground
+            // * adjust scale and turn off/on sections as needed to fit distance
+            // */
+            //for (int i = 0; i < finalPillars.Count; i++)
+            //{
+            //    Transform rootT = finalPillars[i];
+            //    Transform pillarT = rootT.childCount > 0 ? rootT.GetChild(0) : rootT;
+            //    //if (Physics.SphereCast(rootT.position, radius, Vector3.down, out aimHit, pillarMaxHeight, ConstructionManager.Instance.constructionLayers))
+            //    //if (Physics.Raycast(rootT.position, Vector3.down, out aimHit, pillarMaxHeight, ConstructionLibrary.Instance.constructionLayers))
+            //    //{
+            //    //    Debug.DrawLine(rootT.position, aimHit.point, Color.green);
+            //    //    pierHeights[i] = aimHit.distance;
+            //    //    arePillarsSupported[i] = true;
+            //    //}
+            //    //else
+            //    //{
+            //    //    Debug.DrawLine(rootT.position, rootT.position + Vector3.down * pillarMaxHeight, Color.red);
+            //    //    //supported = false;
+            //    //    arePillarsSupported[i] = false;
+            //    //    pierHeights[i] = pillarMaxHeight;
+            //    //}
+            //    float pillarHeightFraction = pierHeights[i] / pillarMaxHeight * pillarMaxScale;
+
+            //    pillarT.localScale = new Vector3(pillarT.localScale.x, pillarHeightFraction, pillarT.localScale.z);
+            //}
         }
 
 
@@ -227,6 +301,15 @@ namespace Urth
         public override float GetSecondaryValue()
         {
             return logDiameter;
+        }
+
+        public override void CopyValuesFromPreview(ConstructionWorksite previewWorksite)
+        {
+            Debug.Log("pierFoundation CopyValues");
+            base.CopyValuesFromPreview(previewWorksite);
+            LogPierFoundationConstruction preview = (LogPierFoundationConstruction)previewWorksite;
+            logDiameter = preview.logDiameter;
+            pierHeights = preview.pierHeights;
         }
     }
 }

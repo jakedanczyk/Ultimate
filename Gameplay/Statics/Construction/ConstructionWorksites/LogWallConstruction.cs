@@ -27,9 +27,12 @@ namespace Urth
         public int activeLogCount = 8;
         public RaycastHit aimHit;
 
-        public Transform colliderTransorm;
+        public Transform colliderTransform;
+        public Transform wipColliderTransform;
+        public Transform clearanceColliderTransform;
         public Transform logsTransform;
         public List<Transform> logs;
+        public List<Transform> wipLogs;
 
         public ConstructionPreviewCollider leftSupport;
         public ConstructionPreviewCollider centerLeftSupport;
@@ -68,8 +71,9 @@ namespace Urth
 
         public override void UpdateComponents()
         {
+            SetActiveLogs();
             logsTransform.localScale = new Vector3(logDiameter * logDiameterScaleFactor, length * lwScale, logDiameter * logDiameterScaleFactor);
-            ScaleColliderHeight();
+            ScaleClearanceColliderHeight();
             supported = false;
             if (leftSupport.collisionsList.Count > 0)
             {
@@ -129,7 +133,10 @@ namespace Urth
 
         public override void UpdateComponentsFinal()
         {
+            SetActiveLogs();
+            SetWipActiveLogs();
             logsTransform.localScale = new Vector3(logDiameter * logDiameterScaleFactor, length * lwScale, logDiameter * logDiameterScaleFactor);
+            //ScalePreviewColliderHeight();
             ScaleColliderHeight();
 
             //colliderTransorm.localScale = new Vector3(height, width, length);
@@ -205,14 +212,45 @@ namespace Urth
             }
             for (int i = activeLogCount; i < logs.Count; i++)
             {
-                logs[i].gameObject.SetActive(true);
+                logs[i].gameObject.SetActive(false);
             }
         }
+
+        void SetWipActiveLogs()
+        {
+            for (int i = 0; i < activeLogCount; i++)
+            {
+                wipLogs[i].gameObject.SetActive(true);
+            }
+            for (int i = activeLogCount; i < wipLogs.Count; i++)
+            {
+                wipLogs[i].gameObject.SetActive(false);
+            }
+        }
+
 
         void ScaleColliderHeight()
         {
             float f = activeLogCount / ((float)logs.Count);
-            colliderTransorm.localScale = new Vector3(f, 1, 1);
+            colliderTransform.localScale = new Vector3(f, 1, 1);
+            //colliderTransform.localPosition = new Vector3(logDiameter, 0, 0);
+            wipColliderTransform.localScale = new Vector3(f, 1, 1);
+            //wipColliderTransform.localPosition = new Vector3(logDiameter, 0, 0);
+        }
+        void ScaleClearanceColliderHeight()
+        {
+            float f = activeLogCount / ((float)logs.Count);
+            clearanceColliderTransform.localScale = new Vector3(f, 1, 1);
+            //colliderTransform.localPosition = new Vector3(0, 0, 0);
+        }
+
+        public override void CopyValuesFromPreview(ConstructionWorksite previewWorksite)
+        {
+            Debug.Log("logWall CopyValues");
+            base.CopyValuesFromPreview(previewWorksite);
+            LogWallConstruction preview = (LogWallConstruction)previewWorksite;
+            logDiameter = preview.logDiameter;
+            activeLogCount = preview.activeLogCount;
         }
     }
 }

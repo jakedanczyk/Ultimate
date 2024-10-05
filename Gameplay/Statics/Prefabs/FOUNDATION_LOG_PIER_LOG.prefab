@@ -474,6 +474,7 @@ MonoBehaviour:
   staticPrefab: {fileID: 2331569032362784279}
   constructionProgress: 0
   supplyProgress: 0
+  mass: 0
   size: 1
   length: 2
   width: 2
@@ -491,6 +492,9 @@ MonoBehaviour:
   maxSecondary: 0
   minTertiary: 0
   maxTertiary: 0
+  disableHeight: 0
+  disableWidth: 0
+  disableLength: 0
   hasSecondary: 0
   hasTertiary: 0
   constructionMethod: 0
@@ -499,28 +503,56 @@ MonoBehaviour:
   logDiameter: 0.1
   pillarMaxScale: 1.2
   pillarMaxHeight: 1
-  previewPillars: []
-  finalPillars:
+  previewPillars:
   - {fileID: 8681787569811477984}
   - {fileID: 8978628830193708741}
   - {fileID: 1441289912836946290}
   - {fileID: 6730718190661060589}
+  finalPillars:
+  - {fileID: 4714416406589008}
+  - {fileID: 4924427224566054}
+  - {fileID: 4202602962623782}
+  - {fileID: 4018652591646404}
   arePillarsSupported: 
   pillarSupportHeights: []
-  lengthBeamsPreview: []
+  lengthBeamsPreview:
+  - {fileID: 4997727421619434952}
+  - {fileID: 8817502659962327908}
   lengthBeamsPreviewCollider: []
-  lengthBeams: []
-  widthBeams: []
-  widthBeamsPreview: []
+  lengthBeams:
+  - {fileID: 4266072885495194}
+  - {fileID: 4580568646917372}
+  widthBeams:
+  - {fileID: 4810514229651492}
+  - {fileID: 4847005783737234}
+  widthBeamsPreview:
+  - {fileID: 7165420524557467035}
+  - {fileID: 431863361126003903}
   widthBeamsPreviewCollider: []
-  frontBeam: []
-  leftBeam: []
-  backBeam: []
-  rightBeam: []
-  flPier: []
-  blPier: []
-  brPier: []
-  frPier: []
+  frontBeam:
+  - {fileID: 4847005783737234}
+  - {fileID: 431863361126003903}
+  leftBeam:
+  - {fileID: 4266072885495194}
+  - {fileID: 4997727421619434952}
+  backBeam:
+  - {fileID: 4810514229651492}
+  - {fileID: 7165420524557467035}
+  rightBeam:
+  - {fileID: 4580568646917372}
+  - {fileID: 8817502659962327908}
+  flPier:
+  - {fileID: 4714416406589008}
+  - {fileID: 8681787569811477984}
+  blPier:
+  - {fileID: 4018652591646404}
+  - {fileID: 6730718190661060589}
+  brPier:
+  - {fileID: 4202602962623782}
+  - {fileID: 1441289912836946290}
+  frPier:
+  - {fileID: 4924427224566054}
+  - {fileID: 8978628830193708741}
   frontLeft: []
   frontRight: []
   backLeft: []
@@ -1174,7 +1206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7232577167314906191
 Transform:
   m_ObjectHideFlags: 0

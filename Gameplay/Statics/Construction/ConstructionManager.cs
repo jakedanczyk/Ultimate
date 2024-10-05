@@ -46,10 +46,12 @@ namespace Urth
 
         }
 
-        public void CreateConstruction(ConstructionPreview preview, float size, Vector3 pos, Vector3 rot, List<int> supportedByIds = null)
+        public void CreateConstruction(ConstructionPreview preview, Vector3 pos, List<int> supportedByIds = null)
         {
-            int staticId = StaticsManager.Instance.SpawnNewStatic(preview.staticType, size, pos, rot, isConstruction: true, supportedByIds);
+            int staticId = StaticsManager.Instance.SpawnNewStatic(preview.staticType, preview.constructionWorksite.size, pos, new Vector3(0, preview.constructionWorksite.rotation, 0), isConstruction: true, supportedByIds);
             StaticPrefab staticPrefab = StaticsManager.Instance.prefabPopulation[staticId];
+            ConstructionWorksite constructionWorksite = staticPrefab.gameObject.GetComponent<ConstructionWorksite>();
+            constructionWorksite.CopyValuesFromPreview(preview.constructionWorksite);
             switch (staticPrefab.staticType)
             {
                 case USTATIC.FOUNDATION_LOG_PIER_LOG:
@@ -83,6 +85,8 @@ namespace Urth
                     logPierFoundationConstruction.UpdateComponentsFinal();
                     break;
             }
+            constructionWorksite.UpdateSuppliesNeeded();
+            constructionWorksite.UpdateComponentsFinal();
         }
 
         public void CreateNewConstructionWorksite(StaticPrefab staticPrefab)

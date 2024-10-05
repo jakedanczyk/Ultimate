@@ -13,11 +13,14 @@ namespace Urth
         //public UrthStatic ustatic;
         public float constructionProgress;
         public float supplyProgress;
+        public float mass;
         public float size;
         public float length;
         public float width;
         public float height;
+        public float heightOffset;
         public float rotation;
+        //public Vector3 rotation;
         public float minLength, maxLength, minWidth, maxWidth, minHeight, maxHeight, minRotation, maxRotation, minSecondary, maxSecondary;
         public int minTertiary, maxTertiary;
 
@@ -140,6 +143,8 @@ namespace Urth
         public abstract void UpdateComponentsFinal();
 
 
+        public virtual float SetHeightOffset(float h) { return heightOffset = h; }
+        public virtual float GetHeightOffset() { return heightOffset; }
         public virtual float SetHeight(float h) { return height = h; }
         public virtual float GetHeight() { return height; }
 
@@ -150,6 +155,22 @@ namespace Urth
         public virtual int SetTertiaryValue(int n) { return 0; }
         public virtual int GetTertiaryValue() { return 0; }
         public virtual (int,int) GetTertiaryMinMax() { return (0,10); }
+
+        public virtual void CopyValuesFromPreview(ConstructionWorksite previewWorksite)
+        {
+            Debug.Log("base CopyValues");
+            size = previewWorksite.size;
+            mass = previewWorksite.mass;
+            heightOffset = previewWorksite.heightOffset;
+            height = previewWorksite.height;
+            width = previewWorksite.width;
+            length = previewWorksite.length;
+            rotation = previewWorksite.rotation;
+            primaryVolume = previewWorksite.primaryVolume;
+            supported = previewWorksite.supported;
+            SetSecondaryValue(previewWorksite.GetSecondaryValue());
+            SetTertiaryValue(previewWorksite.GetTertiaryValue());
+        }
 
         //public abstract List<(string, )>
     }

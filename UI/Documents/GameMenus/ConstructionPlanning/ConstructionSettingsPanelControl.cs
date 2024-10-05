@@ -16,6 +16,8 @@ namespace Urth
         public Label suppliesLabel;
         public Label detailsLabel;
 
+        public VisualElement heightOffsetSliderContainer;
+        public Label heightOffsetDisplay;
         public VisualElement heightSliderContainer;
         public Label heightDisplay;
         public VisualElement widthSliderContainer;
@@ -24,9 +26,9 @@ namespace Urth
         public Label lengthDisplay;
 
 
-        public VisualElement snapToElement,heightElement,widthElement,lengthElement,rotationElement,secondaryElement;
-        public TextField lengthInput, heightInput, widthInput, rotationInput, secondaryInput;
-        public Label lengthMinLabel, lengthMaxLabel, widthMinLabel, widthMaxLabel, heightMinLabel, heightMaxLabel,
+        public VisualElement snapToElement,heightOffsetElement,heightElement,widthElement,lengthElement,rotationElement,secondaryElement;
+        public TextField heightOffsetInput, lengthInput, heightInput, widthInput, rotationInput, secondaryInput;
+        public Label heightOffsetMinLabel, heightOffsetMaxLabel, lengthMinLabel, lengthMaxLabel, widthMinLabel, widthMaxLabel, heightMinLabel, heightMaxLabel,
             rotationMinLabel, rotationMaxLabel, secondaryMinLabel, secondaryMaxLabel;
         public Slider wSlider;
         public Slider lSlider;
@@ -44,6 +46,7 @@ namespace Urth
 
         public ConstructionPlayer constructionPlayer;
 
+        public float heightOffset;
         public float width;
         public float length;
         public float height;
@@ -78,6 +81,7 @@ namespace Urth
             {
                 //suppliesList.text = selectedWorksite.supplies[0].countNeeded.ToString();
 
+                selectedWorksite.SetHeightOffset(heightOffset);
                 selectedWorksite.width = width;
                 selectedWorksite.length = length;
                 selectedWorksite.SetHeight(height);
@@ -108,6 +112,12 @@ namespace Urth
                 constructionPlayer.snapToGrid = evt.newValue;
             });
             snaptoDropdown = (DropdownField)snapToElement.Query<DropdownField>("snapToDropdown");
+            heightOffsetElement = scrollView.Query("heightOffset");
+            heightOffsetDisplay = (Label)heightOffsetElement.Query("heightOffsetDisplay");
+            heightOffsetSliderContainer = heightOffsetElement.Query("heightOffsetSliderContainer");
+            heightOffsetInput = (TextField)heightOffsetElement.Query("heightOffsetInput");
+            heightOffsetMinLabel = (Label)heightOffsetElement.Query("heightOffsetMin");
+            heightOffsetMaxLabel = (Label)heightOffsetElement.Query("heightMax");
             heightElement = scrollView.Query("height");
             heightDisplay = (Label)heightElement.Query("heightDisplay");
             heightSliderContainer = heightElement.Query("heightSliderContainer");
@@ -115,10 +125,14 @@ namespace Urth
             heightMinLabel = (Label)heightElement.Query("heightMin");
             heightMaxLabel = (Label)heightElement.Query("heightMax");
             widthElement = scrollView.Query("width");
+            widthDisplay = (Label)widthElement.Query("widthDisplay");
+            widthSliderContainer = widthElement.Query("widthSliderContainer");
             widthInput = (TextField)widthElement.Query("widthInput");
             widthMinLabel = (Label)widthElement.Query("widthMin");
             widthMaxLabel = (Label)widthElement.Query("widthMax"); 
             lengthElement = scrollView.Query("length");
+            lengthDisplay = (Label)lengthElement.Query("lengthDisplay");
+            lengthSliderContainer = lengthElement.Query("lengthSliderContainer");
             lengthInput = (TextField)lengthElement.Query("lengthInput");
             lengthMinLabel = (Label)lengthElement.Query("lengthMin");
             lengthMaxLabel = (Label)lengthElement.Query("lengthMax");
@@ -237,6 +251,7 @@ namespace Urth
                 width = selectedWorksite.width;
                 length = selectedWorksite.length;
                 height = selectedWorksite.height;
+                heightOffset = selectedWorksite.heightOffset;
                 rotation = selectedWorksite.rotation;
                 secondaryValue = selectedWorksite.GetSecondaryValue();
 

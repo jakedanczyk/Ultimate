@@ -92,8 +92,9 @@ namespace Urth
                 currentPos /= gridSize;
                 currentPos = new Vector3(Mathf.Round(currentPos.x), currentPos.y, Mathf.Round(currentPos.z));
                 currentPos *= gridSize;
-                currentPos += Vector3.one * offset + Vector3.up * adjust;
+                currentPos += Vector3.one * offset;
             }
+            currentPos += Vector3.up * adjust;
             previewTransform.position = currentPos;
             previewTransform.localEulerAngles = new Vector3(0, currentPreview.constructionWorksite.rotation, 0); //currentRot;
             previewObject.transform.position = currentPos;
@@ -117,7 +118,7 @@ namespace Urth
         {
             if (currentPreview != null && currentPreview.isBuildable)
             {
-                ConstructionManager.Instance.CreateConstruction(currentPreview, placementScale, currentPos, currentRot);
+                ConstructionManager.Instance.CreateConstruction(currentPreview, currentPos);
             }
         }
         public void ChangePreviewType(USTATIC type)
@@ -138,6 +139,7 @@ namespace Urth
         public void AdjustHeight(float adj)
         {
             float curr = ConstructionSettingsPanelControl.Instance.AdjustHeight(adj);
+            adjust = curr;
             string display = (curr > 0 ? "+" : "-") + (Mathf.Abs(curr).ToString()) + "m";
             HUDControl.Instance.SetConstructionOffset(display);
         }
