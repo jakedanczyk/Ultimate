@@ -21,7 +21,7 @@ namespace Urth
         public float heightOffset;
         public float rotation;
         //public Vector3 rotation;
-        public float minLength, maxLength, minWidth, maxWidth, minHeight, maxHeight, minRotation, maxRotation, minSecondary, maxSecondary;
+        public float minHeightOffset=-1f, maxHeightOffset=1f, minLength, maxLength, minWidth, maxWidth, minHeight, maxHeight, minRotation, maxRotation, minSecondary, maxSecondary;
         public int minTertiary, maxTertiary;
 
 
@@ -40,7 +40,7 @@ namespace Urth
         // Start is called before the first frame update
         void Start()
         {
-            staticPrefab = this.gameObject.GetComponent<StaticPrefab>();
+            staticPrefab = this.gameObject.GetComponent<StaticPrefab>   ();
             //ustatic = staticPrefab.ustatic;
         }
 

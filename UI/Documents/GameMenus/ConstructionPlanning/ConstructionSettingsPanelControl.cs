@@ -26,15 +26,17 @@ namespace Urth
         public Label lengthDisplay;
 
 
-        public VisualElement snapToElement,heightOffsetElement,heightElement,widthElement,lengthElement,rotationElement,secondaryElement;
-        public TextField heightOffsetInput, lengthInput, heightInput, widthInput, rotationInput, secondaryInput;
+        public VisualElement snapToElement,heightOffsetElement,heightElement,widthElement,lengthElement,rotationElement,secondaryElement,tertiaryElement;
+        public TextField heightOffsetInput, lengthInput, heightInput, widthInput, rotationInput, secondaryInput,tertiaryInput;
         public Label heightOffsetMinLabel, heightOffsetMaxLabel, lengthMinLabel, lengthMaxLabel, widthMinLabel, widthMaxLabel, heightMinLabel, heightMaxLabel,
-            rotationMinLabel, rotationMaxLabel, secondaryMinLabel, secondaryMaxLabel;
+            rotationMinLabel, rotationMaxLabel, secondaryMinLabel, secondaryMaxLabel, tertiaryMinLabel, tertiaryMaxLabel;
+        public Slider heightOffsetSlider;
         public Slider wSlider;
         public Slider lSlider;
         public Slider hSlider;
         public Slider rSlider;
         public Slider secondarySlider;
+        public Slider tertiarySlider;
         public Toggle snaptoToggle;
         public DropdownField snaptoDropdown;
         public static ConstructionSettingsPanelControl Instance { get; private set; }
@@ -52,6 +54,7 @@ namespace Urth
         public float height;
         public float rotation;
         public float secondaryValue;
+        public int tertiaryValue;
         public float scale;
         public STATIC_SIZE size;
 
@@ -87,6 +90,7 @@ namespace Urth
                 selectedWorksite.SetHeight(height);
                 selectedWorksite.rotation = rotation;
                 selectedWorksite.SetSecondaryValue(secondaryValue);
+                selectedWorksite.SetTertiaryValue(tertiaryValue);
                 SetText();
 
             }
@@ -144,7 +148,10 @@ namespace Urth
             secondaryInput = (TextField)secondaryElement.Query("secondaryInput");
             secondaryMinLabel = (Label)secondaryElement.Query("secondaryMin");
             secondaryMaxLabel = (Label)secondaryElement.Query("secondaryMax");
-
+            tertiaryElement = scrollView.Query("tertiary");
+            tertiaryInput = (TextField)secondaryElement.Query("tertiaryInput");
+            tertiaryMinLabel = (Label)secondaryElement.Query("tertiaryMin");
+            tertiaryMaxLabel = (Label)secondaryElement.Query("tertiaryMax");
 
             //lSlider = (Slider)scrollView.ElementAt(2);// (Slider)container.Query<Slider>("lengthSlider").First();
             //wSlider = (Slider)container.Query<Slider>("widthSlider").First();
@@ -160,12 +167,18 @@ namespace Urth
             //VisualElement container3 = container2.ElementAt(0);
             ////VisualElement container4 = scrollView.ElementAt(0).ElementAt(0).ElementAt(0);
             //VisualElement container = scrollView.ElementAt(0).ElementAt(0).ElementAt(0);
+            heightOffsetSlider = (Slider)scrollView.Query<Slider>("heightOffsetSlider").First();
             lSlider = (Slider)scrollView.Query<Slider>("lengthSlider").First();
             wSlider = (Slider)scrollView.Query<Slider>("widthSlider").First();
             hSlider = (Slider)scrollView.Query<Slider>("heightSlider").First();
             rSlider = (Slider)scrollView.Query<Slider>("rotationSlider").First();
             secondarySlider = (Slider)scrollView.Query<Slider>("secondarySlider").First();
 
+            heightOffsetSlider.RegisterCallback<ChangeEvent<float>>((evt) =>
+            {
+                heightOffset = evt.newValue;
+                heightInput.SetValueWithoutNotify(evt.newValue.ToString());
+            });
             lSlider.RegisterCallback<ChangeEvent<float>>((evt) =>
             {
                 length = evt.newValue;
@@ -192,6 +205,14 @@ namespace Urth
                 secondaryInput.SetValueWithoutNotify(evt.newValue.ToString());
             });
 
+            heightOffsetInput.RegisterCallback<ChangeEvent<string>>((evt) =>
+            {
+                float val = float.Parse(evt.newValue);
+                val = val > selectedWorksite.maxHeightOffset ? selectedWorksite.maxHeightOffset : val < selectedWorksite.minHeightOffset ? selectedWorksite.minHeightOffset : val;
+                heightOffsetInput.value = val.ToString();
+                heightOffset = val;
+                heightOffsetSlider.value = val;
+            });
             lengthInput.RegisterCallback<ChangeEvent<string>>((evt) =>
             {
                 float val = float.Parse(evt.newValue);
@@ -305,6 +326,9 @@ namespace Urth
 
         void SetLabels()
         {
+            heightOffsetMinLabel.text = selectedWorksite.minHeightOffset.ToString();
+            heightOffsetMaxLabel.text = selectedWorksite.maxHeightOffset.ToString();
+
             heightMinLabel.text = selectedWorksite.minHeight.ToString();
             heightMaxLabel.text = selectedWorksite.maxHeight.ToString();
             widthMinLabel.text = selectedWorksite.minWidth.ToString();
@@ -315,6 +339,8 @@ namespace Urth
             rotationMaxLabel.text = selectedWorksite.maxRotation.ToString();
             secondaryMinLabel.text = selectedWorksite.minSecondary.ToString();
             secondaryMaxLabel.text = selectedWorksite.maxSecondary.ToString();
+            tertiaryMinLabel.text = selectedWorksite.minTertiary.ToString();
+            tertiaryMaxLabel.text = selectedWorksite.maxTertiary.ToString();
         }
 
         void SetCamView()
@@ -346,19 +372,20 @@ namespace Urth
 
         void SetSliders()
         {
+            heightOffsetSlider.lowValue = selectedWorksite.minHeightOffset;
+            heightOffsetSlider.highValue = selectedWorksite.maxHeightOffset;
+            heightOffsetSlider.value = selectedWorksite.heightOffset;
             lSlider.lowValue = selectedWorksite.minLength;
             lSlider.highValue = selectedWorksite.maxLength;
+            lSlider.value = selectedWorksite.length;
             wSlider.lowValue = selectedWorksite.minWidth;
             wSlider.highValue = selectedWorksite.maxWidth;
+            wSlider.value = selectedWorksite.width;
             hSlider.lowValue = selectedWorksite.minHeight;
             hSlider.highValue = selectedWorksite.maxHeight;
+            hSlider.value = selectedWorksite.height;
             rSlider.lowValue = selectedWorksite.minRotation;
             rSlider.highValue = selectedWorksite.maxRotation;
-            lSlider.value = selectedWorksite.length;
-            wSlider.lowValue = 1f;
-            wSlider.highValue = 20f;
-            wSlider.value = selectedWorksite.width;
-            hSlider.value = selectedWorksite.height;
             rSlider.value = selectedWorksite.rotation;
             if (selectedWorksite.hasSecondary)
             {
@@ -371,15 +398,26 @@ namespace Urth
             {
                 secondarySlider.style.display = DisplayStyle.None;
             }
+            if (selectedWorksite.hasTertiary)
+            {
+                tertiarySlider.style.display = DisplayStyle.Flex;
+                tertiarySlider.lowValue = selectedWorksite.minTertiary;
+                tertiarySlider.highValue = selectedWorksite.maxTertiary;
+                tertiarySlider.value = selectedWorksite.GetTertiaryValue();
+            }
+            else
+            {
+                tertiarySlider.style.display = DisplayStyle.None;
+            }
         }
 
-        public float AdjustHeight(float adj)
+        public float AdjustHeightOffset(float adj)
         {
-            height += adj;
-            height = height > selectedWorksite.maxHeight ? selectedWorksite.maxHeight : height < selectedWorksite.minHeight ? selectedWorksite.minHeight : height;
-            heightInput.value = height.ToString();
-            hSlider.value = height;
-            return height;
+            heightOffset += adj;
+            heightOffset = heightOffset > selectedWorksite.maxHeightOffset ? selectedWorksite.maxHeightOffset : heightOffset < selectedWorksite.minHeightOffset ? selectedWorksite.minHeightOffset : heightOffset;
+            heightOffsetInput.value = heightOffset.ToString();
+            heightOffsetSlider.value = heightOffset;
+            return heightOffset;
         }
     }
 

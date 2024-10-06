@@ -82,7 +82,7 @@ namespace Urth
             }
         }
 
-        public float adjust;
+        public float heightOffset;
         public void ShowPreview(RaycastHit hit2)
         {
             currentPos = hit2.point;
@@ -94,7 +94,7 @@ namespace Urth
                 currentPos *= gridSize;
                 currentPos += Vector3.one * offset;
             }
-            currentPos += Vector3.up * adjust;
+            currentPos += Vector3.up * heightOffset;
             previewTransform.position = currentPos;
             previewTransform.localEulerAngles = new Vector3(0, currentPreview.constructionWorksite.rotation, 0); //currentRot;
             previewObject.transform.position = currentPos;
@@ -138,8 +138,8 @@ namespace Urth
         }
         public void AdjustHeight(float adj)
         {
-            float curr = ConstructionSettingsPanelControl.Instance.AdjustHeight(adj);
-            adjust = curr;
+            float curr = ConstructionSettingsPanelControl.Instance.AdjustHeightOffset(adj);
+            heightOffset = curr;
             string display = (curr > 0 ? "+" : "-") + (Mathf.Abs(curr).ToString()) + "m";
             HUDControl.Instance.SetConstructionOffset(display);
         }
