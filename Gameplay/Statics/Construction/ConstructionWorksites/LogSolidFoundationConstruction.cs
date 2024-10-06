@@ -7,7 +7,7 @@ namespace Urth
 
     public class LogSolidFoundationConstruction : ConstructionWorksite
     {
-        public Transform transform;
+        public Transform foundationTransform;
         public override USTATIC type
         {
             get { return USTATIC.FLOOR_LOG; }
@@ -38,13 +38,13 @@ namespace Urth
 
         public override void UpdateComponents()
         {
-            transform.localScale = new Vector3(length, height, width);
+            foundationTransform.localScale = new Vector3(length, height, width);
             supported = true;//start true until proven false
         }
 
         public override void UpdateComponentsFinal()
         {
-            transform.localScale = new Vector3(length, height, width);
+            foundationTransform.localScale = new Vector3(length, height, width);
         }
     }
 }

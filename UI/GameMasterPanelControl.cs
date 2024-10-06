@@ -47,25 +47,25 @@ namespace Urth
                 Instance = this;
             }
 
-            gmMenu = this.GetComponent<UIDocument>();
-            outer = gmMenu.rootVisualElement.Query("outer").First();
-            outer.pickingMode = PickingMode.Ignore;
-            container = gmMenu.rootVisualElement.Query("container").First();
-            menu = gmMenu.rootVisualElement.Query("menu").First();
-            disable = (Button)gmMenu.rootVisualElement.Query("Disable").First();
-            disable.RegisterCallback<ClickEvent>(OnDisablePlayer);
-            invulnerable = (Button)gmMenu.rootVisualElement.Query("Invulnerable").First();
-            invulnerable.RegisterCallback<ClickEvent>(OnInvulnerable);
+            //gmMenu = this.GetComponent<UIDocument>();
+            //outer = gmMenu.rootVisualElement.Query("outer").First();
+            //outer.pickingMode = PickingMode.Ignore;
+            //container = gmMenu.rootVisualElement.Query("container").First();
+            //menu = gmMenu.rootVisualElement.Query("menu").First();
+            //disable = (Button)gmMenu.rootVisualElement.Query("Disable").First();
+            //disable.RegisterCallback<ClickEvent>(OnDisablePlayer);
+            //invulnerable = (Button)gmMenu.rootVisualElement.Query("Invulnerable").First();
+            //invulnerable.RegisterCallback<ClickEvent>(OnInvulnerable);
 
-            typeText = (TextField)gmMenu.rootVisualElement.Query("type");
-            genderText = (TextField)gmMenu.rootVisualElement.Query("gender");
-            lengthText = (TextField)gmMenu.rootVisualElement.Query("length");
-            heightText = (TextField)gmMenu.rootVisualElement.Query("height");
-            widthText = (TextField)gmMenu.rootVisualElement.Query("width");
-            weightText = (TextField)gmMenu.rootVisualElement.Query("weight");
-            ageText = (TextField)gmMenu.rootVisualElement.Query("age");
-            spawn = (Button)gmMenu.rootVisualElement.Query("spawn").First();
-            spawn.RegisterCallback<ClickEvent>(OnSpawnCreature);
+            //typeText = (TextField)gmMenu.rootVisualElement.Query("type");
+            //genderText = (TextField)gmMenu.rootVisualElement.Query("gender");
+            //lengthText = (TextField)gmMenu.rootVisualElement.Query("length");
+            //heightText = (TextField)gmMenu.rootVisualElement.Query("height");
+            //widthText = (TextField)gmMenu.rootVisualElement.Query("width");
+            //weightText = (TextField)gmMenu.rootVisualElement.Query("weight");
+            //ageText = (TextField)gmMenu.rootVisualElement.Query("age");
+            //spawn = (Button)gmMenu.rootVisualElement.Query("spawn").First();
+            //spawn.RegisterCallback<ClickEvent>(OnSpawnCreature);
         }
 
         // Start is called before the first frame update

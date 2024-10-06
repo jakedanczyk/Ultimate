@@ -228,7 +228,7 @@ namespace Urth
 
         public void OnScroll(InputAction.CallbackContext ctx)
         {
-            if(GameUIControl.Instance.mode == UI_MODE.CONSTRUCTION_PLANNING)
+            if(GameUIControl.Instance.mode == UI_MODE.CONSTRUCTION_PLANNING && ConstructionSettingsPanelControl.Instance.selectedWorksite != null)
             {
                 Vector2 wheelInput = ctx.ReadValue<Vector2>();
 

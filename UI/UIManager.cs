@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 namespace Urth
 {
+    public enum UI_GRAB
+    {
+        TITLE,
+        LEFT,RIGHT,TOP,BOTTOM,
+        TOP_LEFT,TOP_RIGHT,BOTTOM_LEFT,BOTTOM_RIGHT
+    }
 
     public class UIManager : MonoBehaviour
     {
@@ -22,6 +29,10 @@ namespace Urth
 
         public GameObject voxelWorksitePrefab;
 
+        public UIDocument gameUiDocument;
+        public bool globalLock;
+        public UIPanelControl activePanel;
+
         public static UIManager Instance { get; private set; }
         public void Awake()
         {
@@ -38,6 +49,15 @@ namespace Urth
         // Start is called before the first frame update
         void Start()
         {
+            gameUiDocument.rootVisualElement.RegisterCallback<PointerUpEvent>(evt =>
+            {
+                if (globalLock)
+                {
+                    globalLock = false;
+                    activePanel.ReleaseGrab();
+                }
+                Debug.Log("mouse up");
+            });
             useItemKey = input.FindActionMap(UrthConstants.UI_ACTION_MAP).FindAction("UseSelected").GetBindingDisplayString(0);
             dropItemKey = input.FindActionMap(UrthConstants.UI_ACTION_MAP).FindAction("DropSelected").GetBindingDisplayString(0);
             transferItemKey = input.FindActionMap(UrthConstants.UI_ACTION_MAP).FindAction("TransferSelected").GetBindingDisplayString(0);
@@ -53,6 +73,17 @@ namespace Urth
         {
             characterCreationMenu.Initialize();
             gameUIControl.Initialize();
+        }
+
+        public bool ClaimGlobalLock(UIPanelControl uIPanelControl)
+        {
+            if (globalLock) { return false; }
+            else
+            {
+                globalLock = true;
+                activePanel = uIPanelControl;
+                return true;
+            }
         }
     }
 

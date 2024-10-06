@@ -36,7 +36,7 @@ namespace Urth
         public Slider hSlider;
         public Slider rSlider;
         public Slider secondarySlider;
-        public Slider tertiarySlider;
+        public SliderInt tertiarySlider;
         public Toggle snaptoToggle;
         public DropdownField snaptoDropdown;
         public static ConstructionSettingsPanelControl Instance { get; private set; }
@@ -79,12 +79,14 @@ namespace Urth
 
         public void Update()
         {
+            base.Update();
             if (selectedPrefab != null && selectedWorksite != null 
                 && selectedWorksite.supplies != null  && selectedWorksite.supplies.Count > 0)
             {
                 //suppliesList.text = selectedWorksite.supplies[0].countNeeded.ToString();
 
                 selectedWorksite.SetHeightOffset(heightOffset);
+                constructionPlayer.heightOffset = heightOffset;
                 selectedWorksite.width = width;
                 selectedWorksite.length = length;
                 selectedWorksite.SetHeight(height);
@@ -121,7 +123,7 @@ namespace Urth
             heightOffsetSliderContainer = heightOffsetElement.Query("heightOffsetSliderContainer");
             heightOffsetInput = (TextField)heightOffsetElement.Query("heightOffsetInput");
             heightOffsetMinLabel = (Label)heightOffsetElement.Query("heightOffsetMin");
-            heightOffsetMaxLabel = (Label)heightOffsetElement.Query("heightMax");
+            heightOffsetMaxLabel = (Label)heightOffsetElement.Query("heightOffsetMax");
             heightElement = scrollView.Query("height");
             heightDisplay = (Label)heightElement.Query("heightDisplay");
             heightSliderContainer = heightElement.Query("heightSliderContainer");
@@ -149,9 +151,9 @@ namespace Urth
             secondaryMinLabel = (Label)secondaryElement.Query("secondaryMin");
             secondaryMaxLabel = (Label)secondaryElement.Query("secondaryMax");
             tertiaryElement = scrollView.Query("tertiary");
-            tertiaryInput = (TextField)secondaryElement.Query("tertiaryInput");
-            tertiaryMinLabel = (Label)secondaryElement.Query("tertiaryMin");
-            tertiaryMaxLabel = (Label)secondaryElement.Query("tertiaryMax");
+            tertiaryInput = (TextField)tertiaryElement.Query("tertiaryInput");
+            tertiaryMinLabel = (Label)tertiaryElement.Query("tertiaryMin");
+            tertiaryMaxLabel = (Label)tertiaryElement.Query("tertiaryMax");
 
             //lSlider = (Slider)scrollView.ElementAt(2);// (Slider)container.Query<Slider>("lengthSlider").First();
             //wSlider = (Slider)container.Query<Slider>("widthSlider").First();
@@ -173,11 +175,14 @@ namespace Urth
             hSlider = (Slider)scrollView.Query<Slider>("heightSlider").First();
             rSlider = (Slider)scrollView.Query<Slider>("rotationSlider").First();
             secondarySlider = (Slider)scrollView.Query<Slider>("secondarySlider").First();
+            tertiarySlider = (SliderInt)scrollView.Query<SliderInt>("tertiarySlider").First();
 
             heightOffsetSlider.RegisterCallback<ChangeEvent<float>>((evt) =>
             {
                 heightOffset = evt.newValue;
-                heightInput.SetValueWithoutNotify(evt.newValue.ToString());
+                heightOffsetInput.SetValueWithoutNotify(evt.newValue.ToString());
+                string display = (heightOffset > 0 ? "+" : "-") + (Mathf.Abs(heightOffset).ToString()) + "m";
+                HUDControl.Instance.SetConstructionOffset(display);
             });
             lSlider.RegisterCallback<ChangeEvent<float>>((evt) =>
             {
@@ -204,6 +209,11 @@ namespace Urth
                 secondaryValue = evt.newValue;
                 secondaryInput.SetValueWithoutNotify(evt.newValue.ToString());
             });
+            tertiarySlider.RegisterCallback<ChangeEvent<int>>((evt) =>
+            {
+                tertiaryValue = evt.newValue;
+                tertiaryInput.SetValueWithoutNotify(evt.newValue.ToString());
+            });
 
             heightOffsetInput.RegisterCallback<ChangeEvent<string>>((evt) =>
             {
@@ -212,6 +222,8 @@ namespace Urth
                 heightOffsetInput.value = val.ToString();
                 heightOffset = val;
                 heightOffsetSlider.value = val;
+                string display = (heightOffset > 0 ? "+" : "-") + (Mathf.Abs(heightOffset).ToString()) + "m";
+                HUDControl.Instance.SetConstructionOffset(display);
             });
             lengthInput.RegisterCallback<ChangeEvent<string>>((evt) =>
             {
@@ -253,6 +265,14 @@ namespace Urth
                 secondaryInput.value = val.ToString();
                 secondaryValue = val;
                 secondarySlider.value = val;
+            });
+            tertiaryInput.RegisterCallback<ChangeEvent<string>>((evt) =>
+            {
+                int val = int.Parse(evt.newValue);
+                val = val > selectedWorksite.maxTertiary ? selectedWorksite.maxTertiary : val < selectedWorksite.minTertiary ? selectedWorksite.minTertiary : val;
+                tertiaryInput.value = val.ToString();
+                tertiaryValue = val;
+                tertiarySlider.value = val;
             });
         }
 

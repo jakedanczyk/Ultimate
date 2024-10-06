@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeS: TROUSERS
-  type: 67
+  type: 70
+  typeSet: 1
   componentPrefab: {fileID: 9067991240412868644, guid: 40fc147441a446042936f18c9522fdab, type: 3}
   assembledPrefab: {fileID: 9067991240412868644, guid: 40fc147441a446042936f18c9522fdab, type: 3}
-  recip: {fileID: 11400000, guid: 27f3d5f302294674fb929fd1d5043166, type: 2}
-  textRecip: {fileID: 11400000, guid: 27f3d5f302294674fb929fd1d5043166, type: 2}
+  weaponPrefab: {fileID: 0}
+  recip: {fileID: 11400000, guid: cb88aef8f4e7bfe41a604cf5cee2555b, type: 2}
+  textRecip: {fileID: 11400000, guid: cb88aef8f4e7bfe41a604cf5cee2555b, type: 2}

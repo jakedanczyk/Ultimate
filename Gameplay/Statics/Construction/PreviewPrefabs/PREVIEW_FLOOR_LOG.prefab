@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staticTypeName: FLOOR_LOG
-  staticType: 34
+  staticType: 35
   constructionMethod: 0
   supportLayer: 2
   isBuildable: 0
@@ -78,16 +78,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  needsComponentUpdates: 0
+  needsComponentUpdates: 1
   supported: 0
   staticPrefab: {fileID: 0}
   constructionProgress: 0
   supplyProgress: 0
+  mass: 0
   size: 1
   length: 2
   width: 2
   height: 0.1
+  heightOffset: 0
   rotation: 0
+  minHeightOffset: -1
+  maxHeightOffset: 1
   minLength: 1
   maxLength: 20
   minWidth: 1
@@ -100,11 +104,24 @@ MonoBehaviour:
   maxSecondary: 0
   minTertiary: 0
   maxTertiary: 0
+  disableHeight: 0
+  disableWidth: 0
+  disableLength: 0
   hasSecondary: 0
   hasTertiary: 0
   constructionMethod: 0
   primaryVolume: 0
   supplies: []
+  supportColliderGrid:
+  - {fileID: 1314698114654562467}
+  - {fileID: 433095342516770825}
+  - {fileID: 5355931995990163233}
+  - {fileID: 3772656741704058806}
+  - {fileID: 6110004765375607087}
+  - {fileID: 9187573664167489854}
+  - {fileID: 415835499221481311}
+  - {fileID: 3235759580865041343}
+  - {fileID: 8416170278634654220}
 --- !u!54 &9104505535301951128
 Rigidbody:
   m_ObjectHideFlags: 0

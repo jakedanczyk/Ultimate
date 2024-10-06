@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="ConstructionPanelContents" src="project://database/Assets/UI/Documents/GameMenus/Construction/ConstructionPanelContents.uxml?fileID=9197481963319205126&amp;guid=ccee336daed3f5940bba16acc3e7f0d7&amp;type=3#ConstructionPanelContents" />
-    <ui:VisualElement name="Panel">
-        <ui:VisualElement style="height: 800px; width: 350px;">
+    <ui:Template name="ConstructionPanelContents" src="project://database/Assets/UI/Documents/GameMenus/ConstructionPlanning/ConstructionPatternsContents.uxml?fileID=9197481963319205126&amp;guid=ccee336daed3f5940bba16acc3e7f0d7&amp;type=3#ConstructionPatternsContents" />
+    <ui:VisualElement name="Panel" style="width: 100%; height: 100%;">
+        <ui:VisualElement style="height: 100%; width: 100%;">
             <ui:VisualElement name="ulBorder" style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; background-color: rgb(115, 170, 115);" />
             <ui:VisualElement name="uBorder" style="position: absolute; left: 20px; top: 0; width: auto; height: 20px; right: 20px; background-color: rgb(115, 170, 115);" />
             <ui:VisualElement name="urBorder" style="position: absolute; left: auto; top: 0; width: 20px; height: 20px; right: 0; background-color: rgb(115, 170, 115);" />

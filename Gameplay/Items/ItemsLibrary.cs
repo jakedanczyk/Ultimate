@@ -69,6 +69,7 @@ namespace Urth
             prefabsDict = new Dictionary<ITEM, ItemModelPrefab>(prefabs.Count);
             foreach (ItemModelPrefab itemModelPrefab in prefabs)
             {
+                itemModelPrefab.SetType();
                 prefabsDict[itemModelPrefab.type] = itemModelPrefab;
             }
             PopulateTemplates();

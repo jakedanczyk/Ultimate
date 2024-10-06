@@ -7,10 +7,10 @@
     <ui:Template name="MessageLog" src="project://database/Assets/UI/Documents/MessageLog/MessageLog.uxml?fileID=9197481963319205126&amp;guid=25f89581a051da546b4dcc6531d6004d&amp;type=3#MessageLog" />
     <ui:Template name="NewConstructionInterface" src="project://database/Assets/UI/Documents/GameMenus/Construction/NewConstructionInterface.uxml?fileID=9197481963319205126&amp;guid=aedf9e04320fdc34eb4391b9bdcc04b7&amp;type=3#NewConstructionInterface" />
     <ui:Instance template="HUD" name="HUD" style="width: 100%; height: 100%; display: flex; position: absolute;" />
-    <ui:Instance template="ConstructionInterface" name="ConstructionPlanningInterface" style="display: none; position: absolute;" />
-    <ui:Instance template="CharacterInterface" name="CharacterInterface" style="display: none; visibility: visible; position: absolute;" />
+    <ui:Instance template="ConstructionInterface" name="ConstructionPlanningInterface" style="display: none; width: 100%; height: 100%;" />
+    <ui:Instance template="CharacterInterface" name="CharacterInterface" style="display: none; visibility: visible; position: absolute; width: 100%; height: 100%;" />
     <ui:Instance template="GameMasterPanel" name="GameMasterPanel" style="display: none;" />
     <ui:Instance template="EscapeMenu" name="EscapeMenu" style="display: none; position: absolute;" />
     <ui:Instance template="MessageLog" name="MessageLog" style="display: none; position: absolute;" />
-    <ui:Instance template="NewConstructionInterface" name="ConstructionInterface" style="display: none;" />
+    <ui:Instance template="NewConstructionInterface" name="ConstructionInterface" style="display: none; width: 100%; height: 100%;" />
 </ui:UXML>

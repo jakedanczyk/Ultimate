@@ -8,10 +8,11 @@ namespace Urth
     {
         public string typeS;
         public ITEM type;
+        public bool typeSet;
 
         public void Awake()
         {
-            type = (ITEM)System.Enum.Parse(typeof(ITEM), typeS);
+            SetType();
         }
 
         public GameObject componentPrefab;
@@ -20,5 +21,11 @@ namespace Urth
 
         public UMA.CharacterSystem.UMAWardrobeRecipe recip;
         public UMA.UMATextRecipe textRecip;
+
+        public void SetType()
+        {
+            type = (ITEM)System.Enum.Parse(typeof(ITEM), typeS);
+            typeSet = true;
+        }
     }
 }
