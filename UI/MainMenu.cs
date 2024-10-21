@@ -16,14 +16,14 @@ namespace Urth
         public GameObject flyCamera;
         public UIDocument mainMenu;
 
-        public Button newWorld;
-        public Button loadWorld;
-        public Button settings;
-        public Button manual;
-        public Button exit;
-        public Button testWorld;
+        public Button btnNewWorld;
+        public Button btnLoadWorld;
+        public Button btnSettings;
+        public Button btnManual;
+        public Button btnExit;
+        public Button btnTestWorld;
 
-        public VisualElement outer;
+        public VisualElement buttonsContainer;
         public VisualElement container;
         public VisualElement menu;
 
@@ -40,17 +40,59 @@ namespace Urth
             }
 
             mainMenu = this.GetComponent<UIDocument>();
-            outer = mainMenu.rootVisualElement.Query("outer").First();
-            container = mainMenu.rootVisualElement.Query("container").First();
-            menu = mainMenu.rootVisualElement.Query("menu").First();
+            buttonsContainer = mainMenu.rootVisualElement.Query("menuOptions").First();
+            //container = mainMenu.rootVisualElement.Query("container").First();
+            //menu = mainMenu.rootVisualElement.Query("menu").First();
 
-            testWorld = (Button)mainMenu.rootVisualElement.Query("testWorld").First();
-            testWorld.RegisterCallback<ClickEvent>(OnTestWorld);
+            btnNewWorld = (Button)buttonsContainer.Query("new").First();
+            btnNewWorld.RegisterCallback<ClickEvent>(OnNewWorld);
+
+            btnLoadWorld = (Button)buttonsContainer.Query("load").First();
+            btnLoadWorld.RegisterCallback<ClickEvent>(OnLoad);
+
+            btnSettings = (Button)buttonsContainer.Query("settings").First();
+            btnSettings.RegisterCallback<ClickEvent>(OnSettings);
+
+            btnManual = (Button)buttonsContainer.Query("manual").First();
+            btnManual.RegisterCallback<ClickEvent>(OnManual);
+
+            btnExit = (Button)buttonsContainer.Query("exit").First();
+            btnExit.RegisterCallback<ClickEvent>(OnExit);
+
+            btnTestWorld = (Button)buttonsContainer.Query("testWorld").First();
+            btnTestWorld.RegisterCallback<ClickEvent>(OnTestWorld);
+        }
+
+
+        public void OnNewWorld(ClickEvent e)
+        {
+            Debug.Log("OnNewWorld");
+        }
+
+        public void OnLoad(ClickEvent e)
+        {
+            Debug.Log("OnLoad");
+        }
+
+        public void OnSettings(ClickEvent e)
+        {
+            Debug.Log("OnSettings");
+        }
+
+        public void OnManual(ClickEvent e)
+        {
+            Debug.Log("OnManual");
+        }
+
+        public void OnExit(ClickEvent e)
+        {
+            Debug.Log("OnExit");
 
         }
 
         public void OnTestWorld(ClickEvent e)
         {
+            Debug.Log("OnTestWorld");
             gameManager.worldGenManager.GenFlatWorld();
             gameManager.terrainManager.GenerateFlatTerrain();
             gameManager.terrainManager.ManageTerrain();

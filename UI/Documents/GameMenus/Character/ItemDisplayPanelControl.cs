@@ -128,7 +128,7 @@ namespace Urth
                     }
                 }
                 else if (ItemsLibrary.Instance.templatesDict[selectedItem.type].tags.Contains(ITEM_TAG.WIELDABLE))
-                {
+                {   
                     bool preferLeft = PlayerPreferences.Instance.offhandWeapons.Contains(selectedItem.type);
                     if(preferLeft && playerInventory.leftItem == null && !playerInventory.carryingLeft)
                     {
