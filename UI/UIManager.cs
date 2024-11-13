@@ -6,6 +6,13 @@ using UnityEngine.UIElements;
 
 namespace Urth
 {
+    public enum URTH_DOCUMENT
+    {
+        MAIN_MENU,
+        PAUSE_MENU,
+        GAME_INTERFACE
+    }
+
     public enum UI_GRAB
     {
         TITLE,
@@ -17,6 +24,7 @@ namespace Urth
     {
         public GameUIControl gameUIControl;
         public MainMenu mainMenu;
+        //public PauseMenu pauseMenu;
         public GameMasterPanelControl gameMasterPanel;
         public CharacterCreationMenuControl characterCreationMenu;
         public InventoryPanelControl inventoryPanel;
@@ -83,6 +91,28 @@ namespace Urth
                 globalLock = true;
                 activePanel = uIPanelControl;
                 return true;
+            }
+        }
+
+        public void SetActiveDocument(URTH_DOCUMENT document)
+        {
+            switch (document)
+            {
+                case URTH_DOCUMENT.MAIN_MENU:
+                    mainMenu.Activate();
+                    //pauseMenu.Deactive();
+                    gameUIControl.Deactivate();
+                    break;
+                case URTH_DOCUMENT.PAUSE_MENU:
+                    //pauseMenu.Activate();
+                    mainMenu.Deactivate();
+                    gameUIControl.Deactivate();
+                    break;
+                case URTH_DOCUMENT.GAME_INTERFACE:
+                    gameUIControl.Activate();
+                    mainMenu.Deactivate();
+                    //pauseMenu.Deactive();
+                    break;
             }
         }
     }

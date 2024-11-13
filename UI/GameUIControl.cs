@@ -20,6 +20,8 @@ namespace Urth
 
         [SerializeField]
         VisualTreeAsset inventoryItemTemplate;
+        
+        public UIDocument gameUiDocument;
 
         public Button newWorld;
         public Button loadWorld;
@@ -291,6 +293,16 @@ namespace Urth
              *  set as action
              */
             //PlayerPreferences.Instance.keybinds[slot]
+        }
+
+        public void Activate()
+        {
+            gameUiDocument.gameObject.SetActive(true);
+        }
+
+        public void Deactivate()
+        {
+            gameUiDocument.gameObject.SetActive(false);
         }
     }
 

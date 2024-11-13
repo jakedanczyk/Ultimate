@@ -14,7 +14,7 @@ namespace Urth
         public GameObject playerCharacter;
         public PhysicsBasedCharacterController.CharacterManager characterManager;
         public GameObject flyCamera;
-        public UIDocument mainMenu;
+        public UIDocument mainMenuDocument;
 
         public Button btnNewWorld;
         public Button btnLoadWorld;
@@ -39,8 +39,8 @@ namespace Urth
                 Instance = this;
             }
 
-            mainMenu = this.GetComponent<UIDocument>();
-            buttonsContainer = mainMenu.rootVisualElement.Query("menuOptions").First();
+            mainMenuDocument = this.GetComponent<UIDocument>();
+            buttonsContainer = mainMenuDocument.rootVisualElement.Query("menuOptions").First();
             //container = mainMenu.rootVisualElement.Query("container").First();
             //menu = mainMenu.rootVisualElement.Query("menu").First();
 
@@ -97,6 +97,16 @@ namespace Urth
             gameManager.terrainManager.GenerateFlatTerrain();
             gameManager.terrainManager.ManageTerrain();
             ultimateTerrain.enabled = true;
+        }
+
+        public void Activate()
+        {
+            mainMenuDocument.gameObject.SetActive(true);
+        }
+
+        public void Deactivate()
+        {
+            mainMenuDocument.gameObject.SetActive(false);
         }
     }
 }

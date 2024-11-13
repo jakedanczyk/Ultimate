@@ -8,6 +8,7 @@ namespace Urth
 {
     public enum PLAYER_STATE
     {
+        NULL,
         FREECAM,
         CHARACTER,
     }
@@ -31,6 +32,7 @@ namespace Urth
         public UltimateTerrains.UltimateTerrain ultimateTerrain;
         public WorldGenManager worldGenManager;
         public TerrainManager terrainManager;
+        public UIManager uiManager;
         public SCENE_TYPE scene;
         public PLAYER_STATE playerState;
         public GAME_MODE gameMode;
@@ -88,7 +90,8 @@ namespace Urth
             switch (gameMode)
             {
                 case GAME_MODE.MAIN:
-                    SetPlayerState(PLAYER_STATE.CHARACTER);
+                    uiManager.SetActiveDocument(URTH_DOCUMENT.MAIN_MENU);
+                    SetPlayerState(PLAYER_STATE.NULL);
                     break;
                 case GAME_MODE.DEV:
                     SetPlayerState(PLAYER_STATE.FREECAM);
@@ -145,6 +148,9 @@ namespace Urth
         {
             switch (state)
             {
+                case PLAYER_STATE.NULL:
+                    playerCharacter.SetActive(false);
+                    break;
                 case PLAYER_STATE.CHARACTER:
                     flyState = (Fly)malbersPlayer.State_Get(flyStateID);
                     flyState.PitchLimit = 80;
