@@ -10,10 +10,11 @@ namespace Urth
         CHARACTER,
         CONSTRUCTION_PLANNING,
         CONSTRUCTION,
-        CRAFTING
+        CRAFTING,
+        WORK
     }
 
-    public class GameUIControl : MonoBehaviour
+    public class    GameUIControl : MonoBehaviour
     {
         public MalbersAnimations.MInputLink inputLink;
         public MalbersAnimations.MInputLinkManager inputLinkManager;
@@ -42,6 +43,10 @@ namespace Urth
         public CharacterUIControl characterUIControl;
         public ConstructionPlanningUIControl constructionPlanningUIControl;
         public ConstructionUIControl constructionUIControl;
+
+        public CraftingUIControl craftingUIControl;
+        public WorkUIControl workUIControl;
+
 
 
         static string CHARACTER_UI = "character";
@@ -137,13 +142,16 @@ namespace Urth
                 switch (oldMode)
                 {
                     case UI_MODE.CRAFTING:
-                        //craftingPanelControl.BuildAndPopulate();
+                        craftingUIControl.Disable();
                         break;
                     case UI_MODE.CHARACTER:
                         characterUIControl.Disable();
                         break;
                     case UI_MODE.CONSTRUCTION_PLANNING:
                         constructionPlanningUIControl.Disable();
+                        break;
+                    case UI_MODE.WORK:
+                        workUIControl.Disable();
                         break;
                 }
                 switch (mode)
@@ -159,6 +167,9 @@ namespace Urth
                     case UI_MODE.CONSTRUCTION_PLANNING:
                         constructionPlanningUIControl.Enable();
                         inputLinkManager.SwitchActionMap(CONSTRUCTION_UI_ACTION_MAP);
+                        break;
+                    case UI_MODE.WORK:
+                        workUIControl.Enable();
                         break;
                 }
             }
@@ -178,6 +189,8 @@ namespace Urth
                         StaticsManager.Instance.ToggleConstructionHUD(true);
                         inputLinkManager.SwitchActionMap(CONSTRUCTION_ACTION_MAP);
                         break;
+                    case UI_MODE.WORK:
+                        break;
                 }
             }
             //make changes that must occur whether or not Menus are open
@@ -194,6 +207,9 @@ namespace Urth
                     constructionPlayer.StopPreview();
                     StaticsManager.Instance.ToggleConstructionHUD(false);
                     break;
+                case UI_MODE.WORK:
+                    //stop workPreviewIndicator
+                    break;
             }
             switch (mode)
             {
@@ -205,6 +221,9 @@ namespace Urth
                 case UI_MODE.CONSTRUCTION_PLANNING:
                     constructionPlayer.StartPreview();
                     StaticsManager.Instance.ToggleConstructionHUD(true);
+                    break;
+                case UI_MODE.WORK:
+                    //start workPreviewIndicator
                     break;
             }
 

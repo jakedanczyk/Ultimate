@@ -22,6 +22,7 @@ namespace Urth
         public Button btnManual;
         public Button btnExit;
         public Button btnTestWorld;
+        public Button btnFlatWorld;
 
         public VisualElement buttonsContainer;
         public VisualElement container;
@@ -61,6 +62,9 @@ namespace Urth
 
             btnTestWorld = (Button)buttonsContainer.Query("testWorld").First();
             btnTestWorld.RegisterCallback<ClickEvent>(OnTestWorld);
+
+            btnFlatWorld = (Button)buttonsContainer.Query("flatWorld").First();
+            btnFlatWorld.RegisterCallback<ClickEvent>(OnFlatWorld);
         }
 
 
@@ -93,6 +97,15 @@ namespace Urth
         public void OnTestWorld(ClickEvent e)
         {
             Debug.Log("OnTestWorld");
+            gameManager.worldGenManager.GenWorld();
+            gameManager.worldGenManager.GenerateTerrain();
+            gameManager.terrainManager.ManageTerrain();
+            ultimateTerrain.enabled = true;
+        }
+
+        public void OnFlatWorld(ClickEvent e)
+        {
+            Debug.Log("OnFlatWorld");
             gameManager.worldGenManager.GenFlatWorld();
             gameManager.terrainManager.GenerateFlatTerrain();
             gameManager.terrainManager.ManageTerrain();

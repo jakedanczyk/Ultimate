@@ -12,6 +12,7 @@
                 <ui:Button text="Player Manual" display-tooltip-when-elided="true" name="manual" class="main-menu-btn" style="background-color: rgba(228, 228, 228, 0.36); width: 100px;" />
                 <ui:Button text="Exit" display-tooltip-when-elided="true" name="exit" class="main-menu-btn" style="background-color: rgba(228, 228, 228, 0.36); width: 55px;" />
                 <ui:Button text="Test World" display-tooltip-when-elided="true" name="testWorld" class="main-menu-btn" style="width: 100px; background-color: rgba(228, 228, 228, 0.36);" />
+                <ui:Button text="Flat World" display-tooltip-when-elided="true" name="flatWorld" class="main-menu-btn" style="width: 100px; background-color: rgba(228, 228, 228, 0.36);" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
