@@ -14,7 +14,8 @@ namespace Urth
         WORK
     }
 
-    public class    GameUIControl : MonoBehaviour
+
+    public class GameUIControl : MonoBehaviour
     {
         public MalbersAnimations.MInputLink inputLink;
         public MalbersAnimations.MInputLinkManager inputLinkManager;

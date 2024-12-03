@@ -164,6 +164,12 @@ namespace Urth
             }
         }
 
+        public void SetCharacterStance(string newStanceString)
+        {
+            CREATURE_MODE newStance = (CREATURE_MODE)System.Enum.Parse(typeof(CREATURE_MODE), newStanceString);
+            playerCreatureManager.ChangeStance(newStance);
+        }
+
         public UPlayerBuilder uPlayerBuilder;
         public void ScanVoxel()
         {
