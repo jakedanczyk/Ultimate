@@ -9,6 +9,7 @@ namespace Urth
 
     public class UrthControl : MonoBehaviour
     {
+        public GameUIControl gameUIControl;
         public PlayerCreatureManager playerCreatureManager;
         public UInputReader inputReader;
         bool inputReset = false;
@@ -129,7 +130,7 @@ namespace Urth
 
         public void RightDown()
         {
-            Debug.Log("RightDOwn");
+            Debug.Log("RightDown");
             if (playerCreatureManager.combatMode && !playerCreatureManager.working)
             {
                 //start charging right hand
@@ -164,11 +165,85 @@ namespace Urth
             }
         }
 
-        public void SetCharacterStance(string newStanceString)
+        public void ToggleGuard()
+        {
+            Debug.Log("TODO ToggleGuard");
+        }
+
+        public void RaiseWeapons()
+        {
+            playerCreatureManager.RaiseWeapons();
+        }
+
+        public void RaiseLeftWeapon()
+        {
+            playerCreatureManager.RaiseLeftWeapon();
+        }
+
+        public void RaiseRightWeapon()
+        {
+            playerCreatureManager.RaiseRightWeapon();
+        }
+
+        public void DrawWeapons()
+        {
+            playerCreatureManager.DrawWeapons();
+        }
+
+        public void DrawLeftHand()
+        {
+            playerCreatureManager.DrawLeftWeapon();
+        }
+
+        public void DrawRightHand()
+        {
+            playerCreatureManager.DrawRightWeapon();
+        }
+
+        public void SetCreatureMode(string newStanceString)
         {
             CREATURE_MODE newStance = (CREATURE_MODE)System.Enum.Parse(typeof(CREATURE_MODE), newStanceString);
-            playerCreatureManager.ChangeStance(newStance);
+            playerCreatureManager.ChangeMode(newStance);
         }
+
+        public void CrouchRestPosition()
+        {
+            Debug.Log("TODO CrouchRest");
+        }
+        public void SitRestPosition()
+        {
+            Debug.Log("TODO SitRest");
+        }
+        public void LayRestPosition()
+        {
+            Debug.Log("TODO LayRest");
+        }
+
+        public void LowerPosture()
+        {
+            Debug.Log("TODO LowerPosture");
+        }
+
+        public void RaisePosture()
+        {
+            Debug.Log("TODO RaisePosture");
+        }
+
+        public void DecreasePace()
+        {
+            Debug.Log("TODO DecreasePace");
+        }
+
+        public void IncreasePace()
+        {
+            Debug.Log("TODO IncreasePace");
+        }
+
+        public void AutoRun()
+        {
+            Debug.Log("TODO AutoRun");
+        }
+
 
         public UPlayerBuilder uPlayerBuilder;
         public void ScanVoxel()
@@ -186,6 +261,16 @@ namespace Urth
             Debug.Log(input);
         }
 
+        public void JumpDown()
+        {
+            //#TODO animation of preparing to jump
+            //mark start time
+        }
+
+        public void JumpUp()
+        {
+
+        }
     }
 
 }

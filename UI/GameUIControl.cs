@@ -17,6 +17,7 @@ namespace Urth
 
     public class GameUIControl : MonoBehaviour
     {
+        public UrthControl urthControl;
         public MalbersAnimations.MInputLink inputLink;
         public MalbersAnimations.MInputLinkManager inputLinkManager;
 
@@ -195,8 +196,10 @@ namespace Urth
                 }
             }
             //make changes that must occur whether or not Menus are open
-            // -start/stop ConstructionPlayer
-            // -change inputActionMap
+            //-set character CreatureMode
+            //-start/stop ConstructionPlayer
+            // -change inputActionMap (actually maybe won't do this, instead keep controlls mostly the same and handle the few exceptions in the functions bound to inputs with switch statements
+            //
             switch (oldMode)
             {
                 case UI_MODE.CRAFTING:
@@ -227,7 +230,8 @@ namespace Urth
                     //start workPreviewIndicator
                     break;
             }
-
+            //urthControl.
+            //playerCreatureManager.
         }
 
         public void Initialize()
@@ -315,6 +319,11 @@ namespace Urth
             //PlayerPreferences.Instance.keybinds[slot]
         }
 
+        public void InteractMenu()
+        {
+            Debug.Log("InteractMenu");
+        }
+
         public void Activate()
         {
             gameUiDocument.gameObject.SetActive(true);
@@ -323,6 +332,16 @@ namespace Urth
         public void Deactivate()
         {
             gameUiDocument.gameObject.SetActive(false);
+        }
+
+        public void OpenSkipTimeMenu()
+        {
+            Debug.Log("TODO SkipTime menu");
+        }
+
+        public void TogglePauseTime()
+        {
+            Debug.Log("TODO PauseTime");
         }
     }
 

@@ -114,6 +114,33 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Rest",
+                    "type": "Button",
+                    "id": "adcaae54-9a85-4463-8a89-0bc55dbe9744",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AutoRun",
+                    "type": "Button",
+                    "id": "2f701827-627e-4c6d-ba1f-a79b0c0068ff",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RaiseWeapons",
+                    "type": "Button",
+                    "id": "ed8177e6-f607-4e1b-a9e0-bf36fa97e07d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Dodge",
                     "type": "Button",
                     "id": "8fd92621-9b06-4702-a5d4-f2b1d911906e",
@@ -144,6 +171,42 @@
                     "name": "SpeedDown",
                     "type": "Button",
                     "id": "86f8d059-aa47-4687-ab4a-62f9ef397290",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LowerPosture",
+                    "type": "Button",
+                    "id": "1d306faf-61a6-4c67-9c8b-06943565de40",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RaisePosture",
+                    "type": "Button",
+                    "id": "88c66dfe-f2c9-422f-be0b-6b8804fc215f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DecreasePace",
+                    "type": "Button",
+                    "id": "ff9a3024-2702-4624-9947-57acc89d3ea9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "IncreasePace",
+                    "type": "Button",
+                    "id": "52971c04-cfa3-476d-8f21-b95c313b5fbc",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -545,7 +608,7 @@
                 {
                     "name": "",
                     "id": "8c98e675-55c7-419b-841c-c2d8bca9877f",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/g",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
@@ -633,7 +696,7 @@
                 {
                     "name": "",
                     "id": "529d1bd1-be85-47dc-9ca3-1a297854ce60",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
@@ -666,7 +729,7 @@
                 {
                     "name": "",
                     "id": "479b5b6d-a007-4c12-b533-fc126bae5849",
-                    "path": "<Gamepad>/dpad/up",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
@@ -688,7 +751,7 @@
                 {
                     "name": "",
                     "id": "c9db7513-4479-47dc-843e-afbd6b3439db",
-                    "path": "<Gamepad>/dpad/down",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
@@ -776,7 +839,7 @@
                 {
                     "name": "",
                     "id": "ba88a21b-0f92-4c87-997d-0ad0486a0116",
-                    "path": "<Gamepad>/dpad/left",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
@@ -787,7 +850,7 @@
                 {
                     "name": "",
                     "id": "a3d74300-69a7-4fce-8e10-5b4c00f310c7",
-                    "path": "<Keyboard>/3",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
@@ -798,7 +861,7 @@
                 {
                     "name": "",
                     "id": "87f6c693-12e7-401b-99e7-3a08257354f1",
-                    "path": "<Keyboard>/4",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
@@ -809,7 +872,7 @@
                 {
                     "name": "",
                     "id": "62b9828f-0a5c-4aa6-b99b-1d2c57b096ba",
-                    "path": "<Keyboard>/5",
+                    "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
@@ -820,7 +883,7 @@
                 {
                     "name": "",
                     "id": "4470f4b4-9a18-45ff-8614-b13edd66d62c",
-                    "path": "<Keyboard>/6",
+                    "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
@@ -831,7 +894,7 @@
                 {
                     "name": "",
                     "id": "f165f818-9477-4381-82b9-486d077c7c12",
-                    "path": "<Keyboard>/7",
+                    "path": "<Keyboard>/5",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
@@ -897,7 +960,7 @@
                 {
                     "name": "",
                     "id": "65ce8369-1770-4ad5-9d75-476eb128a01f",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
@@ -974,7 +1037,7 @@
                 {
                     "name": "",
                     "id": "a2299278-a4ff-4a9a-8065-8156f0a2249b",
-                    "path": "<Gamepad>/dpad/left",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
@@ -1045,6 +1108,105 @@
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8eb7aa5-6040-4cea-afd8-05ba4ae3bd64",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "LowerPosture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc451e59-d4d1-4c7a-af56-0c27e4a208d4",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "LowerPosture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a43cd3e-9fa0-46a3-bc5a-4a16f8e5dda6",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "RaisePosture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9ac66671-7a55-409c-96c1-1ae5eca0b68a",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "RaisePosture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4cbd40da-5cd8-41d4-8828-fa9556c7812c",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Rest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "77e39135-7c7c-4aea-9ccc-73e58716f9ae",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "AutoRun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc441324-d67f-4953-b77e-e594556319bd",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "RaiseWeapons",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30e70688-156e-4c99-869e-00769734c7cc",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "IncreasePace",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae3253b8-d9f8-43d5-8904-ed03cc805ba3",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "DecreasePace",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
