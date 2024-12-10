@@ -222,7 +222,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PauseMenu",
+                    "name": "EscapeMenu",
                     "type": "Button",
                     "id": "95cdb508-ce22-4fed-a00c-aafe49a479d0",
                     "expectedControlType": "Button",
@@ -942,7 +942,7 @@
                     "interactions": "MultiTap(tapTime=0.2,tapDelay=0.4,tapCount=3,pressPoint=0.5)",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
-                    "action": "PauseMenu",
+                    "action": "EscapeMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -953,7 +953,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
-                    "action": "PauseMenu",
+                    "action": "EscapeMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -276,15 +276,15 @@ namespace Urth
                 switch (mode)
                 {
                     case UI_MODE.CRAFTING:
-                        inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
+                        //inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
                         //craftingPanelControl.BuildAndPopulate();
                         break;
                     case UI_MODE.CHARACTER:
-                        inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
+                        //inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
                         characterUIControl.Enable();
                         break;
                     case UI_MODE.CONSTRUCTION_PLANNING:
-                        inputLinkManager.SwitchActionMap(CONSTRUCTION_UI_ACTION_MAP);
+                        //inputLinkManager.SwitchActionMap(CONSTRUCTION_UI_ACTION_MAP);
                         constructionPlanningUIControl.Enable();
                         break;
                 }
@@ -342,6 +342,11 @@ namespace Urth
         public void TogglePauseTime()
         {
             Debug.Log("TODO PauseTime");
+        }
+
+        public void ToggleEscapeMenu()
+        {
+            Debug.Log("TODO EscapeMenu");
         }
     }
 

@@ -117,7 +117,12 @@ namespace Urth
 
         public void LeftDown()
         {
-            if (playerCreatureManager.combatMode && !playerCreatureManager.working)
+            Debug.Log("LeftDown");
+            if (drawWeaponsBtnDown)
+            {
+                DrawLeftHand();
+            }
+            else if (playerCreatureManager.combatMode && !playerCreatureManager.working)
             {
                 //start charging left hand
                 //playerCreatureManager.offense
@@ -131,7 +136,11 @@ namespace Urth
         public void RightDown()
         {
             Debug.Log("RightDown");
-            if (playerCreatureManager.combatMode && !playerCreatureManager.working)
+            if (drawWeaponsBtnDown)
+            {
+                DrawRightHand();
+            }
+            else if (playerCreatureManager.combatMode && !playerCreatureManager.working)
             {
                 //start charging right hand
                 //playerCreatureManager.offense
@@ -172,6 +181,7 @@ namespace Urth
 
         public void RaiseWeapons()
         {
+            Debug.Log("TODO RaiseWeapons");
             playerCreatureManager.RaiseWeapons();
         }
 
@@ -185,19 +195,48 @@ namespace Urth
             playerCreatureManager.RaiseRightWeapon();
         }
 
-        public void DrawWeapons()
+        bool drawWeaponsBtnDown = false;
+        bool drawnAWeapon = false;
+        bool drawnLeftWeapon = false;
+        bool drawnRightWeapon = false;
+
+        public void DrawWeaponsBtnDown()
         {
-            playerCreatureManager.DrawWeapons();
+            Debug.Log("drawWeaponsBtnDown");
+            drawWeaponsBtnDown = true;
+            drawnAWeapon = false;
+            drawnLeftWeapon = false;
+            drawnRightWeapon = false;
+        }
+
+        public void DrawWeaponsBtnUp()
+        {
+            Debug.Log("drawWeaponsBtnUp");
+            drawWeaponsBtnDown = false;
+            if (!drawnAWeapon)
+            {
+                playerCreatureManager.DrawWeapons();
+            }
         }
 
         public void DrawLeftHand()
         {
-            playerCreatureManager.DrawLeftWeapon();
+            if (!drawnLeftWeapon)
+            {
+                drawnAWeapon = true;
+                drawnLeftWeapon = true;
+                playerCreatureManager.DrawLeftWeapon();
+            }
         }
 
         public void DrawRightHand()
         {
-            playerCreatureManager.DrawRightWeapon();
+            if (!drawnRightWeapon)
+            {
+                drawnAWeapon = true;
+                drawnRightWeapon = true;
+                playerCreatureManager.DrawLeftWeapon();
+            }
         }
 
         public void SetCreatureMode(string newStanceString)

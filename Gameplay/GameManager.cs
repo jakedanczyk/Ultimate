@@ -9,6 +9,7 @@ namespace Urth
     public enum PLAYER_STATE
     {
         NULL,
+        INACTIVE,
         FREECAM,
         CHARACTER,
     }
@@ -184,6 +185,15 @@ namespace Urth
 
         public bool isPlacingStatic;
         public string placementStaticId;
+
+        public void DisableTestArena()
+        {
+            testPlane.SetActive(false);
+        }
+        public void EnableTestArena()
+        {
+            testPlane.SetActive(true);
+        }
 
     }
 }
