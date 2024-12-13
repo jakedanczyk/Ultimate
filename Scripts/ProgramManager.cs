@@ -6,9 +6,10 @@ namespace Urth
 {
     public enum PROGRAM_MODE
     {
-        NULL,//DO NOTHING
+        NULL,//Do nothing on start
         MAIN, //start to main menu
-        DEV_CHAR, //start to default char in static prefab arena
+        DEV_CHAR, //start to default character in a static (non-voxel) prefab arena
+        DEV_FLAT, //start to a flat voxel landscape (to skip time generating a world and terrain)
         DEV_TERRAIN, //start to default terrainGen then freecam after gen complete
     }
 
@@ -26,9 +27,11 @@ namespace Urth
                 case PROGRAM_MODE.NULL:
                     break;
                 case PROGRAM_MODE.MAIN:
+                    gameManager.SetGameMode(GAME_MODE.MAIN);
                     uiManager.mainMenu.gameObject.SetActive(true);
                     break;
                 case PROGRAM_MODE.DEV_CHAR:
+                    gameManager.SetGameMode(GAME_MODE.DEV);
                     gameManager.EnableTestArena();
                     break;
                 case PROGRAM_MODE.DEV_TERRAIN:

@@ -23,8 +23,8 @@ namespace Urth
     public class UIManager : MonoBehaviour
     {
         public GameUIControl gameUIControl;
-        public MainMenu mainMenu;
-        //public PauseMenu pauseMenu;
+        public MainMenuControl mainMenu;
+        public PauseMenuControl pauseMenu;
         public GameMasterPanelControl gameMasterPanel;
         public CharacterCreationMenuControl characterCreationMenu;
         public InventoryPanelControl inventoryPanel;
@@ -94,13 +94,19 @@ namespace Urth
             }
         }
 
+        //
+        /// <summary>
+        /// Sets which 'UIDocument' (a Unity.UIElements class) is active.
+        /// 
+        /// </summary>
+        /// <param name="document"></param>
         public void SetActiveDocument(URTH_DOCUMENT document)
         {
             switch (document)
             {
                 case URTH_DOCUMENT.MAIN_MENU:
                     mainMenu.Activate();
-                    //pauseMenu.Deactive();
+                    pauseMenu.Deactivate();
                     gameUIControl.Deactivate();
                     break;
                 case URTH_DOCUMENT.PAUSE_MENU:
@@ -115,6 +121,21 @@ namespace Urth
                     break;
             }
         }
+
+        public void OpenMainMenu()
+        {
+            //set active
+            SetActiveDocument(URTH_DOCUMENT.MAIN_MENU);
+            //set visible
+            mainMenu.SetVisible();
+        }
+
+        public void OpenPauseMenu()
+        {
+            SetActiveDocument(URTH_DOCUMENT.PAUSE_MENU);
+            pauseMenu.SetVisible();
+        }
+
     }
 
 }

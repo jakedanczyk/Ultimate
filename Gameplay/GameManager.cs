@@ -88,6 +88,7 @@ namespace Urth
         // Start is called before the first frame update
         void Start()
         {
+            //gameMode is set in Awake by the ProgramManager
             switch (gameMode)
             {
                 case GAME_MODE.MAIN:
@@ -135,6 +136,16 @@ namespace Urth
 
         public PLAYER_STATE targetState;
         public PLAYER_STATE currentState;
+
+        /// <summary>
+        /// Should be only called in Awake by ProgramManager
+        /// Sets gameMode field, which is used in Start to set UI and player state
+        /// </summary>
+        /// <param name="setMode"></param>
+        public void SetGameMode(GAME_MODE setMode)
+        {
+            gameMode = setMode;
+        }
 
         public float3 GetPlayerWorldPos()
         {
