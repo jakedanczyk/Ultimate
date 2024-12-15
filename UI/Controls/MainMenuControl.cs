@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -15,6 +16,7 @@ namespace Urth
         public PhysicsBasedCharacterController.CharacterManager characterManager;
         public GameObject flyCamera;
         public UIDocument mainMenuDocument;
+        public GameObject mainMenuCam;
 
         public Button btnNewWorld;
         public Button btnLoadWorld;
@@ -91,7 +93,14 @@ namespace Urth
         public void OnExit(ClickEvent e)
         {
             Debug.Log("OnExit");
-
+            if (Application.isEditor)
+            {
+                EditorApplication.ExitPlaymode();
+            }
+            else
+            {
+                Application.Quit();
+            }
         }
 
         public void OnTestWorld(ClickEvent e)
@@ -114,11 +123,15 @@ namespace Urth
 
         public void Activate()
         {
-            mainMenuDocument.gameObject.SetActive(true);
+            Debug.Log("Main menu Activaate");
+            mainMenuCam.SetActive(true);
+            mainMenuDocument.enabled = true;// .SetActive(true);
         }
 
         public void Deactivate()
         {
+            Debug.Log("Main menu DeActivaate");
+            mainMenuCam.SetActive(false);
             mainMenuDocument.gameObject.SetActive(false);
         }
 

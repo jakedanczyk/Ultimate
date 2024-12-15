@@ -94,8 +94,8 @@ namespace Urth
             {
 
                 case PROGRAM_MODE.MAIN:
-                    uiManager.SetActiveDocument(URTH_DOCUMENT.MAIN_MENU);
                     SetPlayerState(PLAYER_STATE.NULL);
+                    uiManager.OpenMainMenu();
                     break;
                 case PROGRAM_MODE.DEV_CHAR:
                     EnableTestArena();
@@ -135,6 +135,7 @@ namespace Urth
 
         public GameObject testPlane;
         public GameObject playerCharacter;
+        public GameObject playerCam;
         public CreatureBody playerCharacterBody;
 
         public MAnimal malbersPlayer;
@@ -172,8 +173,10 @@ namespace Urth
             {
                 case PLAYER_STATE.NULL:
                     playerCharacter.SetActive(false);
+                    playerCam.SetActive(false);
                     break;
                 case PLAYER_STATE.CHARACTER:
+                    playerCam.SetActive(true);
                     flyState = (Fly)malbersPlayer.State_Get(flyStateID);
                     flyState.PitchLimit = 80;
                     flyState.InertiaLerp.Value = 0f;
