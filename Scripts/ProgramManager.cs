@@ -27,12 +27,10 @@ namespace Urth
                 case PROGRAM_MODE.NULL:
                     break;
                 case PROGRAM_MODE.MAIN:
-                    gameManager.SetGameMode(GAME_MODE.MAIN);
-                    uiManager.mainMenu.gameObject.SetActive(true);
+                    gameManager.SetProgramMode(PROGRAM_MODE.MAIN);
                     break;
                 case PROGRAM_MODE.DEV_CHAR:
-                    gameManager.SetGameMode(GAME_MODE.DEV);
-                    gameManager.EnableTestArena();
+                    gameManager.SetProgramMode(PROGRAM_MODE.DEV_CHAR);
                     break;
                 case PROGRAM_MODE.DEV_TERRAIN:
                     break;

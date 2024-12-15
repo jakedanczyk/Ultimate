@@ -37,6 +37,7 @@ namespace Urth
         public SCENE_TYPE scene;
         public PLAYER_STATE playerState;
         public GAME_MODE gameMode;
+        public PROGRAM_MODE programMode;
 
         public int2 gameOriginCell = new int2(19, 21);
         public float3 gameWorldOffset;
@@ -88,15 +89,24 @@ namespace Urth
         // Start is called before the first frame update
         void Start()
         {
-            //gameMode is set in Awake by the ProgramManager
-            switch (gameMode)
+            //programMode is set in Awake by the ProgramManager
+            switch (programMode)
             {
-                case GAME_MODE.MAIN:
+
+                case PROGRAM_MODE.MAIN:
                     uiManager.SetActiveDocument(URTH_DOCUMENT.MAIN_MENU);
                     SetPlayerState(PLAYER_STATE.NULL);
                     break;
-                case GAME_MODE.DEV:
-                    SetPlayerState(PLAYER_STATE.FREECAM);
+                case PROGRAM_MODE.DEV_CHAR:
+                    EnableTestArena();
+                    SetPlayerState(PLAYER_STATE.CHARACTER);
+                    UIManager.Instance.Initialize();
+                    UIManager.Instance.characterCreationMenu.SetPlayerCharacter();
+                    UIManager.Instance.characterCreationMenu.playerAnimal.enabled = true;
+                    //ACTIVATE OTHER PLAYER MONOS
+                    break;
+                case PROGRAM_MODE.DEV_FLAT:
+                    SetPlayerState(PLAYER_STATE.CHARACTER);
                     UIManager.Instance.Initialize();
                     UIManager.Instance.characterCreationMenu.SetPlayerCharacter();
                     UIManager.Instance.characterCreationMenu.playerAnimal.enabled = true;
@@ -139,12 +149,12 @@ namespace Urth
 
         /// <summary>
         /// Should be only called in Awake by ProgramManager
-        /// Sets gameMode field, which is used in Start to set UI and player state
+        /// Sets programMode field, which is used in Start to set UI and player state
         /// </summary>
         /// <param name="setMode"></param>
-        public void SetGameMode(GAME_MODE setMode)
+        public void SetProgramMode(PROGRAM_MODE setMode)
         {
-            gameMode = setMode;
+            programMode = setMode;
         }
 
         public float3 GetPlayerWorldPos()
