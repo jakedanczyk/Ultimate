@@ -90,7 +90,7 @@ namespace Urth
                         TryPickupItem(aim.AimHit.transform.GetComponent<UItem>());
                         break;
                     case UrthConstants.WORKSITE_TAG:
-                        TerrainWorksiteHUD vw = aim.AimHit.transform.GetComponent<TerrainWorksiteHUD>();
+                        TerrainWorksiteIndicator vw = aim.AimHit.transform.GetComponent<TerrainWorksiteIndicator>();
                         foreach (Voxel vox in vw.voxelValues)
                         {
                             Debug.Log(vox);

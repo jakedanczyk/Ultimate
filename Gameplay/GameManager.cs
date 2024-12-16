@@ -106,6 +106,7 @@ namespace Urth
                     //ACTIVATE OTHER PLAYER MONOS
                     break;
                 case PROGRAM_MODE.DEV_FLAT:
+                    GenFlatTerrain();
                     SetPlayerState(PLAYER_STATE.CHARACTER);
                     UIManager.Instance.Initialize();
                     UIManager.Instance.characterCreationMenu.SetPlayerCharacter();
@@ -219,5 +220,22 @@ namespace Urth
             testPlane.SetActive(true);
         }
 
+        public void GenTestTerrain()
+        {
+            Debug.Log("OnTestWorld");
+            worldGenManager.GenWorld();
+            worldGenManager.GenerateTerrain();
+            terrainManager.ManageTerrain();
+            ultimateTerrain.enabled = true;
+        }
+
+        public void GenFlatTerrain()
+        {
+            Debug.Log("OnFlatWorld");
+            worldGenManager.GenFlatWorld();
+            terrainManager.GenerateFlatTerrain();
+            terrainManager.ManageTerrain();
+            ultimateTerrain.enabled = true;
+        }
     }
 }

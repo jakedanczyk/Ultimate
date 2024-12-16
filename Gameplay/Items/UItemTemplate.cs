@@ -51,7 +51,7 @@ namespace Urth
         public HashSet<ITEM_TAG> tags;
         public HashSet<USAGE> altUsages;
         public Dictionary<WORKTASK, float> worktaskScores;
-        public Dictionary<WORKSITE, WORKTASK> preferredTasks;
+        public Dictionary<WORKSITE_TYPE, WORKTASK> preferredTasks;
 
         //public List<UItemTemplateComponent> subItems;
         public Dictionary<string, UItemTemplateComponent> componentsDict;

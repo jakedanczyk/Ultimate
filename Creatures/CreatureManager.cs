@@ -61,6 +61,7 @@ namespace Urth
         //public PlayerController playerControl;
         public UrthAnimController animController;
         public UPlayerBuilder terrainBuilder;
+        public WORKSITE_TYPE currentWorksiteType;
 
         public CreatureOffenseController offense;
         public CreatureDefenseController defense;
@@ -300,7 +301,7 @@ namespace Urth
             //Do the work
             TerrainWorksite terrainWorksite = WorksitesManager.Instance.GetTerrainWorksite(mWeaponManager.animal.Aimer.AimHit.point);
 
-            WORKTASK task = item.data.template.preferredTasks[WORKSITE.TERRAIN];
+            WORKTASK task = item.data.template.preferredTasks[WORKSITE_TYPE.TERRAIN];
             switch (task)
             {
                 case (WORKTASK.MINE):

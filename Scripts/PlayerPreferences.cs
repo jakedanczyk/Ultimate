@@ -28,11 +28,11 @@ namespace Urth
             ITEM.HEATER_SHIELD,
             ITEM.TOWER_SHIELD
         };
-        public Dictionary<WORKSITE, List<WORKTASK>> autoWorkOrders = new Dictionary<WORKSITE, List<WORKTASK>>()
+        public Dictionary<WORKSITE_TYPE, List<WORKTASK>> autoWorkOrders = new Dictionary<WORKSITE_TYPE, List<WORKTASK>>()
         {
-            {WORKSITE.TERRAIN, new List<WORKTASK>(){WORKTASK.DIG,WORKTASK.MINE} },
-            {WORKSITE.TREE, new List<WORKTASK>(){WORKTASK.FELL,WORKTASK.DELIMB} },
-            {WORKSITE.STUMP, new List<WORKTASK>(){WORKTASK.CLEAR} }
+            {WORKSITE_TYPE.TERRAIN, new List<WORKTASK>(){WORKTASK.DIG,WORKTASK.MINE} },
+            {WORKSITE_TYPE.TREE, new List<WORKTASK>(){WORKTASK.FELL,WORKTASK.DELIMB} },
+            {WORKSITE_TYPE.STUMP, new List<WORKTASK>(){WORKTASK.CLEAR} }
         };
 
         public List<UMATERIAL> preferredTerrainMaterials = new List<UMATERIAL>();

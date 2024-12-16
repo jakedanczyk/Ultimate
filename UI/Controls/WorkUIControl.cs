@@ -7,6 +7,11 @@ namespace Urth
 {
     public class WorkUIControl : MonoBehaviour
     {
+        public PlayerCreatureManager playerCreatureManager;
+        public WORKSITE_TYPE currentWorksiteIndicatorType;
+        public GameObject terrainWorksiteIndicator;
+        public GameObject plantWorksiteIndicator;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -16,6 +21,18 @@ namespace Urth
         // Update is called once per frame
         void Update()
         {
+            if(playerCreatureManager.currentWorksiteType != currentWorksiteIndicatorType)
+            {
+                switch (currentWorksiteIndicatorType)
+                {
+                    case WORKSITE_TYPE.TERRAIN:
+                        DeactivateTerrainIndicator();
+                        break;
+                    case WORKSITE_TYPE.BUSH:
+                        DeactivateBushIndicator();
+                        break;
+                }
+            }
 
         }
 
@@ -48,6 +65,26 @@ namespace Urth
             workInterface.style.display = DisplayStyle.Flex;
 
             uiBuilt = true;
+        }
+
+        void DeactivateTerrainIndicator()
+        {
+            terrainWorksiteIndicator.SetActive(false);
+        }
+
+        void ActivateTerrainIndicator()
+        {
+            terrainWorksiteIndicator.SetActive(true);
+        }
+
+        void DeactivateBushIndicator()
+        {
+            plantWorksiteIndicator.SetActive(false);
+        }
+
+        void ActivateBushIndicator()
+        {
+            plantWorksiteIndicator.SetActive(true);
         }
     }
 }

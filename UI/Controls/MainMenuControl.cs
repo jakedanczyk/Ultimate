@@ -73,21 +73,25 @@ namespace Urth
         public void OnNewWorld(ClickEvent e)
         {
             Debug.Log("OnNewWorld");
+            //Open NewWorld Menu
         }
 
         public void OnLoad(ClickEvent e)
         {
             Debug.Log("OnLoad");
+            //Open Load SaveGame Menu
         }
 
         public void OnSettings(ClickEvent e)
         {
             Debug.Log("OnSettings");
+            //Open Settings Menu
         }
 
         public void OnManual(ClickEvent e)
         {
             Debug.Log("OnManual");
+            //Open Manual
         }
 
         public void OnExit(ClickEvent e)

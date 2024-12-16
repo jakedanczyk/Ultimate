@@ -26,7 +26,7 @@ namespace Urth
         CONSTRUCT,
 
     }
-    public enum WORKSITE
+    public enum WORKSITE_TYPE
     {
         TERRAIN,
         STUMP,

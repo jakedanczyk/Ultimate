@@ -7,7 +7,7 @@ namespace Urth
 
     public class TerrainWorksite : MonoBehaviour
     {
-        public TerrainWorksiteHUD hudCube;
+        public TerrainWorksiteIndicator hudCube;
         public TerrainWorksiteData data;
         // Start is called before the first frame update
         void Start()

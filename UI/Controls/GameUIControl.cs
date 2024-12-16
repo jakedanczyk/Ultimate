@@ -14,7 +14,6 @@ namespace Urth
         WORK
     }
 
-
     public class GameUIControl : MonoBehaviour
     {
         public UrthControl urthControl;
@@ -48,7 +47,6 @@ namespace Urth
 
         public CraftingUIControl craftingUIControl;
         public WorkUIControl workUIControl;
-
 
 
         static string CHARACTER_UI = "character";
