@@ -27,6 +27,7 @@ namespace Urth
         public const string CONSTRUCTION_TAG = "Construction";
 
         public static string CHARACTER_INTERFACE = "CharacterInterface";
+        public static string COMBAT_INTERFACE = "CombatInterface";
         public static string CONSTRUCTION_INTERFACE = "ConstructionInterface";
         public static string CONSTRUCTION_PANEL = "ConstructionPanel";
         public static string CONSTRUCTION_PLANNING_INTERFACE = "ConstructionPlanningInterface";

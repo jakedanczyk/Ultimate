@@ -41,7 +41,7 @@ namespace Urth
             framecount++;
             if (framecount == 100)
             {
-                Vector3 fromPlayer = this.transform.position - GameManager.Instance.playerCharacter.transform.position;
+                Vector3 fromPlayer = this.transform.position - GameManager.Instance.playerCharacterObject.transform.position;
                 if (fromPlayer.sqrMagnitude > CreaturesManager.SQ_DESPAWN_RADIUS)
                 {
                     CreaturesManager.Instance.shouldDespawnList.Add(id);
@@ -55,6 +55,7 @@ namespace Urth
         public bool stealthMode = false;
         public bool sprintMode = false;
         public CREATURE_MODE mode = CREATURE_MODE.IDLE;
+        public CREATURE_MODE desiredMode = CREATURE_MODE.IDLE;
         public CreatureBody body;
         public CreatureMind mind;
         public NPCController npcControl;

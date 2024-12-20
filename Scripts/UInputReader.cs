@@ -137,7 +137,7 @@ namespace Urth
         {
             if (playerInput)
             {
-                aim = GameManager.Instance.playerCharacter.GetComponent<MalbersAnimations.Utilities.Aim>();
+                aim = GameManager.Instance.playerCharacterObject.GetComponent<MalbersAnimations.Utilities.Aim>();
             }
         }
 
@@ -228,7 +228,7 @@ namespace Urth
 
         public void OnScroll(InputAction.CallbackContext ctx)
         {
-            if(GameUIControl.Instance.mode == UI_MODE.CONSTRUCTION_PLANNING && ConstructionSettingsPanelControl.Instance.selectedWorksite != null)
+            if(GameUIControl.Instance.targetMode == UI_MODE.CONSTRUCTION_PLANNING && ConstructionSettingsPanelControl.Instance.selectedWorksite != null)
             {
                 Vector2 wheelInput = ctx.ReadValue<Vector2>();
 

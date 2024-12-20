@@ -122,6 +122,13 @@ namespace Urth
             }
         }
 
+        public void OpenGameUI()
+        {
+            gameUIControl.enabled = true;
+            SetActiveDocument(URTH_DOCUMENT.GAME_INTERFACE);
+            gameUIControl.Activate();
+        }
+
         public void OpenMainMenu()
         {
             //set active
@@ -135,6 +142,8 @@ namespace Urth
             SetActiveDocument(URTH_DOCUMENT.PAUSE_MENU);
             pauseMenu.SetVisible();
         }
+
+
 
     }
 

@@ -104,7 +104,7 @@ namespace Urth
         {
             CREATURE type = (CREATURE)System.Enum.Parse(typeof(CREATURE), typeText.value);
             GENDER gender = (GENDER)System.Enum.Parse(typeof(GENDER), genderText.value);
-            Vector3 spawnPos = GameManager.Instance.playerCharacter.transform.position + GameManager.Instance.playerCharacter.transform.forward * 3;
+            Vector3 spawnPos = GameManager.Instance.playerCharacterObject.transform.position + GameManager.Instance.playerCharacterObject.transform.forward * 3;
             GameObject newCreature = Instantiate(creatureLibrary.prefabsDict[type], spawnPos, Quaternion.identity);
             CreatureManager newCreatureManager = newCreature.GetComponent<CreatureManager>();
 

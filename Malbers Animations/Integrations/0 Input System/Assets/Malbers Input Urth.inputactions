@@ -303,7 +303,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CraftingMode",
+                    "name": "WorkMode",
                     "type": "Button",
                     "id": "312f7ae1-20b5-4e9b-ba60-aecf7e9e3f14",
                     "expectedControlType": "Button",
@@ -1074,7 +1074,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
-                    "action": "CraftingMode",
+                    "action": "WorkMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1085,7 +1085,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
-                    "action": "CraftingMode",
+                    "action": "WorkMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -46,6 +46,10 @@ namespace Urth
                 newStats.GetStat(statPair.type).StatBaseValue = statPair.val;
             }
 
+            CreatureData data = new CreatureData(0, CREATURE.HUMAN, GENDER.MALE, -20, 80, .3f, 1.91f, .6f, Unity.Mathematics.float3.zero);
+            CreatureBody playerBody = new CreatureBody(data);
+            playerCreatureManager.body = playerBody;
+
             playerCreatureManager.body.stats.statInterface.statCollection = newStats;
             playerCreatureManager.body.type = species;
             playerCreatureManager.body.data.type = species;

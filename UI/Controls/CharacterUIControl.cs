@@ -34,6 +34,7 @@ namespace Urth
 
                 VisualElement itemDisplayPanel = characterInterface.Query(UrthConstants.ITEM_DISPLAY_PANEL).First();
                 itemDisplayPanelControl.Link(itemDisplayPanel);
+                itemDisplayPanelControl.enabled = true;
                 inventoryPanelControl.Populate();
                 built = true;
             }

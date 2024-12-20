@@ -105,6 +105,33 @@ namespace Urth
             }
         }
 
+        public void OpenInteractMenu()
+        {
+            Debug.Log("InteractMenu");
+            if (aim.AimHit.transform != null && aim.AimHit.distance < 16f * playerCreatureManager.body.stats.GetGrabReachDistance())
+            {
+                Debug.Log(aim.AimHit.transform.tag);
+                switch (aim.AimHit.transform.tag)
+                {
+                    case UrthConstants.ITEM_TAG:
+                        TryPickupItem(aim.AimHit.transform.GetComponent<UItem>());
+                        break;
+                    case UrthConstants.WORKSITE_TAG:
+                        TerrainWorksiteIndicator vw = aim.AimHit.transform.GetComponent<TerrainWorksiteIndicator>();
+                        foreach (Voxel vox in vw.voxelValues)
+                        {
+                            Debug.Log(vox);
+                        }
+                        break;
+                    case UrthConstants.CONSTRUCTION_TAG:
+                        StaticPrefab staticPrefab = aim.AimHit.transform.GetComponentInParent<StaticPrefab>();
+                        Debug.Log($"Interact Construction {staticPrefab}");
+                        GameUIControl.Instance.OpenConstructionMenu(staticPrefab);
+                        break;
+                }
+            }
+        }
+
         public void TryPickupItem(UItem item)
         {
             UrthResponse response = playerCreatureManager.body.creatureInventory.TryPickupItem(item.data);
@@ -122,14 +149,18 @@ namespace Urth
             {
                 DrawLeftHand();
             }
-            else if (playerCreatureManager.combatMode && !playerCreatureManager.working)
+            else if (playerCreatureManager.mode == CREATURE_MODE.WORK)
             {
-                //start charging left hand
-                //playerCreatureManager.offense
+                playerCreatureManager.StartWorkingLeft();
             }
             else
             {
-                playerCreatureManager.StartWorkingLeft();
+                if (!playerCreatureManager.combatMode)
+                {
+                    playerCreatureManager.EnterCombatMode();
+                }
+                //start charging left hand
+                //playerCreatureManager.offense
             }
         }
 
@@ -140,14 +171,18 @@ namespace Urth
             {
                 DrawRightHand();
             }
-            else if (playerCreatureManager.combatMode && !playerCreatureManager.working)
+            else if(playerCreatureManager.mode == CREATURE_MODE.WORK)
             {
-                //start charging right hand
-                //playerCreatureManager.offense
+                playerCreatureManager.StartWorkingRight();
             }
             else
             {
-                playerCreatureManager.StartWorkingRight();
+                if (!playerCreatureManager.combatMode)
+                {
+                    playerCreatureManager.EnterCombatMode();
+                }
+                //start charging right hand
+                //playerCreatureManager.offense
             }
         }
 

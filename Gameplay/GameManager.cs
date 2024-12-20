@@ -52,6 +52,21 @@ namespace Urth
 
         public int BUILDABLE_LAYER;
 
+        public GameObject testPlane;
+        public GameObject playerCharacterObject;
+        public GameObject playerCam;
+        public CreatureBody playerCharacterBody;
+
+        public MAnimal malbersPlayer;
+        public MalbersAnimations.StateID flyStateID;
+        public MalbersAnimations.StateID idleStateID;
+        public Fly flyState;
+
+        public List<MSpeed> freecamSpeeds;
+
+        public PLAYER_STATE targetState;
+        public PLAYER_STATE currentState;
+
 
         public static GameManager Instance { get; private set; }
         private void Awake()
@@ -86,6 +101,17 @@ namespace Urth
             }
         }
 
+
+        /// <summary>
+        /// Should be only called in Awake by ProgramManager
+        /// Sets programMode field, which is used in Start to set UI and player state
+        /// </summary>
+        /// <param name="setMode"></param>
+        public void SetProgramMode(PROGRAM_MODE setMode)
+        {
+            programMode = setMode;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -98,12 +124,13 @@ namespace Urth
                     uiManager.OpenMainMenu();
                     break;
                 case PROGRAM_MODE.DEV_CHAR:
+                    uiManager.OpenGameUI();
                     EnableTestArena();
-                    SetPlayerState(PLAYER_STATE.CHARACTER);
                     UIManager.Instance.Initialize();
                     UIManager.Instance.characterCreationMenu.SetPlayerCharacter();
                     UIManager.Instance.characterCreationMenu.playerAnimal.enabled = true;
-                    //ACTIVATE OTHER PLAYER MONOS
+                    SetPlayerState(PLAYER_STATE.CHARACTER);
+                    StartCoroutine(StartPlayerDev());
                     break;
                 case PROGRAM_MODE.DEV_FLAT:
                     GenFlatTerrain();
@@ -134,34 +161,25 @@ namespace Urth
             }
         }
 
-        public GameObject testPlane;
-        public GameObject playerCharacter;
-        public GameObject playerCam;
-        public CreatureBody playerCharacterBody;
-
-        public MAnimal malbersPlayer;
-        public MalbersAnimations.StateID flyStateID;
-        public MalbersAnimations.StateID idleStateID;
-        public Fly flyState;
-
-        public List<MSpeed> freecamSpeeds;
-
-        public PLAYER_STATE targetState;
-        public PLAYER_STATE currentState;
-
-        /// <summary>
-        /// Should be only called in Awake by ProgramManager
-        /// Sets programMode field, which is used in Start to set UI and player state
-        /// </summary>
-        /// <param name="setMode"></param>
-        public void SetProgramMode(PROGRAM_MODE setMode)
+        private IEnumerator StartPlayerDev()
         {
-            programMode = setMode;
+            uiManager.characterCreationMenu.Initialize();
+            yield return null;
+            uiManager.characterCreationMenu.SetPlayerCharacter();
+            yield return null;
+            uiManager.characterCreationMenu.playerAnimal.enabled = true;
+            yield return null;
+            uiManager.characterCreationMenu.Activate();
+            yield return null;
+            //UIManager.Instance.Initialize();
+            //UIManager.Instance.characterCreationMenu.SetPlayerCharacter();
+            //UIManager.Instance.characterCreationMenu.playerAnimal.enabled = true;
+            //ACTIVATE OTHER PLAYER MONOS
         }
 
         public float3 GetPlayerWorldPos()
         {
-            return new float3(gameOriginCell.x, 0, gameOriginCell.y) * TerrainManager.TILE_LENGTH_M + (float3)playerCharacter.transform.position;
+            return new float3(gameOriginCell.x, 0, gameOriginCell.y) * TerrainManager.TILE_LENGTH_M + (float3)playerCharacterObject.transform.position;
         }
         public float3 GetWorldPos(float3 enginePos)
         {
@@ -173,11 +191,13 @@ namespace Urth
             switch (state)
             {
                 case PLAYER_STATE.NULL:
-                    playerCharacter.SetActive(false);
+                    playerCharacterObject.SetActive(false);
                     playerCam.SetActive(false);
                     break;
                 case PLAYER_STATE.CHARACTER:
+                    uiManager.mainMenu.mainMenuCam.SetActive(false);
                     playerCam.SetActive(true);
+                    playerCharacterObject.SetActive(true);
                     flyState = (Fly)malbersPlayer.State_Get(flyStateID);
                     flyState.PitchLimit = 80;
                     flyState.InertiaLerp.Value = 0f;
@@ -204,8 +224,8 @@ namespace Urth
         }
         public void SpawnPlayerCharacter(float3 pos, quaternion q)
         {
-            playerCharacter.transform.position = pos;
-            playerCharacter.transform.rotation = q;
+            playerCharacterObject.transform.position = pos;
+            playerCharacterObject.transform.rotation = q;
         }
 
         public bool isPlacingStatic;
