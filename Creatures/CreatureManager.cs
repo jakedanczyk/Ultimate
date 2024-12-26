@@ -110,10 +110,17 @@ namespace Urth
             RaiseWeapons();
             animController.SetStance(STANCE.COMBAT);
         }
+        public void ExitCombatMode()
+        {
+            combatMode = false;
+            mode = CREATURE_MODE.ACTIVE;
+            LowerWeapons();
+            animController.SetStance(STANCE.ACTIVE);
+        }
 
         public void LowerWeapons()
         {
-
+            Debug.Log("TODO lowerWeapons");
         }
 
         public void RaiseWeapons()
@@ -337,6 +344,14 @@ namespace Urth
             {
                 animController.DisableRight();
             }
+        }
+
+        public void TryDropItem(UItemData itemData)
+        {
+            Vector3 pos = transform.position + transform.forward + transform.up;
+            itemData.pos = new Unity.Mathematics.float3(pos) + GameManager.Instance.gameWorldOffset;
+            ItemsManager.Instance.AddSpawnItemQueue(itemData.id);
+            body.creatureInventory.RemoveItem(itemData);
         }
     }
 }

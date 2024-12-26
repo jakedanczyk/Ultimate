@@ -8,6 +8,20 @@ namespace Urth
 {
     public class ConstructionUIControl : MonoBehaviour
     {
+
+        public static ConstructionUIControl Instance { get; private set; }
+        void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this;
+            }
+        }
+
         void Start()
         {
             doc = this.GetComponent<UIDocument>();
@@ -18,6 +32,7 @@ namespace Urth
 
         }
 
+        public bool placing;
         public ConstructionPlayer constructionPlayer;
         public ConstructionPanelControl constructionPanelControl;
         public UIDocument doc;

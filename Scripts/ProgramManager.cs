@@ -32,6 +32,9 @@ namespace Urth
                 case PROGRAM_MODE.DEV_CHAR:
                     gameManager.SetProgramMode(PROGRAM_MODE.DEV_CHAR);
                     break;
+                case PROGRAM_MODE.DEV_FLAT:
+                    gameManager.SetProgramMode(PROGRAM_MODE.DEV_FLAT);
+                    break;
                 case PROGRAM_MODE.DEV_TERRAIN:
                     break;
             }

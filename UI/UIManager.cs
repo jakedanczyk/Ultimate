@@ -57,15 +57,6 @@ namespace Urth
         // Start is called before the first frame update
         void Start()
         {
-            gameUiDocument.rootVisualElement.RegisterCallback<PointerUpEvent>(evt =>
-            {
-                if (globalLock)
-                {
-                    globalLock = false;
-                    activePanel.ReleaseGrab();
-                }
-                Debug.Log("mouse up");
-            });
             useItemKey = input.FindActionMap(UrthConstants.UI_ACTION_MAP).FindAction("UseSelected").GetBindingDisplayString(0);
             dropItemKey = input.FindActionMap(UrthConstants.UI_ACTION_MAP).FindAction("DropSelected").GetBindingDisplayString(0);
             transferItemKey = input.FindActionMap(UrthConstants.UI_ACTION_MAP).FindAction("TransferSelected").GetBindingDisplayString(0);
@@ -124,9 +115,19 @@ namespace Urth
 
         public void OpenGameUI()
         {
+            gameUIControl.gameObject.SetActive(true);
             gameUIControl.enabled = true;
             SetActiveDocument(URTH_DOCUMENT.GAME_INTERFACE);
-            gameUIControl.Activate();
+            gameUiDocument.rootVisualElement.RegisterCallback<PointerUpEvent>(evt =>
+            {
+                if (globalLock)
+                {
+                    globalLock = false;
+                    activePanel.ReleaseGrab();
+                }
+                Debug.Log("mouse up");
+            });
+            //gameUIControl.Activate();
         }
 
         public void OpenMainMenu()

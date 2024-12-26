@@ -40,6 +40,10 @@ namespace Urth
             }
         }
 
+        public void RemoveItem(UItemData itemData)
+        {
+            items.Remove(itemData.id);
+        }
         public bool AddItem(UItemData itemData, int containerId)
         {
             if (!items.TryAdd(itemData.id, itemData)) return false;

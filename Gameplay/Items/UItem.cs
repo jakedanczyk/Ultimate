@@ -325,7 +325,7 @@ namespace Urth
 
             GUI.changed = false;
             typeString = EditorGUILayout.TextField(typeString);
-            if (GUI.changed)
+            if (GUI.changed && typeString.Length > 0)
             {
                 try
                 {

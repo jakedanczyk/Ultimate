@@ -27,6 +27,7 @@ namespace Urth
         public PlayerCreatureManager playerCreatureManager;
         public CreatureInventory playerInventory;
         public UItemData selectedItem;
+        public InventoryPanelControl inventoryPanelControl;
 
         public Transform itemAnchor;
 
@@ -42,6 +43,7 @@ namespace Urth
             {
                 Instance = this;
             }
+            inventoryPanelControl = gameObject.GetComponent<InventoryPanelControl>();
         }
 
         public override void Start()
@@ -179,7 +181,8 @@ namespace Urth
             Debug.Log("OnDropSelected");
             if (selectedItem != null)
             {
-
+                playerCreatureManager.TryDropItem(selectedItem);
+                inventoryPanelControl.Reorder();
             }
         }
         /*Transfer selected item to/from an inventory other than the player character inventory

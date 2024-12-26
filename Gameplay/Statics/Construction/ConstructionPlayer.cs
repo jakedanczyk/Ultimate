@@ -34,11 +34,11 @@ namespace Urth
 
         void Update()
         {
-            if (isBuilding)
+            if (ConstructionUIControl.Instance.placing)
             {
                 if (currentPreview is null)
                 {
-                    InstantiatePreview();
+                    StartPreview();
                 }
                 currentPreview.isActive = true;
                 UpdatePreview();
@@ -47,7 +47,6 @@ namespace Urth
 
         public void StartPreview()
         {
-            isBuilding = true;
             if (currentPreview is null)
             {
                 InstantiatePreview();

@@ -41,7 +41,10 @@ namespace Urth
 
         public void Disable()
         {
-            constructionPlanningInterface.style.display = DisplayStyle.None;
+            if (uiBuilt)
+            {
+                constructionPlanningInterface.style.display = DisplayStyle.None;
+            }
         }
 
         public void Initialize()

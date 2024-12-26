@@ -34,9 +34,9 @@ namespace Urth
             spawnQueue = new Queue<int>();
             despawnList = new List<int>();
             population = new Dictionary<int, UItemData>(10000);
-            pxCreatures = new Dictionary<int2, List<int>>(10000);
+            pxItems = new Dictionary<int2, List<int>>(10000);
             worldSet = new HashSet<int>();
-            fastSet = new HashSet<int>();
+            spawnedSet = new HashSet<int>();
         }
 
         // Start is called before the first frame update
@@ -45,7 +45,7 @@ namespace Urth
             time = UrthTime.Instance;
 
             //TestPopulate();
-            PopulateTile(GameManager.Instance.gameOriginCell);
+            //PopulateTile(GameManager.Instance.gameOriginCell);
         }
 
         float fastPeriod = 3f;
@@ -63,8 +63,14 @@ namespace Urth
         float neededWorldSetRate = 0;
 
         float FRAME_TIME = 0.016f;
+
+        int spawnId;
         void Update()
         {
+            while(spawnQueue.TryDequeue(out spawnId))
+            {
+                SpawnItem(spawnId);
+            }
             framecount++;
             if (framecount == 100)
             {
@@ -74,26 +80,18 @@ namespace Urth
                 List<int> spawnIds = GetShouldSpawnList();
                 foreach (int id in spawnIds)
                 {
-                    if (fastSet.Contains(id))
+                    if (spawnedSet.Contains(id))
                     {
-                        Debug.Log("Creature Already Spawned");
+                        Debug.Log("Item Already Spawned");
                         continue;
                     }
 
-                    UItemData spawnItemData = population[id];
-                    GameObject prefab = spawnItemData.assembled ? itemsLibrary.prefabsDict[spawnItemData.type].assembledPrefab : itemsLibrary.prefabsDict[spawnItemData.type].componentPrefab;
-                    GameObject instance = Instantiate(prefab, spawnItemData.pos, Quaternion.Euler(spawnItemData.facing));
-                    UItem item = instance.AddComponent<UItem>();
-                    item.data = spawnItemData;
-                    spawnItemData.item = item;
-                    spawnedItems.Add(id, item);
-                    fastSet.Add(id);
-                    worldSet.Remove(id);
+                    SpawnItem(id);
                 }
 
                 foreach (int id in shouldDespawnList)
                 {
-                    fastSet.Remove(id);
+                    spawnedSet.Remove(id);
                     worldSet.Add(id);
                     spawnedItems[id].data = null;
                     Destroy(spawnedItems[id].gameObject);
@@ -101,8 +99,8 @@ namespace Urth
                 shouldDespawnList = new List<int>(100);
 
                 //set the number of BodyManager Updates processed per frame
-                neededFastSetRate = fastSet.Count / fastPeriod;
-                fastList = fastSet.ToList();
+                neededFastSetRate = spawnedSet.Count / fastPeriod;
+                fastList = spawnedSet.ToList();
                 neededWorldSetRate = worldSet.Count / worldPeriod;
                 worldList = worldSet.ToList();
             }
@@ -169,7 +167,7 @@ namespace Urth
                         //no source, skip
                         break;
                     case 0:
-                        fastSet.Remove(id);
+                        spawnedSet.Remove(id);
                         break;
                     case 1:
                         nearbySet.Remove(id);
@@ -187,7 +185,7 @@ namespace Urth
                         //no destination, skip
                         break;
                     case 0:
-                        fastSet.Add(id);
+                        spawnedSet.Add(id);
                         break;
                     case 1:
                         nearbySet.Add(id);
@@ -215,7 +213,7 @@ namespace Urth
                 int xr = (int)(SPAWN_RADIUS * Mathf.Cos((y) / SPAWN_RADIUS * Mathf.PI / 2));
                 for (int x = -xr; x < xr; x += 10)
                 {
-                    if (pxCreatures.TryGetValue(playerPxIdx + new int2(x, y), out List<int> pxIds))
+                    if (pxItems.TryGetValue(playerPxIdx + new int2(x, y), out List<int> pxIds))
                     {
                         ids.AddRange(pxIds);
                     }
@@ -224,22 +222,34 @@ namespace Urth
             return ids;
         }
 
+        public void AddSpawnItemQueue(int id)
+        {
+            spawnQueue.Enqueue(id);
+        }
 
         Queue<int> spawnQueue;
-        void SpawnItems()
-        {
-            foreach (int id in spawnQueue)
-            {
-                SpawnItem(id);
-            }
-            spawnQueue.Clear();
-        }
+        //void SpawnItems()
+        //{
+        //    foreach (int id in spawnQueue)
+        //    {
+        //        SpawnItem(id);
+        //    }
+        //    spawnQueue.Clear();
+        //}
         void SpawnItem(int id)
         {
+            Debug.Log("trying to spawn");
             UItemData spawnItemData = population[id];
             GameObject prefab = spawnItemData.assembled ? itemsLibrary.prefabsDict[spawnItemData.type].assembledPrefab : itemsLibrary.prefabsDict[spawnItemData.type].componentPrefab;
             float3 gamePosition = spawnItemData.pos - GameManager.Instance.gameWorldOffset;
             GameObject instance = Instantiate(prefab, gamePosition, Quaternion.Euler(spawnItemData.facing));
+
+            UItem item = instance.AddComponent<UItem>();
+            item.data = spawnItemData;
+            spawnItemData.item = item;
+            spawnedItems.Add(id, item);
+            spawnedSet.Add(id);
+            worldSet.Remove(id);
         }
 
 
@@ -268,10 +278,10 @@ namespace Urth
         public HashSet<int> worldSet;
         public HashSet<int> regionSet;
         public HashSet<int> nearbySet;
-        public HashSet<int> fastSet;
+        public HashSet<int> spawnedSet;
 
         public Dictionary<int, UItemData> population;
-        public Dictionary<int2, List<int>> pxCreatures;
+        public Dictionary<int2, List<int>> pxItems;
         public Dictionary<int, UItem> spawnedItems;
 
         public List<int> shouldDespawnList;

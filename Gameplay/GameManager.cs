@@ -133,12 +133,13 @@ namespace Urth
                     StartCoroutine(StartPlayerDev());
                     break;
                 case PROGRAM_MODE.DEV_FLAT:
+                    uiManager.OpenGameUI();
                     GenFlatTerrain();
-                    SetPlayerState(PLAYER_STATE.CHARACTER);
                     UIManager.Instance.Initialize();
                     UIManager.Instance.characterCreationMenu.SetPlayerCharacter();
                     UIManager.Instance.characterCreationMenu.playerAnimal.enabled = true;
-                    //ACTIVATE OTHER PLAYER MONOS
+                    SetPlayerState(PLAYER_STATE.CHARACTER);
+                    StartCoroutine(StartPlayerDev());
                     break;
             }
         }
@@ -235,8 +236,11 @@ namespace Urth
         {
             testPlane.SetActive(false);
         }
+
+        public TestArenaScript testArenaScript;
         public void EnableTestArena()
         {
+            testArenaScript.Setup();
             testPlane.SetActive(true);
         }
 

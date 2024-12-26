@@ -11,9 +11,14 @@ namespace Urth
         public VisualElement combatInterface;
         bool uiBuilt = false;
 
-        void Start()
+        void Awake()
         {
             uiDocument = this.GetComponent<UIDocument>();
+        }
+
+        private void Start()
+        {
+            Build();
         }
 
         void Update()
@@ -21,30 +26,30 @@ namespace Urth
 
         }
 
-        public void Enable()
+        public void EnableMenus()
         {
             if (!uiBuilt)
             {
-                Debug.Log("building combat UI");
-
-                combatInterface = uiDocument.rootVisualElement.Query(UrthConstants.COMBAT_INTERFACE).First();
-                combatInterface.style.display = DisplayStyle.Flex;
-
-                VisualElement combatPanel = combatInterface.Query(UrthConstants.CONSTRUCTION_PANEL).First();
-                uiBuilt = true;
+                Build();
             }
-            else
-            {
-                Debug.Log("combat UI already built");
-                combatInterface.style.display = DisplayStyle.Flex;
-            }
+            combatInterface.style.display = DisplayStyle.Flex;
         }
-        public void Disable()
+        public void DisableMenus()
         {
             if (uiBuilt)
             {
                 combatInterface.style.display = DisplayStyle.None;
             }
+        }
+
+        public void Build()
+        {
+            Debug.Log("building combat UI");
+
+            combatInterface = uiDocument.rootVisualElement.Query(UrthConstants.COMBAT_INTERFACE).First();
+            //combatInterface.style.display = DisplayStyle.Flex;
+
+            uiBuilt = true;
         }
     }
 

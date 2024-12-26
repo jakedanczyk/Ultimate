@@ -10,7 +10,7 @@ namespace Urth
         public PlayerCreatureManager playerCreatureManager;
         public Transform indicatorTransform;
         public WORKSITE_TYPE currentWorksiteIndicatorType;
-        public GameObject terrainWorksiteIndicator;
+        public TerrainWorksiteIndicator terrainWorksiteIndicator;
         public GameObject plantWorksiteIndicator;
 
         // Start is called before the first frame update
@@ -22,25 +22,25 @@ namespace Urth
         // Update is called once per frame
         void Update()
         {
-            if (isWorking)
-            {
-                if (playerCreatureManager.currentWorksiteType != currentWorksiteIndicatorType)
-                {
-                    ActivateCurrentWorksiteIndicator();
-                }
-                UpdatePreview();
-            }
+            //if (isWorking)
+            //{
+            //    if (playerCreatureManager.currentWorksiteType != currentWorksiteIndicatorType)
+            //    {
+            //        ActivateCurrentWorksiteIndicator();
+            //    }
+            //    UpdatePreview();
+            //}
         }
 
         public UIDocument doc;
-        public VisualElement workInterface;
+        public VisualElement workMenus;
         bool uiBuilt = false;
 
         public ListView listView;
 
-        public void Disable()
+        public void DisableMenus()
         {
-            workInterface.style.display = DisplayStyle.None;
+            workMenus.style.display = DisplayStyle.None;
         }
 
         public void Enable()
@@ -51,27 +51,27 @@ namespace Urth
             }
             else
             {
-                workInterface.style.display = DisplayStyle.Flex;
+                workMenus.style.display = DisplayStyle.Flex;
                 ActivateCurrentWorksiteIndicator();
             }
         }
 
         public void Initialize()
         {
-            workInterface = doc.rootVisualElement.Query(UrthConstants.CONSTRUCTION_PLANNING_INTERFACE).First();
-            workInterface.style.display = DisplayStyle.Flex;
+            workMenus = doc.rootVisualElement.Query(UrthConstants.CONSTRUCTION_PLANNING_INTERFACE).First();
+            workMenus.style.display = DisplayStyle.Flex;
 
             uiBuilt = true;
         }
 
         void DeactivateTerrainIndicator()
         {
-            terrainWorksiteIndicator.SetActive(false);
+            terrainWorksiteIndicator.gameObject.SetActive(false);
         }
 
         void ActivateTerrainIndicator()
         {
-            terrainWorksiteIndicator.SetActive(true);
+            terrainWorksiteIndicator.gameObject.SetActive(true);
         }
 
         void DeactivateBushIndicator()

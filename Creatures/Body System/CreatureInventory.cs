@@ -121,6 +121,10 @@ namespace Urth
         {
             return inventory.GetIds();
         }
+        public void RemoveItem(UItemData itemData)
+        {
+            inventory.RemoveItem(itemData);
+        }
         public bool AddItem(UItemData itemData, int containerId)
         {
             itemsToContainersMap[itemData.ID] = itemData.ID;
@@ -178,7 +182,7 @@ namespace Urth
             }
             return new UrthResponse(true);
         }
-        
+
         public (bool, int) CheckForPreferredContainer(UItemData item)
         {
             if (itemAssignedContainers != null && itemAssignedContainers.ContainsKey(item.ID))

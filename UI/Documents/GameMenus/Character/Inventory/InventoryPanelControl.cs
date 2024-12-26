@@ -66,7 +66,7 @@ namespace Urth
 
 
 
-        void Reorder()
+        public void Reorder()
         {
             sortedIds = new List<int>(playerCreatureInventory.inventory.items.Count);
             switch (sortProp)
@@ -86,20 +86,21 @@ namespace Urth
             {
                 NewDataEntry(id);
             }
-                itemsList.itemsSource = uiItemDataList;
-                itemsList.makeItem = () => inventoryItemTemplate.Instantiate();
-                itemsList.bindItem = (VisualElement element, int index) =>
-                {
-                    VisualElement itemElement = element.Query("inventoryItem").First();
-                    VisualElement click = itemElement.Query("click").First();
-                    click.RegisterCallback<ClickEvent, int>(OnItemClick, index);
+
+            itemsList.itemsSource = uiItemDataList;
+            itemsList.makeItem = () => inventoryItemTemplate.Instantiate();
+            itemsList.bindItem = (VisualElement element, int index) =>
+            {
+                VisualElement itemElement = element.Query("inventoryItem").First();
+                VisualElement click = itemElement.Query("click").First();
+                click.RegisterCallback<ClickEvent, int>(OnItemClick, index);
                 //click.RegisterCallback<ClickEvent>(OnItemClick);
                 Label itemNameLabel = itemElement.Query("inventoryItemName").First().Query("inventoryItemNameLabel").First() as Label;
                 //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
                 //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
 
                 itemNameLabel.text = uiItemDataList[index].GetName();
-                };
+            };
 
         }
 

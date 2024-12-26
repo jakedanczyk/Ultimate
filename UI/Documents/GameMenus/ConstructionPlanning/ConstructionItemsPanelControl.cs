@@ -159,6 +159,8 @@ namespace Urth
             //VisualElement parent = targetBox.parent;
             //var currColor = parent.style.backgroundColor.value;
             //parent.style.backgroundColor = Color.green;// new Color(currColor.r,currColor.g,currColor.b,1f);
+            
+            ConstructionUIControl.Instance.placing = true;
 
             selectedType = dataList[idx].staticType;
             listView.Rebuild();
