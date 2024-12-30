@@ -25,7 +25,21 @@ namespace Urth
         {
 
         }
-
+        public void Enable()
+        {
+            if (!uiBuilt)
+            {
+                Build();
+            }
+            combatInterface.style.display = DisplayStyle.Flex;
+        }
+        public void Disable()
+        {
+            if (uiBuilt)
+            {
+                combatInterface.style.display = DisplayStyle.None;
+            }
+        }
         public void EnableMenus()
         {
             if (!uiBuilt)

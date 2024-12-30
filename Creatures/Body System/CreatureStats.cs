@@ -28,11 +28,11 @@ namespace Urth
 
         public float GetGrabReachDistance()
         {
-            return creatureBody.data.height;
+            return creatureBody.data.height * 1.5f;
         }
         public float GetToolReachDistance()
         {
-            return creatureBody.data.height + Mathf.Max(creatureBody.creatureInventory.leftItemReach, creatureBody.creatureInventory.rightItemReach);
+            return GetGrabReachDistance() + Mathf.Max(creatureBody.creatureInventory.leftItemReach, creatureBody.creatureInventory.rightItemReach);
         }
 
         public float GetMaxMoI()

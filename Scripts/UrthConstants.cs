@@ -25,12 +25,16 @@ namespace Urth
         public const string ITEM_TAG = "Item";
         public const string WORKSITE_TAG = "Worksite";
         public const string CONSTRUCTION_TAG = "Construction";
+        public const string PLANT_TAG = "Plant";
+        public const string TERRAIN_TAG = "Terrain";
+
 
         public static string CHARACTER_INTERFACE = "CharacterInterface";
         public static string COMBAT_INTERFACE = "CombatInterface";
         public static string CONSTRUCTION_INTERFACE = "ConstructionInterface";
         public static string CONSTRUCTION_PANEL = "ConstructionPanel";
         public static string CONSTRUCTION_PLANNING_INTERFACE = "ConstructionPlanningInterface";
+        public static string CONSTRUCTION_PLANNING_MENU= "ConstructionPlanningMenu";
         public static string CONSTRUCTION_ITEMS_PANEL = "ConstructionItemsPanel";
         public static string CONSTRUCTION_SETTINGS_PANEL = "ConstructionSettingsPanel";
         public static string INVENTORY_PANEL = "InventoryPanel";
@@ -62,7 +66,6 @@ namespace Urth
             (new BodyPartId(BODY_PART.HAND,SYMMETRY.RIGHT), 0.1f, CONTAINER.HAND),
             (new BodyPartId(BODY_PART.HEAD,SYMMETRY.CENTER), 0.05f, CONTAINER.MOUTH),
         };
-
 
         #region Biomes data
         public static readonly float BIOME_TEMP_ICE = -10f;

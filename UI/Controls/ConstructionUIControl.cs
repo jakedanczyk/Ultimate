@@ -34,31 +34,37 @@ namespace Urth
 
         public bool placing;
         public ConstructionPlayer constructionPlayer;
-        public ConstructionPanelControl constructionPanelControl;
+        public ConstructionProgressMenuControl constructionProgressMenuControl;
         public UIDocument doc;
         public VisualElement constructionInterface;
+        public VisualElement constructionPlanningMenu;
+        public VisualElement constructionProgressMenu;
         bool uiBuilt = false;
+        public void Build()
+        {
+            Debug.Log("building construction UI");
 
-        public void Enable(StaticPrefab staticPrefab)
+            constructionInterface = doc.rootVisualElement.Query(UrthConstants.CONSTRUCTION_INTERFACE).First();
+
+            constructionPlanningMenu = constructionInterface.Query(UrthConstants.CONSTRUCTION_PLANNING_MENU).First();
+
+            constructionProgressMenu = constructionInterface.Query(UrthConstants.CONSTRUCTION_PANEL).First();
+            constructionProgressMenuControl.Link(constructionProgressMenu);
+
+            uiBuilt = true;
+        }
+
+        public void Enable()
         {
             if (!uiBuilt)
             {
-                Debug.Log("building construction UI");
-
-                constructionInterface = doc.rootVisualElement.Query(UrthConstants.CONSTRUCTION_INTERFACE).First();
-                constructionInterface.style.display = DisplayStyle.Flex;
-
-                VisualElement constructionPanel = constructionInterface.Query(UrthConstants.CONSTRUCTION_PANEL).First();
-                constructionPanelControl.Link(constructionPanel);
-
-                uiBuilt = true;
+                Build();
             }
             else
             {
                 Debug.Log("construction UI already built");
-                constructionInterface.style.display = DisplayStyle.Flex;
             }
-            constructionPanelControl.SetConstruction(staticPrefab);
+            constructionInterface.style.display = DisplayStyle.Flex;
         }
         public void Disable()
         {
@@ -66,6 +72,38 @@ namespace Urth
             {
                 constructionInterface.style.display = DisplayStyle.None;
             }
+        }
+
+        public void SetItemMenu(StaticPrefab staticPrefab)
+        {
+            constructionProgressMenuControl.SetConstruction(staticPrefab);
+        }
+
+        public void EnableMenus()
+        {
+            if (!uiBuilt)
+            {
+                Build();
+            }
+            constructionInterface.style.display = DisplayStyle.Flex;
+            constructionPlanningMenu.style.display = DisplayStyle.Flex;
+        }
+        public void DisableMenus()
+        {
+            if (uiBuilt)
+            {
+                constructionPlanningMenu.style.display = DisplayStyle.None;
+                constructionProgressMenu.style.display = DisplayStyle.None;
+            }
+        }
+
+        public void OpenItemMenu()
+        {
+            if (!uiBuilt)
+            {
+                Build();
+            }
+            constructionProgressMenu.style.display = DisplayStyle.Flex;
         }
     }
 

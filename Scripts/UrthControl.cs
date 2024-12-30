@@ -31,18 +31,18 @@ namespace Urth
         void Update()
         {
             Vector3 toHit = aim.AimHit.point - aim.AimOrigin.position;
-            if(toHit.magnitude < playerCreatureManager.body.stats.GetToolReachDistance())
+            if (toHit.magnitude < playerCreatureManager.body.stats.GetToolReachDistance())
             {
                 hudCube.SetActive(true);
                 Vector3 pos = aim.AimHit.point;
-                pos = new Vector3(((int)((pos.x)*4)) / 4f, ((int)((pos.y) * 4)) / 4f, ((int)((pos.z) * 4) / 4f));
+                pos = new Vector3(((int)((pos.x) * 4)) / 4f, ((int)((pos.y) * 4)) / 4f, ((int)((pos.z) * 4) / 4f));
                 hudCube.transform.position = pos;
             }
             else
             {
                 hudCube.SetActive(false);
             }
-            
+
             //if (inputReader.Interact)
             //{
             //    if (!inputReset && aim.AimHit.transform != null && aim.AimHit.distance < 16f * playerCreatureManager.body.stats.GetGrabReachDistance())
@@ -77,10 +77,22 @@ namespace Urth
 
         }
 
-
         public void Interact()
         {
-            Debug.Log("interact");
+            Debug.Log("Interact");
+            switch (gameUIControl.actualMode)
+            {
+                case UI_MODE.CHARACTER:
+                    InteractCharacterMode();
+                    break;
+                case UI_MODE.WORK:
+                    InteractWorkMode();
+                    break;
+            }
+        }
+
+        public void InteractCharacterMode()
+        {
             if (aim.AimHit.transform != null && aim.AimHit.distance < 16f * playerCreatureManager.body.stats.GetGrabReachDistance())
             {
                 Debug.Log(aim.AimHit.transform.tag);
@@ -99,12 +111,51 @@ namespace Urth
                     case UrthConstants.CONSTRUCTION_TAG:
                         StaticPrefab staticPrefab = aim.AimHit.transform.GetComponentInParent<StaticPrefab>();
                         Debug.Log($"Interact Construction {staticPrefab}");
-                        GameUIControl.Instance.OpenConstructionMenu(staticPrefab);
+                        GameUIControl.Instance.SetConstructionItemMenu(staticPrefab);
+                        break;
+                    case UrthConstants.PLANT_TAG:
+                        TryStartHarvestPlant(aim.AimHit.transform);
                         break;
                 }
             }
         }
+        Dictionary<string, WORKSITE_TYPE> tagToWorksiteTypeDict = new Dictionary<string, WORKSITE_TYPE>()
+        {
+            [UrthConstants.TERRAIN_TAG] = WORKSITE_TYPE.TERRAIN,
+        };
+        public void InteractWorkMode()
+        {
+            if (aim.AimHit.transform != null && aim.AimHit.distance < 16f * playerCreatureManager.body.stats.GetGrabReachDistance())
+            {
+                Debug.Log(aim.AimHit.transform.tag);
+                WORKSITE_TYPE targetWorksiteType = tagToWorksiteTypeDict[aim.AimHit.transform.tag];
+                if (targetWorksiteType == playerCreatureManager.currentWorksiteType)
+                {
+                    switch (aim.AimHit.transform.tag)
+                    {
+                        case UrthConstants.TERRAIN_TAG:
 
+                            TryPickupItem(aim.AimHit.transform.GetComponent<UItem>());
+                            break;
+                        case UrthConstants.WORKSITE_TAG:
+                            TerrainWorksiteIndicator vw = aim.AimHit.transform.GetComponent<TerrainWorksiteIndicator>();
+                            foreach (Voxel vox in vw.voxelValues)
+                            {
+                                Debug.Log(vox);
+                            }
+                            break;
+                        case UrthConstants.CONSTRUCTION_TAG:
+                            StaticPrefab staticPrefab = aim.AimHit.transform.GetComponentInParent<StaticPrefab>();
+                            Debug.Log($"Interact Construction {staticPrefab}");
+                            GameUIControl.Instance.SetConstructionItemMenu(staticPrefab);
+                            break;
+                        case UrthConstants.PLANT_TAG:
+                            TryStartHarvestPlant(aim.AimHit.transform);
+                            break;
+                    }
+                }
+            }
+        }
         public void OpenInteractMenu()
         {
             Debug.Log("InteractMenu");
@@ -126,7 +177,7 @@ namespace Urth
                     case UrthConstants.CONSTRUCTION_TAG:
                         StaticPrefab staticPrefab = aim.AimHit.transform.GetComponentInParent<StaticPrefab>();
                         Debug.Log($"Interact Construction {staticPrefab}");
-                        GameUIControl.Instance.OpenConstructionMenu(staticPrefab);
+                        GameUIControl.Instance.OpenConstructionItemMenu(staticPrefab);
                         break;
                 }
             }
@@ -140,6 +191,13 @@ namespace Urth
                 inputReset = true;
                 MessageLogControl.Instance.NewMessage(response.msg);
             }
+        }
+        public UrthResponse TryStartHarvestPlant(Transform plantTransform)
+        {
+            PlantTag tag = plantTransform.GetComponent<PlantTag>();
+            UrthResponse response = playerCreatureManager.TryStartHarvestPlant(tag);
+            MessageLogControl.Instance.NewMessage(response.msg);
+            return response;
         }
 
         public void LeftDown()

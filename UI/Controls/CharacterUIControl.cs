@@ -46,6 +46,23 @@ namespace Urth
         {
             characterInterface.style.display = DisplayStyle.None;
         }
+        public void EnableMenus()
+        {
+            if (!built)
+            {
+                Build();
+            }
+            else
+            {
+                inventoryPanelControl.Reorder();
+            }
+
+            characterInterface.style.display = DisplayStyle.Flex;
+        }
+        public void DisableMenus()
+        {
+            characterInterface.style.display = DisplayStyle.None;
+        }
 
         public void Build()
         {

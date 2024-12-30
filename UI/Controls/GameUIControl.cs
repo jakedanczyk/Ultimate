@@ -155,13 +155,14 @@ namespace Urth
                 case UI_MODE.CHARACTER:
                     characterUIControl.Disable();
                     break;
-                case UI_MODE.CONSTRUCTION_PLANNING:
-                    constructionPlanningUIControl.Disable();
+                case UI_MODE.CONSTRUCTION:
+                    constructionUIControl.Disable();
                     break;
                 case UI_MODE.WORK:
-                    workUIControl.DisableMenus();
+                    workUIControl.Disable();
                     break;
             }
+            combatUIControl.Enable();
             actualMode = UI_MODE.COMBAT;
             if (menusOpen)
             {
@@ -171,7 +172,7 @@ namespace Urth
 
         void CloseCombatUI()
         { 
-            combatUIControl.DisableMenus();
+            combatUIControl.Disable();
             ChangeMode(targetMode);
         }
 
@@ -202,13 +203,13 @@ namespace Urth
                         combatUIControl.DisableMenus();
                         break;
                     case UI_MODE.CRAFTING:
-                        craftingUIControl.Disable();
+                        craftingUIControl.DisableMenus();
                         break;
                     case UI_MODE.CHARACTER:
-                        characterUIControl.Disable();
+                        characterUIControl.DisableMenus();
                         break;
                     case UI_MODE.CONSTRUCTION_PLANNING:
-                        constructionPlanningUIControl.Disable();
+                        constructionPlanningUIControl.DisableMenus();
                         break;
                     case UI_MODE.WORK:
                         workUIControl.DisableMenus();
@@ -222,18 +223,18 @@ namespace Urth
                     case UI_MODE.CRAFTING:
                         //craftingPanelControl.BuildAndPopulate();
                         inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
-                        craftingUIControl.Enable();
+                        craftingUIControl.EnableMenus();
                         break;
                     case UI_MODE.CHARACTER:
-                        characterUIControl.Enable();
+                        characterUIControl.EnableMenus();
                         inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
                         break;
-                    case UI_MODE.CONSTRUCTION_PLANNING:
-                        constructionPlanningUIControl.Enable();
-                        inputLinkManager.SwitchActionMap(CONSTRUCTION_UI_ACTION_MAP);
+                    case UI_MODE.CONSTRUCTION:
+                        constructionUIControl.EnableMenus();
+                        inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
                         break;
                     case UI_MODE.WORK:
-                        workUIControl.Enable();
+                        workUIControl.EnableMenus();
                         break;
                 }
             }
@@ -247,7 +248,7 @@ namespace Urth
             {
                 case UI_MODE.COMBAT:
                     playerCreatureManager.ExitCombatMode();
-                    combatUIControl.DisableMenus();
+                    combatUIControl.Disable();
                     break;
                 case UI_MODE.CRAFTING:
                     craftingUIControl.Disable();
@@ -263,7 +264,7 @@ namespace Urth
                     StaticsManager.Instance.ToggleConstructionHUD(false);
                     break;
                 case UI_MODE.WORK:
-                    workUIControl.DisableMenus();
+                    workUIControl.Disable();
                     hudControl.DisableWorkHUD();
                     //stop workPreviewIndicator
                     break;
@@ -271,16 +272,20 @@ namespace Urth
             switch (targetMode)
             {
                 case UI_MODE.CRAFTING:
+                    craftingUIControl.Enable();
                     //craftingPanelControl.BuildAndPopulate();
                     break;
                 case UI_MODE.CHARACTER:
+                    characterUIControl.Enable();
                     break;
                 case UI_MODE.CONSTRUCTION_PLANNING:
+                    constructionUIControl.Enable();
                     //constructionPlayer.StartPreview();
                     StaticsManager.Instance.ToggleConstructionHUD(true);
                     break;
                 case UI_MODE.WORK:
                     workUIControl.Enable();
+                    playerCreatureManager.ChangeMode(CREATURE_MODE.WORK);
                     hudControl.EnableWorkHUD();
                     //start workPreviewIndicator
                     break;
@@ -296,13 +301,15 @@ namespace Urth
             ChangeMode(UI_MODE.CHARACTER);
         }
 
-        public void OpenConstructionMenu(StaticPrefab staticPrefab)
+
+        public void OpenConstructionItemMenu(StaticPrefab staticPrefab)
         {
-            constructionUIControl.Enable(staticPrefab);
+            constructionUIControl.SetItemMenu(staticPrefab);
         }
-        public void CloseConstructionMenu()
+
+        public void SetConstructionItemMenu(StaticPrefab staticPrefab)
         {
-            constructionUIControl.Disable();
+            constructionUIControl.SetItemMenu(staticPrefab);
         }
 
         public void ToggleMenus()
@@ -320,14 +327,15 @@ namespace Urth
                         workUIControl.DisableMenus();
                         break;
                     case UI_MODE.CRAFTING:
+                        craftingUIControl.DisableMenus();
                         //craftingPanelControl.BuildAndPopulate();
                         break;
                     case UI_MODE.CHARACTER:
-                        characterUIControl.Disable();
+                        characterUIControl.DisableMenus();
                         break;
                     case UI_MODE.CONSTRUCTION_PLANNING:
                         //constructionUIControl.Disable();
-                        constructionPlanningUIControl.Disable();
+                        constructionPlanningUIControl.DisableMenus();
                         break;
                 }
             }
@@ -341,23 +349,17 @@ namespace Urth
                         combatUIControl.EnableMenus();
                         break;
                     case UI_MODE.WORK:
-                        inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
-                        workUIControl.Enable();
+                        workUIControl.EnableMenus();
                         break;
                     case UI_MODE.CRAFTING:
-                        inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
-                        craftingUIControl.Enable();
+                        craftingUIControl.EnableMenus();
                         break;
                     case UI_MODE.CHARACTER:
-                        Debug.Log("Enabling char UI");
-
-                        inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
-                        characterUIControl.Enable();
+                        characterUIControl.EnableMenus();
                         break;
                     case UI_MODE.CONSTRUCTION_PLANNING:
                         //constructionUIControl.Enable();
-                        constructionPlanningUIControl.Enable();
-                        inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
+                        constructionPlanningUIControl.EnableMenus();
                         break;
                 }
             }

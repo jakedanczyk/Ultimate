@@ -116,7 +116,7 @@ namespace Urth
             //newItemElement.SetItem(item);
         }
 
-        public void OnItemClick(ClickEvent evt, int idx)
+        public new void OnItemClick(ClickEvent evt, int idx)
         {
             // Only perform this action at the target, not in a parent
             if (evt.propagationPhase != PropagationPhase.AtTarget)

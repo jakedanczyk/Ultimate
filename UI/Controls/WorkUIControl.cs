@@ -7,41 +7,55 @@ namespace Urth
 {
     public class WorkUIControl : MonoBehaviour
     {
+        List<WORKTASK> availableTasks = new List<WORKTASK>() { WORKTASK.MINE };
+        Dictionary<WORKTASK, int> taskOrder;
+        Dictionary<int, WORKTASK> orderOfTasks;
         public PlayerCreatureManager playerCreatureManager;
         public Transform indicatorTransform;
+        public WORKTASK currentWorktask;
         public WORKSITE_TYPE currentWorksiteIndicatorType;
-        public TerrainWorksiteIndicator terrainWorksiteIndicator;
+        public GameObject terrainWorksiteIndicator;
         public GameObject plantWorksiteIndicator;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            taskOrder = new Dictionary<WORKTASK, int>(availableTasks.Count);
+            orderOfTasks = new Dictionary<int, WORKTASK>(availableTasks.Count);
+            int c = 0;
+            foreach(WORKTASK wt in availableTasks)
+            {
+                taskOrder.Add(wt, c);
+                orderOfTasks.Add(c, wt);
+                c++;
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
-            //if (isWorking)
-            //{
-            //    if (playerCreatureManager.currentWorksiteType != currentWorksiteIndicatorType)
-            //    {
-            //        ActivateCurrentWorksiteIndicator();
-            //    }
-            //    UpdatePreview();
-            //}
+            if (isWorking)
+            {
+                //if (playerCreatureManager.worksiteType != currentWorksiteIndicatorType)
+                //{
+                //    ActivateCurrentWorksiteIndicator();
+                //}
+                UpdatePreview();
+            }
         }
 
         public UIDocument doc;
-        public VisualElement workMenus;
+        public VisualElement workInterface;
         bool uiBuilt = false;
 
         public ListView listView;
 
-        public void DisableMenus()
+        public void Disable()
         {
-            workMenus.style.display = DisplayStyle.None;
+            workInterface.style.display = DisplayStyle.None;
         }
+
+        
 
         public void Enable()
         {
@@ -51,27 +65,42 @@ namespace Urth
             }
             else
             {
-                workMenus.style.display = DisplayStyle.Flex;
+                workInterface.style.display = DisplayStyle.Flex;
                 ActivateCurrentWorksiteIndicator();
             }
         }
 
+        public void DisableMenus()
+        {
+            workInterface.style.display = DisplayStyle.None;
+        }
+        public void EnableMenus()
+        {
+            if (!uiBuilt)
+            {
+                Initialize();
+            }
+            else
+            {
+                workInterface.style.display = DisplayStyle.Flex;
+            }
+        }
         public void Initialize()
         {
-            workMenus = doc.rootVisualElement.Query(UrthConstants.CONSTRUCTION_PLANNING_INTERFACE).First();
-            workMenus.style.display = DisplayStyle.Flex;
+            workInterface = doc.rootVisualElement.Query(UrthConstants.CONSTRUCTION_PLANNING_INTERFACE).First();
+            workInterface.style.display = DisplayStyle.Flex;
 
             uiBuilt = true;
         }
 
         void DeactivateTerrainIndicator()
         {
-            terrainWorksiteIndicator.gameObject.SetActive(false);
+            terrainWorksiteIndicator.SetActive(false);
         }
 
         void ActivateTerrainIndicator()
         {
-            terrainWorksiteIndicator.gameObject.SetActive(true);
+            terrainWorksiteIndicator.SetActive(true);
         }
 
         void DeactivateBushIndicator()
@@ -130,12 +159,12 @@ namespace Urth
             {
                 Debug.DrawLine(aim.AimOrigin.position, aimHit.point, Color.green);
                 if (aimHit.transform != this.transform)
-                    ShowPreview(aimHit);
+                    SetPreview(aimHit);
             }
         }
 
         public float heightOffset;
-        public void ShowPreview(RaycastHit hit2)
+        public void SetPreview(RaycastHit hit2)
         {
             currentPos = hit2.point;
             if (snapToGrid)
@@ -160,6 +189,33 @@ namespace Urth
             heightOffset = curr;
             string display = (curr > 0 ? "+" : "-") + (Mathf.Abs(curr).ToString()) + "m";
             HUDControl.Instance.SetConstructionOffset(display);
+        }
+
+        public void NextWorktask()
+        {
+            int nc = (taskOrder[currentWorktask] + 1)% taskOrder.Count;
+            SetWorktask(availableTasks[nc]);
+        }
+        public void PrevWorktask()
+        {
+            int nc = (taskOrder[currentWorktask] - 1) % taskOrder.Count;
+            SetWorktask(availableTasks[nc]);
+        }
+
+        public void SetWorktask(WORKTASK newTask)
+        {
+            if (!taskOrder.ContainsKey(newTask))
+            {
+                Debug.Log("tried to set an unavailable worktask");
+            }
+            currentWorktask = newTask;
+            switch (newTask)
+            {
+                case WORKTASK.MINE:
+                    currentWorksiteIndicatorType = WORKSITE_TYPE.TERRAIN;
+                    break;
+            }
+            ActivateCurrentWorksiteIndicator();
         }
        
     }

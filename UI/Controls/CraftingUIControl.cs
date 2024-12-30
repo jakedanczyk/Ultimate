@@ -42,6 +42,22 @@ namespace Urth
                 craftingInterface.style.display = DisplayStyle.Flex;
             }
         }
+        public void DisableMenus()
+        {
+            craftingInterface.style.display = DisplayStyle.None;
+        }
+
+        public void EnableMenus()
+        {
+            if (!uiBuilt)
+            {
+                Initialize();
+            }
+            else
+            {
+                craftingInterface.style.display = DisplayStyle.Flex;
+            }
+        }
 
         public void Initialize()
         {

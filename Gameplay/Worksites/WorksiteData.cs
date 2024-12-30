@@ -7,16 +7,26 @@ namespace Urth
 {
     public enum WORKTASK
     {
-        MINE,
-        DIG,//gathering or moving loosened terrain
-        STONECUTTING,
-        LEVEL,
+        MINE,//break up and move raw terrain (gather some/all materials, set in WorkUI)
+        DIG,//
+        STONECUT,//cut stone into shapes (also gives mining xp if done on raw terrain)
+        COLLECT_STONE,//collect stone pieces, specify material/shape/size in WorkUI
+        SEARCH_STONE,//'look around' for stones of a particular type
+        LEVEL,//flatten a chunk of terrain
 
-        FELL,
-        DELIMB,
-        DEBARK,
-        CHOP, //cutting trunk into shorter logs
-        SPLIT,//splitting logs lengthwise
+        HARVEST_PLANT,//Gather fruit or other primary product of certain plants.
+                      //May destroy plant entirely (i.e. potato) or partialy (lettuce) or not at all (berry bushes, fruit tree)
+
+        FELL,//a tree or other similar object (saguaro, giant fungi)
+        CHOP,
+        PROCESS_TREE,//process a downed tree into logs, sticks, bark, etc.
+                     //(use this instead of step-by-step process for now. need more art time/assets first).
+        DELIMB,//downed trees //if tree is still standing, height limits % of limbs can be cut. no wait, requires modular tree models.)
+        DEBARK,//remove bark from limbed tree trunk
+        CUT_LOGS, //cutting trunk into shorter logs
+
+        SPLIT,//split logs into quarter logs
+        MAKE_KINDLING,//make quarters,branches,etc. into kindling
         WOODWORK,
 
         GATHER,
@@ -24,6 +34,8 @@ namespace Urth
         UPROOT,
 
         CONSTRUCT,
+
+        FISH
 
     }
     public enum WORKSITE_TYPE

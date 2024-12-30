@@ -62,6 +62,7 @@ namespace Urth
         //public PlayerController playerControl;
         public UrthAnimController animController;
         public UPlayerBuilder terrainBuilder;
+        public WORKTASK worktask;
         public WORKSITE_TYPE currentWorksiteType;
 
         public CreatureOffenseController offense;
@@ -81,6 +82,22 @@ namespace Urth
 
         public void ChangeMode(CREATURE_MODE newMode)
         {
+            if(mode == newMode)
+            {
+                return;
+            }
+            switch (mode)
+            {
+                case CREATURE_MODE.COMBAT:
+                    ExitCombatMode();
+                    break;
+                case CREATURE_MODE.ACTIVE:
+                    ExitActiveMode();
+                    break;
+                case CREATURE_MODE.WORK:
+                    ExitWorkMode();
+                    break;
+            }
             switch (newMode)
             {
                 case CREATURE_MODE.COMBAT:
@@ -89,20 +106,20 @@ namespace Urth
                 case CREATURE_MODE.ACTIVE:
                     EnterActiveMode();
                     break;
+                case CREATURE_MODE.WORK:
+                    EnterWorkMode();
+                    break;
             }
         }
 
         public void EnterActiveMode()
         {
             mode = CREATURE_MODE.ACTIVE;
-            if (combatMode)
-            {
-                combatMode = false;
-                LowerWeapons();
-            }
             animController.SetStance(STANCE.ACTIVE);
         }
-
+        public void ExitActiveMode()
+        {
+        }
         public void EnterCombatMode()
         {
             combatMode = true;
@@ -113,11 +130,17 @@ namespace Urth
         public void ExitCombatMode()
         {
             combatMode = false;
-            mode = CREATURE_MODE.ACTIVE;
             LowerWeapons();
+        }
+        public void EnterWorkMode()
+        {
+            mode = CREATURE_MODE.WORK;
             animController.SetStance(STANCE.ACTIVE);
         }
+        public void ExitWorkMode()
+        {
 
+        }
         public void LowerWeapons()
         {
             Debug.Log("TODO lowerWeapons");
@@ -301,6 +324,21 @@ namespace Urth
                     DoTerrainWork(item);
                     break;
             }
+        }
+        public void StartAutoWork()
+        {
+
+        }
+        public void ProgressAutoWork()
+        {
+
+        }
+        public UrthResponse TryStartHarvestPlant(PlantTag plantTag)
+        {
+            PlantData plantData = PlantsManager.Instance.GetPlantData(plantTag);
+            //query PlantsManager (or Library? or Plant?) for harvest data
+
+            return new UrthResponse(true);
         }
         public void DoTerrainWork(UItem item)
         {

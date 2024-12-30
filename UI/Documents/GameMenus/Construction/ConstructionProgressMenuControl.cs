@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace Urth
 {
-    public class ConstructionPanelControl : UIPanelControl
+    public class ConstructionProgressMenuControl : UIPanelControl
     {
         public VisualElement constructionPanel;
         public VisualElement previewPanel;
@@ -18,7 +18,7 @@ namespace Urth
         public Slider rSlider;
         public Toggle snaptoToggle;
         public DropdownField snaptoDropdown;
-        public static ConstructionPanelControl Instance { get; private set; }
+        public static ConstructionProgressMenuControl Instance { get; private set; }
         public StaticPrefab selectedPrefab;
         public ConstructionWorksite selectedWorksite;
         public Camera viewCam;

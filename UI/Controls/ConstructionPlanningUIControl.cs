@@ -46,6 +46,25 @@ namespace Urth
                 constructionPlanningInterface.style.display = DisplayStyle.None;
             }
         }
+        public void EnableMenus()
+        {
+            if (!uiBuilt)
+            {
+                Initialize();
+            }
+            else
+            {
+                constructionPlanningInterface.style.display = DisplayStyle.Flex;
+            }
+        }
+
+        public void DisableMenus()
+        {
+            if (uiBuilt)
+            {
+                constructionPlanningInterface.style.display = DisplayStyle.None;
+            }
+        }
 
         public void Initialize()
         {

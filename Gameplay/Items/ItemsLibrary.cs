@@ -37,8 +37,6 @@ namespace Urth
         SQUARE_ROOT,
         CUBE_ROOT,
         FOURTH_ROOT
-
-
     }
 
 
