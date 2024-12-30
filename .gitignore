@@ -1,7 +1,9 @@
 *
 !*/
 !*.cs
+!*.cs.meta
 !*.uxml
+!*.xml
 !*.shader
 !*.gitignore
 !*.inputactions

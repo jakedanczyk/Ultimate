@@ -1,0 +1,163 @@
+﻿<Species>
+  <PlantSpecies type="DOUGLAS_FIR">
+    <biomes>
+      <biome biome-id="SUBARTIC_RAIN">
+        <density>1000</density>
+        <adultSizeInBiome>0.7</adultSizeInBiome>
+      </biome>
+      <biome biome-id="SUBARTIC_WET">
+        <density>2000</density>
+        <adultSizeInBiome>0.65</adultSizeInBiome>
+      </biome>
+      <biome biome-id="SUBARTIC_MOIST">
+        <density>2000</density>
+        <adultSizeInBiome>0.6</adultSizeInBiome>
+      </biome>
+      <biome biome-id="SUBARTIC_DRY">
+        <density>100</density>
+        <adultSizeInBiome>0.5</adultSizeInBiome>
+      </biome>
+      <biome biome-id="COOL_RAIN">
+        <density>1000</density>
+        <adultSizeInBiome>1.0</adultSizeInBiome>
+      </biome>
+      <biome biome-id="COOL_WET">
+        <density>4000</density>
+        <adultSizeInBiome>0.9</adultSizeInBiome>
+      </biome>
+      <biome biome-id="COOL_MOIST">
+        <density>4000</density>
+        <adultSizeInBiome>0.9</adultSizeInBiome>
+      </biome>
+      <biome biome-id="COOL_MILD">
+        <density>4000</density>
+        <adultSizeInBiome>0.7</adultSizeInBiome>
+      </biome>
+      <biome biome-id="COOL_DRY">
+        <density>2000</density>
+        <adultSizeInBiome>0.6</adultSizeInBiome>
+      </biome>
+      <biome biome-id="WARM_MILD">
+        <density>2000</density>
+        <adultSizeInBiome>0.75</adultSizeInBiome>
+      </biome>
+      <biome biome-id="WARM_DRY">
+        <density>1000</density>
+        <adultSizeInBiome>0.6</adultSizeInBiome>
+      </biome>
+    </biomes>
+    <growthCurve>(0,0.1):(5,5):(40,30):(70,45):(150,65):(1000,140)</growthCurve>
+    <maxAge>1500</maxAge>
+    <tags></tags>
+  </PlantSpecies>
+  <PlantSpecies type="ELM">
+    <biomes>
+      <biome biome-id="COOL_RAIN">
+        <density>3000</density>
+        <adultSizeInBiome>0.8</adultSizeInBiome>
+      </biome>
+      <biome biome-id="COOL_WET">
+        <density>3000</density>
+        <adultSizeInBiome>0.8</adultSizeInBiome>
+      </biome>
+      <biome biome-id="COOL_MOIST">
+        <density>3000</density>
+        <adultSizeInBiome>0.8</adultSizeInBiome>
+      </biome>
+      <biome biome-id="COOL_MILD">
+        <density>2000</density>
+        <adultSizeInBiome>0.7</adultSizeInBiome>
+      </biome>
+      <biome biome-id="COOL_DRY">
+        <density>1000</density>
+        <adultSizeInBiome>0.5</adultSizeInBiome>
+      </biome>
+      <biome biome-id="WARM_RAIN">
+        <density>4000</density>
+        <adultSizeInBiome>1.0</adultSizeInBiome>
+      </biome>
+      <biome biome-id="WARM_WET">
+        <density>3500</density>
+        <adultSizeInBiome>1.0</adultSizeInBiome>
+      </biome>
+      <biome biome-id="WARM_MOIST">
+        <density>3000</density>
+        <adultSizeInBiome>0.9</adultSizeInBiome>
+      </biome>
+      <biome biome-id="WARM_MILD">
+        <density>2000</density>
+        <adultSizeInBiome>0.8</adultSizeInBiome>
+      </biome>
+      <biome biome-id="WARM_DRY">
+        <density>1000</density>
+        <adultSizeInBiome>0.6</adultSizeInBiome>
+      </biome>
+      <biome biome-id="SUBTROPIC_RAIN">
+        <density>3000</density>
+        <adultSizeInBiome>.95</adultSizeInBiome>
+      </biome>
+      <biome biome-id="SUBTROPIC_WET">
+        <density>3000</density>
+        <adultSizeInBiome>0.9</adultSizeInBiome>
+      </biome>
+      <biome biome-id="SUBTROPIC_MOIST">
+        <density>2000</density>
+        <adultSizeInBiome>0.85</adultSizeInBiome>
+      </biome>
+      <biome biome-id="SUBTROPIC_MILD">
+        <density>1000</density>
+        <adultSizeInBiome>0.75</adultSizeInBiome>
+      </biome>
+      <biome biome-id="SUBTROPIC_DRY">
+        <density>500</density>
+        <adultSizeInBiome>0.5</adultSizeInBiome>
+      </biome>
+    </biomes>
+    <growthCurve>(0,0.1):(40,20):(100,30):(500,70)</growthCurve>
+    <maxAge>600</maxAge>
+    <tags></tags>
+  </PlantSpecies>
+  <PlantSpecies type="PALM">
+    <biomes>
+      <biome biome-id="SUBTROPIC_RAIN">
+        <density>2000</density>
+        <adultSizeInBiome>.95</adultSizeInBiome>
+      </biome>
+      <biome biome-id="SUBTROPIC_WET">
+        <density>2000</density>
+        <adultSizeInBiome>0.9</adultSizeInBiome>
+      </biome>
+      <biome biome-id="SUBTROPIC_MOIST">
+        <density>2000</density>
+        <adultSizeInBiome>0.85</adultSizeInBiome>
+      </biome>
+      <biome biome-id="SUBTROPIC_MILD">
+        <density>2000</density>
+        <adultSizeInBiome>0.75</adultSizeInBiome>
+      </biome>
+      <biome biome-id="TROPIC_RAIN">
+        <density>4000</density>
+        <adultSizeInBiome>1.0</adultSizeInBiome>
+      </biome>
+      <biome biome-id="TROPIC_WET">
+        <density>3500</density>
+        <adultSizeInBiome>1.0</adultSizeInBiome>
+      </biome>
+      <biome biome-id="TROPIC_MOIST">
+        <density>3000</density>
+        <adultSizeInBiome>0.9</adultSizeInBiome>
+      </biome>
+      <biome biome-id="TROPIC_MILD">
+        <density>2000</density>
+        <adultSizeInBiome>0.85</adultSizeInBiome>
+      </biome>
+      <biome biome-id="TROPIC_DRY">
+        <density>500</density>
+        <adultSizeInBiome>0.5</adultSizeInBiome>
+      </biome>
+    </biomes>
+    <growthCurve>(0,0.1):(30,30)</growthCurve>
+    <maxAge>100</maxAge>
+    <tags></tags>
+  </PlantSpecies>
+</Species>
