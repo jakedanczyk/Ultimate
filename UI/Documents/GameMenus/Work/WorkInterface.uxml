@@ -6,9 +6,27 @@
     <ui:Template name="ItemDisplayPanel" src="project://database/Assets/UI/Documents/GameMenus/Character/ItemDisplayPanel.uxml?fileID=9197481963319205126&amp;guid=c8ae35d335227504db1cf45db94cca94&amp;type=3#ItemDisplayPanel" />
     <ui:Template name="WorkMenu" src="project://database/Assets/UI/Documents/GameMenus/Work/WorkMenu.uxml?fileID=9197481963319205126&amp;guid=4e5781a6a67124d4588f01aac2ec8203&amp;type=3#WorkMenu" />
     <ui:Instance template="PortraitPanel" name="DisplayPanel 1" />
-    <ui:Instance template="MapPanel" name="MapPanel" style="position: absolute; top: 620px; left: 762px; height: 392px; width: 480px; right: 535px; bottom: 228px;" />
-    <ui:Instance template="InventoryPanel" name="InventoryPanel" style="position: absolute; top: 112px; left: 167px; right: 1314px; bottom: 187px;" />
-    <ui:Instance template="StatusPanel" name="StatusPanel" style="position: absolute; top: 158px; left: 1416px; right: 201px; bottom: 231px;" />
+    <ui:Instance template="MapPanel" name="MapPanel" style="position: absolute; top: 620px; left: 762px; height: 392px; width: 480px; right: 535px; bottom: 228px; display: none;" />
+    <ui:Instance template="InventoryPanel" name="InventoryPanel" style="position: absolute; top: 78px; left: 1265px; right: 216px; bottom: 221px;" />
+    <ui:Instance template="StatusPanel" name="StatusPanel" style="position: absolute; top: 158px; left: 1416px; right: 201px; bottom: 231px; display: none;" />
     <ui:Instance template="ItemDisplayPanel" name="ItemDisplayPanel" style="position: absolute; top: 97px; left: 799px; right: 694px; bottom: 646px;" />
-    <ui:Instance template="WorkMenu" name="WorkMenu" style="position: absolute; height: 426px; width: 652px;" />
+    <ui:Instance template="WorkMenu" name="TaskMenu" style="position: absolute; height: 426px; width: 652px; top: 246px; left: 58px;" />
+    <ui:VisualElement name="InfoPanel" style="position: absolute; top: 540px; left: 780px;">
+        <ui:VisualElement style="height: 400px; width: 350px;">
+            <ui:VisualElement name="ulBorder" style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="uBorder" style="position: absolute; left: 20px; top: 0; width: auto; height: 20px; right: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="urBorder" style="position: absolute; left: auto; top: 0; width: 20px; height: 20px; right: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="rBorder" style="position: absolute; left: auto; top: 20px; width: 20px; height: auto; right: 0; bottom: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="brBorder" style="position: absolute; left: auto; top: auto; width: 20px; height: 20px; right: 0; bottom: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="bBorder" style="position: absolute; left: 20px; top: auto; width: auto; height: 20px; right: 20px; bottom: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="blBorder" style="position: absolute; left: 0; top: auto; width: 20px; height: 20px; right: auto; bottom: 0; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="lBorder" style="position: absolute; left: 0; top: 20px; width: 20px; height: auto; right: auto; bottom: 20px; background-color: rgb(115, 170, 115);" />
+            <ui:VisualElement name="titleBar" style="top: 20px; position: absolute; min-width: auto; height: 40px; width: auto; left: 20px; right: 20px; align-items: center; justify-content: flex-start;">
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="title" style="font-size: 18px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="content" style="left: 20px; top: 60px; position: absolute; right: 20px; bottom: 20px;">
+                <ui:Label text="Label" display-tooltip-when-elided="true" name="taskLabel" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>

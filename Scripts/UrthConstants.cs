@@ -39,7 +39,9 @@ namespace Urth
         public static string CONSTRUCTION_SETTINGS_PANEL = "ConstructionSettingsPanel";
         public static string INVENTORY_PANEL = "InventoryPanel";
         public static string ITEM_DISPLAY_PANEL = "ItemDisplayPanel";
-        
+        public static string WORK_INTERFACE = "WorkInterface";
+
+
         public static string UI_ACTION_MAP = "UI";
         public static string CHARACTER_ACTION_MAP = "CharacterUI";
         public static string CONSTRUCTION_ACTION_MAP = "ConstructionUI";

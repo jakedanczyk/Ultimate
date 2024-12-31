@@ -17,6 +17,25 @@ namespace Urth
         public GameObject terrainWorksiteIndicator;
         public GameObject plantWorksiteIndicator;
 
+        public TaskMenuControl taskMenuControl;
+        public VisualElement taskSelectionPanel;
+
+        public VisualElement infoPanel;
+        public Label taskLabel;
+
+        public static WorkUIControl Instance { get; private set; }
+        public void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this;
+            }
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -55,7 +74,20 @@ namespace Urth
             workInterface.style.display = DisplayStyle.None;
         }
 
-        
+        public void Initialize()
+        {
+            workInterface = doc.rootVisualElement.Query(UrthConstants.WORK_INTERFACE).First();
+            workInterface.style.display = DisplayStyle.Flex;
+
+            taskSelectionPanel = workInterface.Query("TaskMenu").First();
+            taskMenuControl.Link(taskSelectionPanel);
+            taskMenuControl.Populate(availableTasks);
+
+            infoPanel = workInterface.Query("InfoPanel").First();
+            taskLabel = infoPanel.ElementAt(0).Query("content").First().Query("taskLabel").First() as Label;
+
+            uiBuilt = true;
+        }
 
         public void Enable()
         {
@@ -85,13 +117,7 @@ namespace Urth
                 workInterface.style.display = DisplayStyle.Flex;
             }
         }
-        public void Initialize()
-        {
-            workInterface = doc.rootVisualElement.Query(UrthConstants.CONSTRUCTION_PLANNING_INTERFACE).First();
-            workInterface.style.display = DisplayStyle.Flex;
-
-            uiBuilt = true;
-        }
+        
 
         void DeactivateTerrainIndicator()
         {
@@ -217,6 +243,21 @@ namespace Urth
             }
             ActivateCurrentWorksiteIndicator();
         }
-       
+
+
+        public new void OnItemClick(ClickEvent evt, int idx)
+        {
+            // Only perform this action at the target, not in a parent
+            if (evt.propagationPhase != PropagationPhase.AtTarget)
+                return;
+
+            // Assign a random new color
+            var targetBox = evt.target as VisualElement;
+            VisualElement parent = targetBox.parent;
+            var currColor = parent.style.backgroundColor.value;
+            parent.style.backgroundColor = Color.green;// new Color(currColor.r,currColor.g,currColor.b,1f);
+
+            Debug.Log(availableTasks[idx]);
+        }
     }
 }

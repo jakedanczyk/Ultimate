@@ -69,10 +69,9 @@ namespace Urth
             characterInterface = doc.rootVisualElement.Query(UrthConstants.CHARACTER_INTERFACE).First();
             VisualElement inventoryPanel = characterInterface.Query(UrthConstants.INVENTORY_PANEL).First();
             inventoryPanelControl.Link(inventoryPanel);
-
-            VisualElement itemDisplayPanel = characterInterface.Query(UrthConstants.ITEM_DISPLAY_PANEL).First();
             inventoryPanelControl.Populate();
 
+            VisualElement itemDisplayPanel = characterInterface.Query(UrthConstants.ITEM_DISPLAY_PANEL).First();
             itemDisplayPanelControl.Link(itemDisplayPanel);
             itemDisplayPanelControl.enabled = true;
             built = true;
