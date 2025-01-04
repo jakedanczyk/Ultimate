@@ -20,6 +20,7 @@ namespace Urth
         public TaskMenuControl taskMenuControl;
         public VisualElement taskSelectionPanel;
 
+        public InfoPanelControl infoPanelControl;
         public VisualElement infoPanel;
         public Label taskLabel;
 
@@ -84,7 +85,8 @@ namespace Urth
             taskMenuControl.Populate(availableTasks);
 
             infoPanel = workInterface.Query("InfoPanel").First();
-            taskLabel = infoPanel.ElementAt(0).Query("content").First().Query("taskLabel").First() as Label;
+            infoPanelControl.Link(infoPanel);
+            //taskLabel = infoPanel.ElementAt(0).Query("content").First().Query("taskLabel").First() as Label;
 
             uiBuilt = true;
         }
@@ -258,6 +260,11 @@ namespace Urth
             parent.style.backgroundColor = Color.green;// new Color(currColor.r,currColor.g,currColor.b,1f);
 
             Debug.Log(availableTasks[idx]);
+        }
+
+        public void SetInfoPanelTerrain(TerrainWorksite tw)
+        {
+            infoPanelControl.PopulateTerrain(tw);
         }
     }
 }

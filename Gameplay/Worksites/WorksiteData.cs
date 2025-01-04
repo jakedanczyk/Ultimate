@@ -7,8 +7,8 @@ namespace Urth
 {
     public enum WORKTASK
     {
-        MINE,//break up and move raw terrain (gather some/all materials, set in WorkUI)
-        DIG,//
+        MINE,//break up and pick up raw terrain that is too firm to be dug(TODO be able to drop what is dug on designated tile within reach, but also specify materials to keep)
+        DIG,//for soft terrain. limit determined by tool and ability
         STONECUT,//cut stone into shapes (also gives mining xp if done on raw terrain)
         COLLECT_STONE,//collect stone pieces, specify material/shape/size in WorkUI
         SEARCH_STONE,//'look around' for stones of a particular type
@@ -71,6 +71,10 @@ namespace Urth
             id = iid;
             surface = isSurface;
             pos = ipos;
+        }
+        public List<TerrainBlockFraction> GetFractions()
+        {
+            return terrainBlock.fractions;
         }
     }
     public class PlantWorksiteData

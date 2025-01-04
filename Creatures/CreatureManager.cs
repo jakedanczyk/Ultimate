@@ -317,11 +317,12 @@ namespace Urth
         }
         public void TryDoAimedWork(UItem item)
         {
-            Debug.Log(mWeaponManager.animal.Aimer.AimHit.transform.name);
+            Debug.Log("Aimed work: " + mWeaponManager.animal.Aimer.AimHit.transform.name);
             switch (mWeaponManager.animal.Aimer.AimHit.transform.tag)
             {
                 case ("Terrain"):
-                    DoTerrainWork(item);
+                    TerrainWorksite worksite = WorksitesManager.Instance.GetTerrainWorksite(mWeaponManager.animal.Aimer.AimHit.point);
+                    DoTerrainWork(item,worksite);
                     break;
             }
         }
@@ -340,21 +341,20 @@ namespace Urth
 
             return new UrthResponse(true);
         }
-        public void DoTerrainWork(UItem item)
+        public void DoTerrainWork(UItem item, TerrainWorksite worksite)
         {
             //If targeted terrain worksite doesn't exist yet, create it
             //Determine the type of work being done
             //Do the work
-            TerrainWorksite terrainWorksite = WorksitesManager.Instance.GetTerrainWorksite(mWeaponManager.animal.Aimer.AimHit.point);
 
             WORKTASK task = item.data.template.preferredTasks[WORKSITE_TYPE.TERRAIN];
             switch (task)
             {
                 case (WORKTASK.MINE):
-                    UrthInteractions.MineTerrainBlock(this, item, terrainWorksite);
+                    UrthInteractions.MineTerrainBlock(this, item, worksite);
                     break;
                 case (WORKTASK.DIG):
-                    UrthInteractions.DigTerrainBlock(this, item, terrainWorksite);
+                    UrthInteractions.DigTerrainBlock(this, item, worksite);
                     break;
             }
         }

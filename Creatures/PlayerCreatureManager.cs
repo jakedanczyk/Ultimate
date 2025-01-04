@@ -31,5 +31,18 @@ namespace Urth
         {
 
         }
+
+        public new void TryDoAimedWork(UItem item)
+        {
+            Debug.Log("Aimed work: " + mWeaponManager.animal.Aimer.AimHit.transform.name);
+            switch (mWeaponManager.animal.Aimer.AimHit.transform.tag)
+            {
+                case ("Terrain"):
+                    TerrainWorksite worksite = WorksitesManager.Instance.GetTerrainWorksite(mWeaponManager.animal.Aimer.AimHit.point);
+                    WorkUIControl.Instance.SetInfoPanelTerrain(worksite);
+                    DoTerrainWork(item, worksite);
+                    break;
+            }
+        }
     }
 }

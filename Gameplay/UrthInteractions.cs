@@ -13,7 +13,44 @@ namespace Urth
          * characters skill with the tool
          * difficulty of the task
          */
+
         public static void MineTerrainBlock(CreatureManager creature, UItem tool, TerrainWorksite terrainWorksite)
+        {
+            float itemTemplateScore = ItemsLibrary.Instance.templatesDict[tool.data.type].worktaskScores[WORKTASK.MINE];
+            float itemQualityScore = ItemsUtility.ItemQualityRatio(tool.data.quality);
+            float itemMaterialScore = 1f;//TODO
+            float itemScore = itemQualityScore * itemMaterialScore;
+
+            float taskSkillScore = creature.body.stats.Mining();
+            float toolSkillScore = creature.body.stats.GetStatByName(tool.data.type.ToString());
+            float characterScore = taskSkillScore * toolSkillScore;
+
+            float mineScoreTotal = itemScore * characterScore;
+            float remaining = mineScoreTotal;
+            while (remaining > 0)
+            {
+                List<TerrainBlockFraction> unfracturedFractions = terrainWorksite.GetUnfracturedFractions();
+                if (unfracturedFractions.Count == 0)
+                {
+                    break;
+                }
+                float damageShare = remaining / unfracturedFractions.Count;
+                remaining = 0f;
+                foreach (TerrainBlockFraction fraction in unfracturedFractions)
+                {
+                    float fractionDamageFactor = 1f / fraction.volumeFraction / fraction.Resistance();
+                    float damage = damageShare * fractionDamageFactor;
+                    fraction.fracture = damage + fraction.fracture;
+                    if (fraction.fracture > 1f)
+                    {//fully fractured, could be remainder damage to carry over
+                        float remainder = (fraction.fracture - 1f) / fractionDamageFactor;
+                        remaining += remainder;
+                        fraction.fracture = 1f;
+                    }
+                }
+            }
+        }
+        public static void BreakTerrainBlock(CreatureManager creature, UItem tool, TerrainWorksite terrainWorksite)
         {
             float itemTemplateScore = ItemsLibrary.Instance.templatesDict[tool.data.type].worktaskScores[WORKTASK.MINE];
             float itemQualityScore = ItemsUtility.ItemQualityRatio(tool.data.quality);
@@ -49,6 +86,8 @@ namespace Urth
                 }
             }
         }
+        //Digging only affects terrain layers soft enough to be dug.
+        //The limit of terrain firmness is affected by stats of creature and tool
         public static void DigTerrainBlock(CreatureManager creature, UItem tool, TerrainWorksite terrainWorksite)
         {
             float itemTemplateScore = ItemsLibrary.Instance.templatesDict[tool.data.type].worktaskScores[WORKTASK.DIG];
