@@ -20,7 +20,7 @@ namespace Urth
         public TaskMenuControl taskMenuControl;
         public VisualElement taskSelectionPanel;
 
-        public InfoPanelControl infoPanelControl;
+        public WorkInfoPanelControl infoPanelControl;
         public VisualElement infoPanel;
         public Label taskLabel;
 
