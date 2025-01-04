@@ -42,7 +42,8 @@ namespace Urth
             rootElement = root;
             RegisterBorderCallbacks();
             infoPanel = rootElement;
-            listPanel = infoPanel.Query("content").First().ElementAt(0).ElementAt(0);
+
+            listPanel = infoPanel.ElementAt(0).Query("content").First();
             listView = listPanel.Q<ListView>();
         }
 

@@ -37,10 +37,8 @@ namespace Urth
             {
                 Initialize();
             }
-            else
-            {
-                craftingInterface.style.display = DisplayStyle.Flex;
-            }
+            craftingInterface.style.display = DisplayStyle.Flex;
+            craftingInterface.BringToFront();
         }
         public void DisableMenus()
         {

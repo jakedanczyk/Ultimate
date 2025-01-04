@@ -322,7 +322,7 @@ namespace Urth
             {
                 case ("Terrain"):
                     TerrainWorksite worksite = WorksitesManager.Instance.GetTerrainWorksite(mWeaponManager.animal.Aimer.AimHit.point);
-                    DoTerrainWork(item,worksite);
+                    DoTerrainWork(item, worksite);
                     break;
             }
         }

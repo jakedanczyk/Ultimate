@@ -26,6 +26,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="content" style="left: 20px; top: 60px; position: absolute; right: 20px; bottom: 20px;">
                 <ui:Label text="Label" display-tooltip-when-elided="true" name="taskLabel" />
+                <ui:ListView focusable="true" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

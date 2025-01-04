@@ -31,6 +31,7 @@ namespace Urth
             {
                 Build();
             }
+            combatInterface.BringToFront();
             combatInterface.style.display = DisplayStyle.Flex;
         }
         public void Disable()

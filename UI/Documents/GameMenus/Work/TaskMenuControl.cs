@@ -61,9 +61,6 @@ namespace Urth
                 click.RegisterCallback<ClickEvent, int>(OnItemClick, index);
                 //click.RegisterCallback<ClickEvent>(OnItemClick);
                 Label itemNameLabel = itemElement.Query("taskItemName").First().Query("taskItemNameLabel").First() as Label;
-                Debug.Log("itemNamLabel is...");
-                Debug.Log(itemNameLabel);
-                Debug.Log(itemNameLabel.text);
                 //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
                 //itemNameLabel.RegisterCallback<ClickEvent>(OnItemClick);
 

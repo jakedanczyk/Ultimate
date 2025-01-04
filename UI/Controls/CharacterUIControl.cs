@@ -39,7 +39,7 @@ namespace Urth
             {
                 inventoryPanelControl.Reorder();
             }
-
+            characterInterface.BringToFront();
             characterInterface.style.display = DisplayStyle.Flex;
         }
         public void Disable()

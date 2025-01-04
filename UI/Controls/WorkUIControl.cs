@@ -97,11 +97,9 @@ namespace Urth
             {
                 Initialize();
             }
-            else
-            {
-                workInterface.style.display = DisplayStyle.Flex;
-                ActivateCurrentWorksiteIndicator();
-            }
+            workInterface.BringToFront();
+            workInterface.style.display = DisplayStyle.Flex;
+            ActivateCurrentWorksiteIndicator();
         }
 
         public void DisableMenus()

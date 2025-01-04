@@ -64,6 +64,7 @@ namespace Urth
             {
                 Debug.Log("construction UI already built");
             }
+            constructionInterface.BringToFront();
             constructionInterface.style.display = DisplayStyle.Flex;
         }
         public void Disable()
