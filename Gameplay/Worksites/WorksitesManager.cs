@@ -120,7 +120,7 @@ namespace Urth
 
         public TerrainWorksiteData CreateTerrainWorksiteData(int3 pos) 
         {
-            float terrainSurfaceHeight = (float)terrainManager.GetTerrainHeight(pos);
+            float terrainSurfaceHeight = (float)TerrainManager.Main.GetTerrainHeight(pos);
             if(pos.y - 0.5f > terrainSurfaceHeight)
             {//bottom is above terrain, empty voxel
                 TerrainBlock terrainBlock = TerrainBuilder.Instance.GetEmptyTerrainBlock(pos);
@@ -152,8 +152,8 @@ namespace Urth
 
         public TerrainWorksiteData CreateConstructionWorksiteData(int3 pos)
         {
-            float terrainSurfaceHeight = (float)terrainManager.GetTerrainHeight(pos);
-            float soilDepth = (float)terrainManager.GetSoilDepth(pos);
+            float terrainSurfaceHeight = (float)TerrainManager.Main.GetTerrainHeight(pos);
+            float soilDepth = (float)TerrainManager.Main.GetSoilDepth(pos);
             float depth = (float)terrainSurfaceHeight - pos.y;
             if (depth + 1f < soilDepth)
             {//surface worksite, in soil horizons,

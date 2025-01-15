@@ -13,6 +13,7 @@ namespace Urth
         COLLECT_STONE,//collect stone pieces, specify material/shape/size in WorkUI
         SEARCH_STONE,//'look around' for stones of a particular type
         LEVEL,//flatten a chunk of terrain
+        SCAN_TERRAIN,
 
         HARVEST_PLANT,//Gather fruit or other primary product of certain plants.
                       //May destroy plant entirely (i.e. potato) or partialy (lettuce) or not at all (berry bushes, fruit tree)
