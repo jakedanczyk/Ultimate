@@ -121,20 +121,26 @@ namespace Urth
         public TerrainWorksiteData CreateTerrainWorksiteData(int3 pos) 
         {
             float terrainSurfaceHeight = (float)terrainManager.GetTerrainHeight(pos);
-            float soilDepth = (float)terrainManager.GetSoilDepth(pos);
-            float depth = (float)terrainSurfaceHeight - pos.y;
-            if(depth+1f < soilDepth)
-            {//surface worksite, in soil horizons,
-                TerrainBlock terrainBlock = TerrainBuilder.Instance.GetSurfaceTerrainBlock(pos, depth, soilDepth, terrainSurfaceHeight);
+            if(pos.y - 0.5f > terrainSurfaceHeight)
+            {//bottom is above terrain, empty voxel
+                TerrainBlock terrainBlock = TerrainBuilder.Instance.GetEmptyTerrainBlock(pos);
                 TerrainWorksiteData worksiteData = new TerrainWorksiteData(GetNextId(), true, pos);
-                worksiteData.terrainBlock = terrainBlock;
+                worksiteData.SetTerrainBlock(terrainBlock);
+                return worksiteData;
+            }
+            float soilDepth = (float)terrainManager.GetSoilDepth(pos);
+            if(soilDepth > 0.0001f && pos.y + 0.5f > terrainSurfaceHeight - soilDepth )
+            {//atleast 0.1mm soil and top is above bottom of soil, contains soil
+                TerrainBlock terrainBlock = TerrainBuilder.Instance.GetSurfaceTerrainBlock(pos, soilDepth, terrainSurfaceHeight);
+                TerrainWorksiteData worksiteData = new TerrainWorksiteData(GetNextId(), false, pos);
+                worksiteData.SetTerrainBlock(terrainBlock);
                 return worksiteData;
             }
             else
             {//bedrock terrain. 
                 TerrainBlock terrainBlock = TerrainBuilder.Instance.GetDeepTerrainBlock(pos);
                 TerrainWorksiteData worksiteData = new TerrainWorksiteData(GetNextId(), false, pos);
-                worksiteData.terrainBlock = terrainBlock;
+                worksiteData.SetTerrainBlock(terrainBlock);
                 return worksiteData;
             }
         }
@@ -151,16 +157,16 @@ namespace Urth
             float depth = (float)terrainSurfaceHeight - pos.y;
             if (depth + 1f < soilDepth)
             {//surface worksite, in soil horizons,
-                TerrainBlock terrainBlock = TerrainBuilder.Instance.GetSurfaceTerrainBlock(pos, depth, soilDepth, terrainSurfaceHeight);
+                TerrainBlock terrainBlock = TerrainBuilder.Instance.GetSurfaceTerrainBlock(pos, soilDepth, terrainSurfaceHeight);
                 TerrainWorksiteData worksiteData = new TerrainWorksiteData(GetNextId(), true, pos);
-                worksiteData.terrainBlock = terrainBlock;
+                worksiteData.SetTerrainBlock(terrainBlock);
                 return worksiteData;
             }
             else
             {//bedrock terrain. 
                 TerrainBlock terrainBlock = TerrainBuilder.Instance.GetDeepTerrainBlock(pos);
                 TerrainWorksiteData worksiteData = new TerrainWorksiteData(GetNextId(), false, pos);
-                worksiteData.terrainBlock = terrainBlock;
+                worksiteData.SetTerrainBlock(terrainBlock);
                 return worksiteData;
             }
         }

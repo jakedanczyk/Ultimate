@@ -66,6 +66,7 @@ namespace Urth
         public bool surface;
         public int3 pos;
         public TerrainBlock terrainBlock;
+        public TerrainBlock miningOutput;
         public TerrainWorksiteData(int iid, bool isSurface, int3 ipos)
         {
             id = iid;
@@ -75,6 +76,11 @@ namespace Urth
         public List<TerrainBlockFraction> GetFractions()
         {
             return terrainBlock.fractions;
+        }
+        public void SetTerrainBlock(TerrainBlock itb)
+        {
+            terrainBlock = itb;
+            miningOutput = itb;
         }
     }
     public class PlantWorksiteData
