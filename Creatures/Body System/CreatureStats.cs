@@ -64,6 +64,9 @@ namespace Urth
         #region Task Skills
         public float Mining()
         {
+            Debug.Log(statInterface);
+            Debug.Log(statInterface.statCollection);
+            Debug.Log(statInterface.statCollection.GetStat(StatType.Mining));
             return statInterface.statCollection.GetStat(StatType.Mining).StatValue;
         }
         public float Digging()

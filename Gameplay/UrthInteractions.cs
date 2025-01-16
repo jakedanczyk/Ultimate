@@ -13,16 +13,44 @@ namespace Urth
          * characters skill with the tool
          * difficulty of the task
          */
-
-        public static void MineTerrainBlock(CreatureManager creature, UItem tool, TerrainWorksite terrainWorksite)
+        public static float GetItemScoreMine(UItemData itemData)
         {
-            float itemTemplateScore = ItemsLibrary.Instance.templatesDict[tool.data.type].worktaskScores[WORKTASK.MINE];
-            float itemQualityScore = ItemsUtility.ItemQualityRatio(tool.data.quality);
+            float itemTemplateScore = ItemsLibrary.Instance.templatesDict[itemData.type].worktaskScores[WORKTASK.MINE];
+            float itemQualityScore = ItemsUtility.ItemQualityRatio(itemData.quality);
             float itemMaterialScore = 1f;//TODO
-            float itemScore = itemQualityScore * itemMaterialScore;
+            return itemQualityScore * itemMaterialScore;
+        }
+        public static void SimpleMineTerrainBlock(CreatureManager creature, WIELD_SLOT slot, TerrainWorksite terrainWorksite)
+        {
+            TerrainBuilder.Instance.Dig(terrainWorksite.data.pos);
+        }
+
+        public static void MineTerrainBlock(CreatureManager creature, WIELD_SLOT slot, TerrainWorksite terrainWorksite)
+        {
+            float itemScore = 0;
+            float toolSkillScore = 0;
+            UItemData itemData = null;
+            switch (slot)
+            {
+                case WIELD_SLOT.LEFT:
+                    itemData = creature.GetLeftItem();
+                    break;
+                case WIELD_SLOT.RIGHT:
+                    itemData = creature.GetRightItem();
+                    break;
+            }
+            if (itemData != null)
+            {
+                itemScore = GetItemScoreMine(itemData);
+                toolSkillScore = creature.body.stats.GetStatByName(itemData.type.ToString());
+            }
+            else
+            {
+                itemScore = 1f;
+                toolSkillScore = 1f;
+            }
 
             float taskSkillScore = creature.body.stats.Mining();
-            float toolSkillScore = creature.body.stats.GetStatByName(tool.data.type.ToString());
             float characterScore = taskSkillScore * toolSkillScore;
 
             float mineScoreTotal = itemScore * characterScore;
@@ -88,15 +116,35 @@ namespace Urth
         }
         //Digging only affects terrain layers soft enough to be dug.
         //The limit of terrain firmness is affected by stats of creature and tool
-        public static void DigTerrainBlock(CreatureManager creature, UItem tool, TerrainWorksite terrainWorksite)
+        public static void DigTerrainBlock(CreatureManager creature, WIELD_SLOT slot, TerrainWorksite terrainWorksite)
         {
-            float itemTemplateScore = ItemsLibrary.Instance.templatesDict[tool.data.type].worktaskScores[WORKTASK.DIG];
-            float itemQualityScore = ItemsUtility.ItemQualityRatio(tool.data.quality);
-            float itemMaterialScore = 1f;//TODO
-            float itemScore = itemQualityScore * itemMaterialScore;
+            float itemScore = 0;
+            float toolSkillScore = 0;
+            UItemData itemData = null;
+            switch (slot)
+            {
+                case WIELD_SLOT.LEFT:
+                    itemData = creature.GetLeftItem();
+                    break;
+                case WIELD_SLOT.RIGHT:
+                    itemData = creature.GetRightItem();
+                    break;
+            }
+            if (itemData != null)
+            {
+                float itemTemplateScore = ItemsLibrary.Instance.templatesDict[itemData.type].worktaskScores[WORKTASK.DIG];
+                float itemQualityScore = ItemsUtility.ItemQualityRatio(itemData.quality);
+                float itemMaterialScore = 1f;//TODO
+                itemScore = itemQualityScore * itemMaterialScore;
+                toolSkillScore = creature.body.stats.GetStatByName(itemData.type.ToString());
+            }
+            else
+            {
+                itemScore = 1f;
+                toolSkillScore = 1f;
+            }
 
             float taskSkillScore = creature.body.stats.Digging();
-            float toolSkillScore = creature.body.stats.GetStatByName(tool.data.type.ToString());
             float characterScore = taskSkillScore * toolSkillScore;
 
             float digScoreTotal = itemScore * characterScore;

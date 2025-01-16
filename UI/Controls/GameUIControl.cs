@@ -140,7 +140,7 @@ namespace Urth
             }
         }
 
-        void OpenCombatUI()
+        void EnableCombatMode()
         {
             if (actualMode == UI_MODE.COMBAT)
             {
@@ -163,11 +163,21 @@ namespace Urth
                     break;
             }
             combatUIControl.Enable();
+            Debug.Log("GameUIDocument Order is now...");
+            foreach (VisualElement child in gameUiDocument.rootVisualElement.Children())
+            {
+                Debug.Log(child.name);
+            }
             actualMode = UI_MODE.COMBAT;
             if (menusOpen)
             {
                 combatUIControl.EnableMenus();
             }
+        }
+
+        void OpenCombatUI()
+        {
+           
         }
 
         void CloseCombatUI()
@@ -208,7 +218,7 @@ namespace Urth
                     case UI_MODE.CHARACTER:
                         characterUIControl.DisableMenus();
                         break;
-                    case UI_MODE.CONSTRUCTION_PLANNING:
+                    case UI_MODE.CONSTRUCTION:
                         constructionPlanningUIControl.DisableMenus();
                         break;
                     case UI_MODE.WORK:
@@ -218,6 +228,7 @@ namespace Urth
                 switch (targetMode)
                 {
                     case UI_MODE.COMBAT:
+                        inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
                         combatUIControl.EnableMenus();
                         break;
                     case UI_MODE.CRAFTING:
@@ -226,14 +237,15 @@ namespace Urth
                         craftingUIControl.EnableMenus();
                         break;
                     case UI_MODE.CHARACTER:
-                        characterUIControl.EnableMenus();
                         inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
+                        characterUIControl.EnableMenus();
                         break;
                     case UI_MODE.CONSTRUCTION:
-                        constructionUIControl.EnableMenus();
                         inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
+                        constructionUIControl.EnableMenus();
                         break;
                     case UI_MODE.WORK:
+                        inputLinkManager.SwitchActionMap(UI_ACTION_MAP);
                         workUIControl.EnableMenus();
                         break;
                 }
@@ -257,10 +269,10 @@ namespace Urth
                 case UI_MODE.CHARACTER:
                     characterUIControl.Disable();
                     break;
-                case UI_MODE.CONSTRUCTION_PLANNING:
+                case UI_MODE.CONSTRUCTION:
+                    constructionUIControl.Disable();
                     constructionPlanningUIControl.Disable();
                     ConstructionUIControl.Instance.placing = false;
-                    constructionPlayer.StopPreview();
                     StaticsManager.Instance.ToggleConstructionHUD(false);
                     break;
                 case UI_MODE.WORK:
@@ -278,8 +290,9 @@ namespace Urth
                 case UI_MODE.CHARACTER:
                     characterUIControl.Enable();
                     break;
-                case UI_MODE.CONSTRUCTION_PLANNING:
+                case UI_MODE.CONSTRUCTION:
                     constructionUIControl.Enable();
+                    constructionPlanningUIControl.Enable();
                     //constructionPlayer.StartPreview();
                     StaticsManager.Instance.ToggleConstructionHUD(true);
                     break;
@@ -289,6 +302,11 @@ namespace Urth
                     hudControl.EnableWorkHUD();
                     //start workPreviewIndicator
                     break;
+            }
+            Debug.Log("GameUIDocument Order is now...");
+            foreach (VisualElement child in gameUiDocument.rootVisualElement.Children())
+            {
+                Debug.Log(child.name);
             }
         }
 

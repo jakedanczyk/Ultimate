@@ -1,10 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UltimateTerrains;
 using UnityEngine;
 
 
 namespace Urth
 {
+    public enum WIELD_SLOT
+    {
+        LEFT,
+        RIGHT,
+        LEFT_HAND,
+        RIGHT_HAND,
+        LEFT_ITEM,
+        RIGHT_ITEM,
+        TWO_HAND,
+        TWO_HAND_ITEM
+    }
     public enum CREATURE_MODE
     {
         ACTIVE,
@@ -271,7 +283,7 @@ namespace Urth
             {
                 return;
             }
-
+            aimedWorking = true;
             WorkSwingLeft();
         }
         public void WorkSwingLeft()
@@ -287,7 +299,7 @@ namespace Urth
             {
                 return;
             }
-
+            aimedWorking = true;
             WorkSwingRight();
         }
         public void WorkSwingRight()
@@ -300,31 +312,78 @@ namespace Urth
         public void StopWorkingLeft()
         {
             working = false;
+            aimedWorking = false;
             SetIdleLeft();
         }
         public void StopWorkingRight()
         {
             working = false;
+            aimedWorking = false;
             SetIdleRight();
         }
-        public void TryDoAimedWorkRight()
-        {
-            TryDoAimedWork(body.creatureInventory.rightItem.item);
-        }
-        public void TryDoAimedWorkLeft()
-        {
-            TryDoAimedWork(body.creatureInventory.leftItem.item);
-        }
-        public void TryDoAimedWork(UItem item)
+        //public void TryDoAimedWorkRight()
+        //{
+        //    if(body.creatureInventory.rightItem != null)
+        //    {
+        //        TryDoAimedWork(body.creatureInventory.rightItem.item);
+        //    }
+        //    else
+        //    {
+        //        TryDoAimedWork(null);
+        //    }
+        //}
+        //public void TryDoAimedWorkLeft()
+        //{
+        //    if (body.creatureInventory.leftItem != null)
+        //    {
+        //        TryDoAimedWork(body.creatureInventory.leftItem.item);
+        //    }
+        //    else
+        //    {
+        //        TryDoAimedWork(null);
+        //    }
+        //}
+        public void TryDoAimedWork(WIELD_SLOT slot)
         {
             Debug.Log("Aimed work: " + mWeaponManager.animal.Aimer.AimHit.transform.name);
-            switch (mWeaponManager.animal.Aimer.AimHit.transform.tag)
+            switch (worktask)
             {
-                case ("Terrain"):
-                    TerrainWorksite worksite = WorksitesManager.Instance.GetTerrainWorksite(mWeaponManager.animal.Aimer.AimHit.point);
-                    DoTerrainWork(item, worksite);
+                case (WORKTASK.MINE):
+                    MineTerrainBlock(slot);
+                    break;
+                case (WORKTASK.DIG):
+                    DigTerrainBlock(slot);
+                    break;
+                case (WORKTASK.SCAN_TERRAIN):
+                    ScanTerrainBlock();
                     break;
             }
+        }
+        public UltimateTerrain Terrain;
+        public void ScanTerrainBlock()
+        {
+            TerrainWorksite worksite = WorksitesManager.Instance.GetTerrainWorksite(mWeaponManager.animal.Aimer.AimHit.point);
+            List<Voxel> currentVoxelVals = TerrainBuilder.Instance.ScanVoxel(worksite.data.pos);
+            foreach(Voxel vox in currentVoxelVals)
+            {
+                string voxelTypeName = Terrain.VoxelTypeSet.SerializableVoxelTypes[currentVoxelVals[0].VoxelTypeIndex].Name;
+
+                Debug.Log(voxelTypeName);
+                Debug.Log(vox.Value);
+            }
+            //WorkUIControl.Instance.SetInfoPanelTerrain(worksite);
+            //UrthInteractions.MineTerrainBlock(this, slot, worksite);
+        }
+        public virtual void MineTerrainBlock(WIELD_SLOT slot)
+        {
+            TerrainWorksite worksite = WorksitesManager.Instance.GetTerrainWorksite(mWeaponManager.animal.Aimer.AimHit.point);
+            UrthInteractions.SimpleMineTerrainBlock(this, slot, worksite);
+        }
+        public virtual void DigTerrainBlock(WIELD_SLOT slot)
+        {
+            TerrainWorksite worksite = WorksitesManager.Instance.GetTerrainWorksite(mWeaponManager.animal.Aimer.AimHit.point);
+            TerrainBuilder.Instance.Dig(worksite.data.pos);
+            //UrthInteractions.DigTerrainBlock(this, slot, worksite);
         }
         public void StartAutoWork()
         {
@@ -341,23 +400,23 @@ namespace Urth
 
             return new UrthResponse(true);
         }
-        public void DoTerrainWork(UItem item, TerrainWorksite worksite)
-        {
-            //If targeted terrain worksite doesn't exist yet, create it
-            //Determine the type of work being done
-            //Do the work
-
-            WORKTASK task = item.data.template.preferredTasks[WORKSITE_TYPE.TERRAIN];
-            switch (task)
-            {
-                case (WORKTASK.MINE):
-                    UrthInteractions.MineTerrainBlock(this, item, worksite);
-                    break;
-                case (WORKTASK.DIG):
-                    UrthInteractions.DigTerrainBlock(this, item, worksite);
-                    break;
-            }
-        }
+        //public void DoTerrainWork(WIELD_SLOT slot, TerrainWorksite worksite)
+        //{
+        //    //If targeted terrain worksite doesn't exist yet, create it
+        //    //Determine the type of work being done
+        //    //Do the work
+        //    worktask
+        //    WORKTASK task = item.data.template.preferredTasks[WORKSITE_TYPE.TERRAIN];
+        //    switch (task)
+        //    {
+        //        case (WORKTASK.MINE):
+        //            UrthInteractions.MineTerrainBlock(this, item, worksite);
+        //            break;
+        //        case (WORKTASK.DIG):
+        //            UrthInteractions.DigTerrainBlock(this, item, worksite);
+        //            break;
+        //    }
+        //}
 
         public void SetIdleLeft()
         {
@@ -390,6 +449,15 @@ namespace Urth
             itemData.pos = new Unity.Mathematics.float3(pos) + GameManager.Instance.gameWorldOffset;
             ItemsManager.Instance.AddSpawnItemQueue(itemData.id);
             body.creatureInventory.RemoveItem(itemData);
+        }
+
+        public UItemData GetLeftItem()
+        {
+            return body.creatureInventory.leftItem;
+        }
+        public UItemData GetRightItem()
+        {
+            return body.creatureInventory.rightItem;
         }
     }
 }

@@ -50,6 +50,7 @@ namespace Urth
         public void Link(VisualElement root)
         {
             rootElement = root;
+            InitPositionAndScale();
             RegisterBorderCallbacks();
             inventoryPanel = rootElement;
             itemsListPanel = inventoryPanel.Query("content").First().Children().First().Children().First();

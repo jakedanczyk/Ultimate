@@ -23,6 +23,12 @@ namespace Urth
                 attrib.StatName = attribType.ToString();
                 attrib.StatBaseValue = UrthConstants.ATTRIB_LVL_DEFAULT;
             }
+            foreach (StatType attribType in UrthConstants.SKILLS)
+            {
+                var attrib = CreateOrGetStat<StatAttribute>(attribType);
+                attrib.StatName = attribType.ToString();
+                attrib.StatBaseValue = UrthConstants.ATTRIB_LVL_DEFAULT;
+            }
         }
     }
 }

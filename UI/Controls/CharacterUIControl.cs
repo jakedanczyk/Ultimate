@@ -15,7 +15,6 @@ namespace Urth
 
         void Start()
         {
-            Build();
         }
 
         void Update()
@@ -44,7 +43,7 @@ namespace Urth
         }
         public void Disable()
         {
-            characterInterface.style.display = DisplayStyle.None;
+            DisableMenus();
         }
         public void EnableMenus()
         {
@@ -61,7 +60,10 @@ namespace Urth
         }
         public void DisableMenus()
         {
-            characterInterface.style.display = DisplayStyle.None;
+            if (built)
+            {
+                characterInterface.style.display = DisplayStyle.None;
+            }
         }
 
         public void Build()

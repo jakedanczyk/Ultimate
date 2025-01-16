@@ -23,11 +23,13 @@ namespace Urth
         public VisualElement bottomLeft;
         public VisualElement bottomRight;
         public VisualElement titleBar;
+        public float initHeight, initWidth, initLeft, initTop;
         public bool active;
         public Vector3 downPos;
         public UI_GRAB grab;
         public float lrAnchorVal, udAnchorVal;
         public float dAnchorVal, rAnchorVal;
+        public float anchorHeight, anchorWidth;
 
 
 
@@ -45,41 +47,51 @@ namespace Urth
             if (active)
             {
                 Vector3 delta = Input.mousePosition - downPos;
+                Debug.Log(grab);
+                Debug.Log(delta);
+                Debug.Log(lrAnchorVal);
+                Debug.Log(udAnchorVal);
                 switch (grab)
                 {
                     case UI_GRAB.TITLE:
                         rootElement.style.left = new StyleLength(lrAnchorVal + delta.x);
-                        rootElement.style.right = new StyleLength(rAnchorVal - delta.x);
+                        //rootElement.style.right = new StyleLength(rAnchorVal - delta.x);
                         rootElement.style.top = new StyleLength(udAnchorVal - delta.y);
-                        rootElement.style.bottom = new StyleLength(dAnchorVal + delta.y);
+                        //rootElement.style.bottom = new StyleLength(dAnchorVal + delta.y);
                         break;
                     case UI_GRAB.LEFT:
                         rootElement.style.left = new StyleLength(lrAnchorVal + delta.x);
+                        rootElement.style.width = new StyleLength(anchorWidth - delta.x);
                         break;
                     case UI_GRAB.RIGHT:
-                        rootElement.style.right = new StyleLength(lrAnchorVal - delta.x);
+                        rootElement.style.width = new StyleLength(anchorWidth + delta.x);
                         break;
                     case UI_GRAB.TOP:
                         rootElement.style.top = new StyleLength(udAnchorVal - delta.y);
+                        rootElement.style.height = new StyleLength(anchorHeight + delta.y);
                         break;
                     case UI_GRAB.BOTTOM:
-                        rootElement.style.bottom = new StyleLength(udAnchorVal + delta.y);
+                        rootElement.style.height = new StyleLength(anchorHeight - delta.y);
                         break;
                     case UI_GRAB.TOP_LEFT:
-                        rootElement.style.top = new StyleLength(udAnchorVal + delta.y);
                         rootElement.style.left = new StyleLength(lrAnchorVal + delta.x);
+                        rootElement.style.width = new StyleLength(anchorWidth - delta.x);
+                        rootElement.style.top = new StyleLength(udAnchorVal - delta.y);
+                        rootElement.style.height = new StyleLength(anchorHeight + delta.y);
                         break;
                     case UI_GRAB.TOP_RIGHT:
-                        rootElement.style.top = new StyleLength(udAnchorVal + delta.y);
-                        rootElement.style.right = new StyleLength(lrAnchorVal - delta.x);
+                        rootElement.style.width = new StyleLength(anchorWidth + delta.x);
+                        rootElement.style.top = new StyleLength(udAnchorVal - delta.y);
+                        rootElement.style.height = new StyleLength(anchorHeight + delta.y);
                         break;
                     case UI_GRAB.BOTTOM_LEFT:
-                        rootElement.style.bottom = new StyleLength(udAnchorVal - delta.y);
                         rootElement.style.left = new StyleLength(lrAnchorVal + delta.x);
+                        rootElement.style.width = new StyleLength(anchorWidth - delta.x);
+                        rootElement.style.height = new StyleLength(anchorHeight - delta.y);
                         break;
                     case UI_GRAB.BOTTOM_RIGHT:
-                        rootElement.style.bottom = new StyleLength(udAnchorVal - delta.y);
-                        rootElement.style.right = new StyleLength(lrAnchorVal - delta.x);
+                        rootElement.style.width = new StyleLength(anchorWidth + delta.x);
+                        rootElement.style.height = new StyleLength(anchorHeight - delta.y);
                         break;
                     default:
                         Debug.Log(grab);
@@ -88,8 +100,17 @@ namespace Urth
             }
         }
 
+        public void InitPositionAndScale()
+        {
+            rootElement.style.left = new StyleLength(initLeft);
+            rootElement.style.width = new StyleLength(initWidth);
+            rootElement.style.top = new StyleLength(initTop);
+            rootElement.style.height = new StyleLength(initHeight);
+        }
+
         public void RegisterBorderCallbacks()
         {
+            Debug.Log(this.name + "RegisterBorderCallbacks");
             left = rootElement.Query("lBorder").First();
             left.RegisterCallback<PointerDownEvent>(evt =>
             {
@@ -161,6 +182,7 @@ namespace Urth
                 active = true;
                 downPos = Input.mousePosition;
                 lrAnchorVal = rootElement.style.left.value.value;
+                anchorWidth = rootElement.style.width.value.value;
                 grab = UI_GRAB.LEFT;
             }
         }
@@ -170,7 +192,8 @@ namespace Urth
             {
                 active = true;
                 downPos = Input.mousePosition;
-                lrAnchorVal = rootElement.style.right.value.value;
+                lrAnchorVal = rootElement.style.left.value.value;
+                anchorWidth = rootElement.style.width.value.value;
                 grab = UI_GRAB.RIGHT;
             }
         }
@@ -181,6 +204,7 @@ namespace Urth
                 active = true;
                 downPos = Input.mousePosition;
                 udAnchorVal = rootElement.style.top.value.value;
+                anchorHeight = rootElement.style.height.value.value;
                 grab = UI_GRAB.TOP;
             }
         }
@@ -190,7 +214,8 @@ namespace Urth
             {
                 active = true;
                 downPos = Input.mousePosition;
-                udAnchorVal = rootElement.style.bottom.value.value;
+                udAnchorVal = rootElement.style.top.value.value;
+                anchorHeight = rootElement.style.height.value.value;
                 grab = UI_GRAB.BOTTOM;
             }
         }
@@ -201,7 +226,9 @@ namespace Urth
                 active = true;
                 downPos = Input.mousePosition;
                 udAnchorVal = rootElement.style.top.value.value;
-                lrAnchorVal = rootElement.style.right.value.value;
+                lrAnchorVal = rootElement.style.left.value.value;
+                anchorWidth = rootElement.style.width.value.value;
+                anchorHeight = rootElement.style.height.value.value;
                 grab = UI_GRAB.TOP_RIGHT;
             }
         }
@@ -213,6 +240,8 @@ namespace Urth
                 downPos = Input.mousePosition;
                 udAnchorVal = rootElement.style.top.value.value;
                 lrAnchorVal = rootElement.style.left.value.value;
+                anchorWidth = rootElement.style.width.value.value;
+                anchorHeight = rootElement.style.height.value.value;
                 grab = UI_GRAB.TOP_LEFT;
             }
         }
@@ -222,8 +251,10 @@ namespace Urth
             {
                 active = true;
                 downPos = Input.mousePosition;
-                udAnchorVal = rootElement.style.bottom.value.value;
-                lrAnchorVal = rootElement.style.right.value.value;
+                udAnchorVal = rootElement.style.top.value.value;
+                lrAnchorVal = rootElement.style.left.value.value;
+                anchorWidth = rootElement.style.width.value.value;
+                anchorHeight = rootElement.style.height.value.value;
                 grab = UI_GRAB.BOTTOM_RIGHT;
             }
         }
@@ -233,8 +264,11 @@ namespace Urth
             {
                 active = true;
                 downPos = Input.mousePosition;
-                udAnchorVal = rootElement.style.bottom.value.value;
+                //udAnchorVal = rootElement.style.bottom.value.value;
+                udAnchorVal = rootElement.style.top.value.value;
                 lrAnchorVal = rootElement.style.left.value.value;
+                anchorWidth = rootElement.style.width.value.value;
+                anchorHeight = rootElement.style.height.value.value;
                 grab = UI_GRAB.BOTTOM_LEFT;
             }
         }
@@ -242,12 +276,19 @@ namespace Urth
         {
             if (UIManager.Instance.ClaimGlobalLock(this))
             {
+                Debug.Log(rootElement);
+                Debug.Log(rootElement.style);
+                Debug.Log(rootElement.style.top);
+                Debug.Log(rootElement.style.top.value);
+                Debug.Log(rootElement.style.top.value.value);
                 active = true;
                 downPos = Input.mousePosition;
                 lrAnchorVal = rootElement.style.left.value.value;
                 udAnchorVal = rootElement.style.top.value.value;
-                rAnchorVal = rootElement.style.right.value.value;
-                dAnchorVal = rootElement.style.bottom.value.value;
+                //rAnchorVal = rootElement.style.right.value.value;
+                //dAnchorVal = rootElement.style.bottom.value.value;
+                anchorWidth = rootElement.style.width.value.value;
+                anchorHeight = rootElement.style.height.value.value;
                 grab = UI_GRAB.TITLE;
             }
         }

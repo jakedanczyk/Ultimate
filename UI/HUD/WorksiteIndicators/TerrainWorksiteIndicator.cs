@@ -17,8 +17,8 @@ namespace Urth
             reticle.Initialize();
             reticle.SetPositionAndSize(pos, lhw);
 
-            reticleLines.Initialize();
-            reticleLines.SetCornerAndEdges(Vector3.zero, Vector3.left, Vector3.up, Vector3.forward);
+            //reticleLines.Initialize();
+            //reticleLines.SetCornerAndEdges(Vector3.zero, Vector3.left, Vector3.up, Vector3.forward);
         }
 
         public void Start()

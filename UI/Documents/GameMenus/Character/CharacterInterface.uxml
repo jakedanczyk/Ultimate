@@ -5,8 +5,8 @@
     <ui:Template name="StatusPanel" src="project://database/Assets/UI/Documents/GameMenus/Character/StatusPanel.uxml?fileID=9197481963319205126&amp;guid=7e124dfb7e1cd854d8e5781e52594801&amp;type=3#StatusPanel" />
     <ui:Template name="ItemDisplayPanel" src="project://database/Assets/UI/Documents/GameMenus/Character/ItemDisplayPanel.uxml?fileID=9197481963319205126&amp;guid=c8ae35d335227504db1cf45db94cca94&amp;type=3#ItemDisplayPanel" />
     <ui:Instance template="PortraitPanel" name="DisplayPanel 1" />
-    <ui:Instance template="MapPanel" name="MapPanel" style="position: absolute; top: 620px; left: 762px; height: 392px; width: 480px; right: 535px; bottom: 228px;" />
-    <ui:Instance template="InventoryPanel" name="InventoryPanel" style="position: absolute; top: 112px; left: 167px; right: 1314px; bottom: 187px;" />
+    <ui:Instance template="MapPanel" name="MapPanel" style="position: absolute; top: 620px; left: 762px; right: 535px; bottom: 228px;" />
+    <ui:Instance template="InventoryPanel" name="InventoryPanel" style="position: absolute; top: 112px; left: 241px; width: 450px; height: 900px;" />
     <ui:Instance template="StatusPanel" name="StatusPanel" style="position: absolute; top: 158px; left: 1416px; right: 201px; bottom: 231px;" />
-    <ui:Instance template="ItemDisplayPanel" name="ItemDisplayPanel" style="position: absolute; top: 97px; left: 799px; right: 694px; bottom: 646px;" />
+    <ui:Instance template="ItemDisplayPanel" name="ItemDisplayPanel" style="position: absolute; top: 97px; left: 799px; width: 400px; height: 400px;" />
 </ui:UXML>

@@ -65,10 +65,11 @@ namespace Urth
                 Debug.Log("construction UI already built");
             }
             constructionInterface.BringToFront();
-            constructionInterface.style.display = DisplayStyle.Flex;
         }
         public void Disable()
         {
+            constructionPlayer.StopPreview();
+            DisableMenus();
             if (uiBuilt)
             {
                 constructionInterface.style.display = DisplayStyle.None;

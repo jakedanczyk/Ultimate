@@ -8,7 +8,7 @@ namespace Urth
     public class ConstructionManager : MonoBehaviour
     {
         public ConstructionLibrary constructionLibrary;
-        public UrthTime time;
+        UrthTime time;
         int nextID = 0;
         public int GetNextId()
         {

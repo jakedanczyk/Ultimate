@@ -288,6 +288,7 @@ public struct UMaterial
     public Texture texture;
     public Texture weatheredTexture;
     public Texture rottedTexture;
+    public Material material;
 }
 
 //public class UMaterial

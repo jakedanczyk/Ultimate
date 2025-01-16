@@ -60,6 +60,9 @@ namespace Urth
             StatType.Charisma, StatType.Creativity, StatType.Empathy, StatType.Focus, StatType.Intellect,
             StatType.Memory, StatType.Patience , StatType.Perception, StatType.Willpower, StatType.Wisdom
         };
+        public static StatType[] SKILLS = new StatType[] {
+            StatType.Mining, StatType.Digging
+        };
         public const int ATTRIB_LVL_DEFAULT = 20;
 
         public static List<(BodyPartId, float, CONTAINER)> standardBodyContainers = new List<(BodyPartId, float, CONTAINER)>

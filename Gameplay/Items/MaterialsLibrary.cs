@@ -287,12 +287,14 @@ namespace Urth
                 matsDict = new Dictionary<UMATERIAL, UMaterial>(matsList.Count);
                 for(int i = 0; i < matsList.Count; i++) 
                 {
+                    Debug.Log(matsList[i].typeName);
                     UMaterial mat = matsList[i];
                     if (System.Enum.TryParse(mat.typeName, out UMATERIAL mtype))
                     {
+                        Debug.Log(mtype);
                         mat.type = mtype;
                         matsList[i] = mat;
-                        matsDict[mat.type] = mat;
+                        matsDict[mtype] = mat;
                     }
                 }
             }
@@ -308,6 +310,10 @@ namespace Urth
 
             public Dictionary<string, UMATERIAL> voxelMats = new Dictionary<string, UMATERIAL>
             {
+                {"Soil", UMATERIAL.SUBSOIL },
+                {"Bedrock", UMATERIAL.BASALT },
+                {"Snow", UMATERIAL.SNOW },
+                {"Granite", UMATERIAL.GRANITE},
                 { "ice_blue", UMATERIAL.ICE },
                 { "ice_clear", UMATERIAL.ICE },
                 { "ice_eroded", UMATERIAL.ICE },

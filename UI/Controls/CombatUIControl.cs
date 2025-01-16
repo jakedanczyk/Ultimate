@@ -32,14 +32,10 @@ namespace Urth
                 Build();
             }
             combatInterface.BringToFront();
-            combatInterface.style.display = DisplayStyle.Flex;
         }
         public void Disable()
         {
-            if (uiBuilt)
-            {
-                combatInterface.style.display = DisplayStyle.None;
-            }
+            DisableMenus();
         }
         public void EnableMenus()
         {

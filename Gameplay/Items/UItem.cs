@@ -72,7 +72,7 @@ namespace Urth
 
         GRANULAR,//granular materials
         CHIP,//woodchips, stone chips, etc.
-
+        EARTH, //earthen stuff. 
 
         ROCK,//a single solid stone, of any size (whatever the inventory can fit)
         NUGGET,//chunk of native metal

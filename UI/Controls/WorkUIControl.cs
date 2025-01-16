@@ -7,7 +7,7 @@ namespace Urth
 {
     public class WorkUIControl : MonoBehaviour
     {
-        List<WORKTASK> availableTasks = new List<WORKTASK>() { WORKTASK.MINE };
+        List<WORKTASK> availableTasks = new List<WORKTASK>() { WORKTASK.MINE, WORKTASK.SCAN_TERRAIN };
         Dictionary<WORKTASK, int> taskOrder;
         Dictionary<int, WORKTASK> orderOfTasks;
         public PlayerCreatureManager playerCreatureManager;
@@ -78,7 +78,6 @@ namespace Urth
         public void Initialize()
         {
             workInterface = doc.rootVisualElement.Query(UrthConstants.WORK_INTERFACE).First();
-            workInterface.style.display = DisplayStyle.Flex;
 
             taskSelectionPanel = workInterface.Query("TaskMenu").First();
             taskMenuControl.Link(taskSelectionPanel);
@@ -98,7 +97,6 @@ namespace Urth
                 Initialize();
             }
             workInterface.BringToFront();
-            workInterface.style.display = DisplayStyle.Flex;
             ActivateCurrentWorksiteIndicator();
         }
 
@@ -112,10 +110,7 @@ namespace Urth
             {
                 Initialize();
             }
-            else
-            {
-                workInterface.style.display = DisplayStyle.Flex;
-            }
+            workInterface.style.display = DisplayStyle.Flex;
         }
         
 
@@ -126,6 +121,7 @@ namespace Urth
 
         void ActivateTerrainIndicator()
         {
+            indicatorTransform = terrainWorksiteIndicator.transform;
             terrainWorksiteIndicator.SetActive(true);
         }
 
@@ -136,20 +132,20 @@ namespace Urth
 
         void ActivateBushIndicator()
         {
+            indicatorTransform = plantWorksiteIndicator.transform;
             plantWorksiteIndicator.SetActive(true);
         }
 
         void ActivateCurrentWorksiteIndicator()
         {
+            indicatorTransform.gameObject.SetActive(false);
             switch (currentWorksiteIndicatorType)
             {
                 case WORKSITE_TYPE.TERRAIN:
                     ActivateTerrainIndicator();
-                    DeactivateBushIndicator();
                     break;
                 case WORKSITE_TYPE.BUSH:
                     ActivateBushIndicator();
-                    DeactivateTerrainIndicator();
                     break;
             }
         }
@@ -235,9 +231,13 @@ namespace Urth
                 Debug.Log("tried to set an unavailable worktask");
             }
             currentWorktask = newTask;
+            playerCreatureManager.worktask = newTask;
             switch (newTask)
             {
                 case WORKTASK.MINE:
+                    currentWorksiteIndicatorType = WORKSITE_TYPE.TERRAIN;
+                    break;
+                case WORKTASK.DIG:
                     currentWorksiteIndicatorType = WORKSITE_TYPE.TERRAIN;
                     break;
             }
@@ -262,6 +262,7 @@ namespace Urth
 
         public void SetInfoPanelTerrain(TerrainWorksite tw)
         {
+            Debug.Log("SetINfoPanelTerrain");
             infoPanelControl.PopulateTerrain(tw);
         }
     }

@@ -128,17 +128,18 @@ namespace Urth
         }
         void OnWorkSwingApex(AnimationEvent animationEvent)
         {
+            Debug.Log("workswingapex");
             if (creatureManager.aimedWorking)
             {
                 switch (animationEvent.intParameter)
                 {
                     case -1:
-                        creatureManager.TryDoAimedWorkLeft();
+                        creatureManager.TryDoAimedWork(WIELD_SLOT.LEFT);
                         break;
                     case 0:
                         break;
                     case 1:
-                        creatureManager.TryDoAimedWorkRight();
+                        creatureManager.TryDoAimedWork(WIELD_SLOT.RIGHT);
                         break;
                 }
                 Debug.Log("Aimed work tool swing apex, raycast to see if we hit anything.");

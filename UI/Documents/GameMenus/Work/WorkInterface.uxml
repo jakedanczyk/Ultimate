@@ -5,12 +5,12 @@
     <ui:Template name="StatusPanel" src="project://database/Assets/UI/Documents/GameMenus/Character/StatusPanel.uxml?fileID=9197481963319205126&amp;guid=7e124dfb7e1cd854d8e5781e52594801&amp;type=3#StatusPanel" />
     <ui:Template name="ItemDisplayPanel" src="project://database/Assets/UI/Documents/GameMenus/Character/ItemDisplayPanel.uxml?fileID=9197481963319205126&amp;guid=c8ae35d335227504db1cf45db94cca94&amp;type=3#ItemDisplayPanel" />
     <ui:Template name="WorkMenu" src="project://database/Assets/UI/Documents/GameMenus/Work/WorkMenu.uxml?fileID=9197481963319205126&amp;guid=4e5781a6a67124d4588f01aac2ec8203&amp;type=3#WorkMenu" />
-    <ui:Instance template="PortraitPanel" name="DisplayPanel 1" />
+    <ui:Instance template="PortraitPanel" name="DisplayPanel 1" style="height: 211px; width: 688px;" />
     <ui:Instance template="MapPanel" name="MapPanel" style="position: absolute; top: 620px; left: 762px; height: 392px; width: 480px; right: 535px; bottom: 228px; display: none;" />
     <ui:Instance template="InventoryPanel" name="InventoryPanel" style="position: absolute; top: 78px; left: 1265px; right: 216px; bottom: 221px;" />
     <ui:Instance template="StatusPanel" name="StatusPanel" style="position: absolute; top: 158px; left: 1416px; right: 201px; bottom: 231px; display: none;" />
     <ui:Instance template="ItemDisplayPanel" name="ItemDisplayPanel" style="position: absolute; top: 97px; left: 799px; right: 694px; bottom: 646px;" />
-    <ui:Instance template="WorkMenu" name="TaskMenu" style="position: absolute; height: 426px; width: 652px; top: 246px; left: 58px;" />
+    <ui:Instance template="WorkMenu" name="TaskMenu" style="position: absolute; top: 246px; left: 171px; width: 629px; height: 447px;" />
     <ui:VisualElement name="InfoPanel" style="position: absolute; top: 540px; left: 780px;">
         <ui:VisualElement style="height: 400px; width: 350px;">
             <ui:VisualElement name="ulBorder" style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; background-color: rgb(115, 170, 115);" />

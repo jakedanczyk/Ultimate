@@ -49,11 +49,15 @@ namespace Urth
 
         public void PopulateTerrain(TerrainWorksite tw)
         {
+            Debug.Log("PopulateTerrain");
             List<string> strings = new List<string>();
             foreach(TerrainBlockFraction layer in tw.GetExistentFractions())
             {
+                Debug.Log(layer.mat.ToString() + ":" + layer.volumeFraction);
                 strings.Add(layer.mat.ToString() + ":" + layer.volumeFraction);
             }
+            Populate(strings);
+
         }
         public void Populate(List<string> strings)
         {
@@ -61,11 +65,11 @@ namespace Urth
             listView.makeItem = () => itemTemplate.Instantiate();
             listView.bindItem = (VisualElement element, int index) =>
             {
-                VisualElement itemElement = element.Query("item").First();
+                VisualElement itemElement = element.Query("infoItem").First();
                 VisualElement click = itemElement.Query("click").First();
                 click.RegisterCallback<ClickEvent, int>(OnItemClick, index);
                 //click.RegisterCallback<ClickEvent>(OnItemClick);
-                Label itemLabel = itemElement.Query("itemName").First().Query("itemNameLabel").First() as Label;
+                Label itemLabel = itemElement.Query("infoItemName").First().Query("infoItemNameLabel").First() as Label;
                 Debug.Log("itemNamLabel is...");
                 Debug.Log(itemLabel);
                 Debug.Log(itemLabel.text);
